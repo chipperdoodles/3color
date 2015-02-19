@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>My Site</title>
+</head>
+<header>
+    <h1><a href="{{ url_for("index") }}">My site</a></h1>
+</header>
+<nav>
+    {% include "_main-menu.html" %}
+</nav>
+<body>
+{% block content %}
+    <p> default content to be displayed</p>
+<{% endblock content %}
+</body>
+</html>
