@@ -15,7 +15,9 @@ freezer = Freezer(app)
 
 @app.route('/')
 def index():
-    return render_template('home.html', pages=pages)
+    bookpage = (p for p in pages if 'date' in p.meta)
+    latest = sorted(bookpage, reverse=True, key=lambda p: p.meta['date'])
+    return render_template('home.html', article=latest[:1])
 
 @app.route('/books/')
 def books():
@@ -26,7 +28,6 @@ def books():
 def chapters(book):
     chapters = (p for p in pages if p.meta['book'] == book and p.meta['number'] == 1)
     return render_template('books.html', pages=chapters)
-
 
 @app.route('/<path:path>/')
 def page(path):
