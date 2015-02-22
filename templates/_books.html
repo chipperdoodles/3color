@@ -1,9 +1,0 @@
-<ul>
-{% for page in pages %}
-    <li>
-        <a href="{{ url_for("page", path=page.path) }}">{{ page.book }}</a>
-    </li>
-{% else %}
-    <li>No page.</li>
-{% endfor %}
-</ul>

@@ -1,5 +1,5 @@
 title: Splosions
-date: 2016-02-16
+published: 2016-02-18
 book: ricks
 chapter: 2
 number: 1

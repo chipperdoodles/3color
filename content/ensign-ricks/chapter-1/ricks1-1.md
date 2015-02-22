@@ -1,5 +1,5 @@
 title: page1
-date: 2016-02-16
+published: 2016-02-15
 book: ricks
 chapter: 1
 number: 1

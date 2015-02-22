@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1> Latest page </h1>
-    {% include "_latest.html" %}
+    {% for p in front_page %}
+        <h1> {{ p.title }} </h1>
+        <div> {{ p.html|safe }}</div>
+    {% endfor %}
 {% endblock content %}

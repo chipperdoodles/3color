@@ -1,5 +1,5 @@
 title: so it begins
-date: 2016-02-16
+published: 2010-01-15
 book: turbodeck
 chapter: 1
 number: 1

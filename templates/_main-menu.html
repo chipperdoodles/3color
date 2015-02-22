@@ -1,3 +1,13 @@
 <ul>
-<a href="{{ url_for('books') }}">books</a>
+    <a href="{{ url_for('books') }}">{{ books }}</a>
+    {% for p in chapter %}
+    <li>
+        <a href="{{ url_for('page', path=p.path) }}">{{ p.book }}</a>
+        {% for p in firstpage %}
+        <ul>
+            <a href="{{url_for('page', path=p.path) }}">{{ p.chapter}}</a>
+        </ul>
+        {% endfor %}
+    </li>
+    {% endfor %}
 </ul>
