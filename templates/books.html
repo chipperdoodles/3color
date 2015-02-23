@@ -1,14 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-    {% for p in firstpage %}
     <li>
-        <a href="{{ url_for('page', path=p.path) }}">{{ p.book }}</a>
-    </li>
+    {% for p in bookpages %}
+        <ul>
+            <a href="{{ url_for('page', path=p.path) }}">{{ p.book }}</a>
+        </ul>
     {% endfor %}
-    {% for p in chapter %}
-    <li>
-        <a href="{{ url_for('page', path=p.path) }}">{{ p.chapter }}</a>
     </li>
-    {% endfor %}
-    {% endblock content %}
+{% endblock content %}

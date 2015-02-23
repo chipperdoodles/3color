@@ -3,6 +3,6 @@
 {% block content %}
     {% for p in front_page %}
         <h1> {{ p.title }} </h1>
-        <div> {{ p.html|safe }}</div>
+        <div> <a href="{{ url_for('page', path=p.path) }}">{{ p.html|safe }}</a></div>
     {% endfor %}
 {% endblock content %}

@@ -2,5 +2,19 @@
 
 {% block content %}
     <h2>{{ page.title }}</h2>
-    {{ page.html|safe }}
+    <div>{{ page.html|safe }}</div>
+    <div>
+        {% for page in previouspage if currentchapter==page.chapter and currentbook==page.book %}
+            <a href="{{ url_for('page', path=page.path) }}"> back</a>
+        {% else %}
+            <p> no previous page </p>
+        {% endfor %}
+    </div>
+    <div>
+        {% for page in nextpage if currentchapter==page.chapter and currentbook==page.book %}
+            <a href="{{ url_for('page', path=page.path) }}"> next</a>
+        {% else %}
+            <p> no next page </p>
+        {% endfor %}
+    </div>
 {% endblock content %}

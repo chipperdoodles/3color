@@ -2,13 +2,15 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>My Site</title>
+    <title>comicr</title>
 </head>
 <header>
-    <h1><a href="{{ url_for("index") }}">My site</a></h1>
+    <h2><a href="{{ url_for("index") }}">comicr</h2>
 </header>
 <nav>
-    {% include "_main-menu.html" %}
+    <ul>
+        <a href="{{ url_for('books') }}"> Books </a>
+    </ul>
 </nav>
 <body>
 {% block content %}
