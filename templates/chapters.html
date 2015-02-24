@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-    {% for p in chapters %}
+    {% for p in chapter_page %}
     <li>
-        <a href="{{ url_for('page', path=p.path) }}">chapter: {{ p.chapter }}</a>
+        <a href="{{ url_for('comic_page', path=p.path) }}">chapter: {{ p.chapter }}</a>
     {% endfor %}
-    {% for p in bookpages %}
+    {% for p in book_page %}
     <ul>
-        <a href="{{ url_for('page', path=p.path) }}"> {{ p.title }} </a>
+        <a href="{{ url_for('comic_page', path=p.path) }}"> {{ p.title }} </a>
     </ul>
     {% endfor %}
     </li>

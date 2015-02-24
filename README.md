@@ -15,7 +15,7 @@ For credit I have been using the following as references as well as documentatio
  * https://pythonhosted.org/Flask-FlatPages/
  * https://pythonhosted.org/Frozen-Flask/
 
-Relies on:
+requirements:
  * Flask
  * Flask-Flatpages
  * Flask-Freeze
