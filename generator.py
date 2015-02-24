@@ -2,7 +2,7 @@ import sys
 import math
 
 from flask import Flask, render_template
-from flask_flatpages import FlatPages, pygmented_markdown
+from flask_flatpages import FlatPages
 from flask_frozen import Freezer
 
 DEBUG = True
@@ -15,6 +15,10 @@ app.config.from_object(__name__)
 pages = FlatPages(app)
 freezer = Freezer(app)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/master
 # navigation variables
 # minus = (p for p in pages if page['page_number'] - 1)
 # plus = p.meta['page_number'] + 1
@@ -58,7 +62,11 @@ def books():
 # def single_page():
 
 
+<<<<<<< HEAD
 @app.route('/<path:path>.html')
+=======
+@app.route('/<path:path>')
+>>>>>>> refs/remotes/origin/master
 def comic_page(path):
     #messy, trying to see if i could get pagination on page for back and next pages in a current chapter
     page = pages.get_or_404(path)
