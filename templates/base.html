@@ -3,18 +3,26 @@
 <head>
     <meta charset="utf-8">
     <title>comicr</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" type="text/css" />
 </head>
 <header>
     <h2><a href="{{ url_for("index") }}">comicr</h2>
 </header>
-<nav>
+<nav id="site_nav">
     <ul>
         <a href="{{ url_for('books') }}"> Books </a>
+        about
+        contact
     </ul>
 </nav>
 <body>
+<div id="content">
 {% block content %}
     <p> default content to be displayed</p>
-<{% endblock content %}
+{% endblock content %}
+</div>
+<footer>
+    footer
+</footer>
 </body>
 </html>
