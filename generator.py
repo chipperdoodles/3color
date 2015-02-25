@@ -5,19 +5,12 @@ from flask import Flask, render_template
 from flask_flatpages import FlatPages
 from flask_frozen import Freezer
 
-DEBUG = True
-FLATPAGES_AUTO_RELOAD = DEBUG
-FLATPAGES_EXTENSION = '.md'
-FLATPAGES_ROOT =  'content'
-FREEZER_DESTINATION = 'gh-pages'
-FREEZER_DESTINATION_IGNORE = ['.git*','.gitignore']
-FEEZER_RELATIVE_URLS = True
 BOOK_DIR = 'books'
 PAGE_DIR = 'single_page'
-SITE_NAME = 'Site Name'
+SITE_NAME = 'comicr'
 
 app = Flask(__name__)
-app.config.from_object(__name__)
+app.config.from_pyfile('settings.cfg')
 pages = FlatPages(app)
 freezer = Freezer(app)
 
@@ -55,23 +48,23 @@ def books():
 @app.route('/<name>.html')
 def single_page(name):
     path = '{}/{}'.format(PAGE_DIR, name)
-    page = pages.get_or_404(path)
-    return render_template('page.html', page=page)
+    p = pages.get_or_404(path)
+    return render_template('page.html', p=p)
 
 @app.route('/<path:path>.html')
 def comic_page(path):
     #messy, trying to see if i could get pagination on page for back and next pages in a current chapter
-    page = pages.get_or_404(path)
-    t_pages = total_pages(pages, page.meta['book'])
-    minus = page.meta['page_number'] - 1
-    plus = page.meta['page_number'] + 1
-    current_book = page.meta['book']
-    current_chapter = page.meta['chapter']
+    p = pages.get_or_404(path)
+    t_pages = total_pages(pages, p.meta['book'])
+    minus = p.meta['page_number'] - 1
+    plus = p.meta['page_number'] + 1
+    current_book = p.meta['book']
+    current_chapter = p.meta['chapter']
     book_page = (p for p in pages if p.meta['book'])
     last_page = (p for p in pages if p.meta['page_number'] == t_pages )
     previous_page = ( p for p in pages if p.meta['page_number'] == minus)
     next_page = ( p for p in pages if p.meta['page_number'] == plus )
-    return render_template('comic.html', current_book=current_book, current_chapter=current_chapter, book_page=book_page, page=page, previous_page=previous_page, next_page=next_page, t_pages=t_pages, last_page=last_page)
+    return render_template('comic.html', current_book=current_book, current_chapter=current_chapter, book_page=book_page, p=p, previous_page=previous_page, next_page=next_page, t_pages=t_pages, last_page=last_page)
 
 if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "build":
