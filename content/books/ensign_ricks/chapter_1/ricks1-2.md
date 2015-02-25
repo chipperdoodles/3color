@@ -4,4 +4,4 @@ book: ricks
 chapter: 1
 page_number: 2
 
-![thefirstpage](../../../static/images/Ricks2.png)
+![thefirstpage](/static/images/Ricks2.png)

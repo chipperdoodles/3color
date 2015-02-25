@@ -12,7 +12,6 @@ FLATPAGES_ROOT =  'content'
 FREEZER_DESTINATION = 'gh-pages'
 FREEZER_DESTINATION_IGNORE = ['.git*','.gitignore']
 FEEZER_RELATIVE_URLS = True
-FREEZER_BASE_URL = 'https://chipperdoodles.github.io/comicr/'
 BOOK_DIR = 'books'
 PAGE_DIR = 'single_page'
 SITE_NAME = 'Site Name'
