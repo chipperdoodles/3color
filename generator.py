@@ -9,23 +9,18 @@ DEBUG = True
 FLATPAGES_AUTO_RELOAD = DEBUG
 FLATPAGES_EXTENSION = '.md'
 FLATPAGES_ROOT =  'content'
+FREEZER_DESTINATION = 'gh-pages'
+FREEZER_DESTINATION_IGNORE = ['.git*','.gitignore']
+FEEZER_RELATIVE_URLS = True
+FREEZER_BASE_URL = 'https://chipperdoodles.github.io/comicr/'
+BOOK_DIR = 'books'
+PAGE_DIR = 'single_page'
+SITE_NAME = 'Site Name'
 
 app = Flask(__name__)
 app.config.from_object(__name__)
 pages = FlatPages(app)
 freezer = Freezer(app)
-
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/origin/master
-# navigation variables
-# minus = (p for p in pages if page['page_number'] - 1)
-# plus = p.meta['page_number'] + 1
-# current_book = p.meta['book']
-# current_chapter = p.meta['chapter']
-# previous_page = ( p for p in pages if p.meta['page_number'] == minus)
-# next_page = ( p for p in pages if p.meta['page_number'] == plus )
 
 def latest_comic(pages, limit=None):
     #for sorting published pages that are books by latest
@@ -57,16 +52,14 @@ def books():
 #     book_page = (p for p in pages if p.meta['book'] == book)
 #     chapter_page = (p for p in book_page if p.meta['page_number'] == 1)
 #     return render_template('chapter_page.html', chapter_page=chapter_page, book_page=book_page)
+#
+@app.route('/<name>.html')
+def single_page(name):
+    path = '{}/{}'.format(PAGE_DIR, name)
+    page = pages.get_or_404(path)
+    return render_template('page.html', page=page)
 
-# @app.route()
-# def single_page():
-
-
-<<<<<<< HEAD
 @app.route('/<path:path>.html')
-=======
-@app.route('/<path:path>')
->>>>>>> refs/remotes/origin/master
 def comic_page(path):
     #messy, trying to see if i could get pagination on page for back and next pages in a current chapter
     page = pages.get_or_404(path)
@@ -79,8 +72,7 @@ def comic_page(path):
     last_page = (p for p in pages if p.meta['page_number'] == t_pages )
     previous_page = ( p for p in pages if p.meta['page_number'] == minus)
     next_page = ( p for p in pages if p.meta['page_number'] == plus )
-    return render_template('page.html', current_book=current_book, current_chapter=current_chapter, book_page=book_page,
-     page=page, previous_page=previous_page, next_page=next_page, t_pages=t_pages, last_page=last_page)
+    return render_template('comic.html', current_book=current_book, current_chapter=current_chapter, book_page=book_page, page=page, previous_page=previous_page, next_page=next_page, t_pages=t_pages, last_page=last_page)
 
 if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "build":

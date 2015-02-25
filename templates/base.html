@@ -6,13 +6,13 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" type="text/css" />
 </head>
 <header>
-    <h2><a href="{{ url_for("index") }}">comicr</h2>
+    <h2><a href="{{ url_for('index') }}"> comicr </h2>
 </header>
 <nav id="site_nav">
     <ul>
         <a href="{{ url_for('books') }}"> Books </a>
-        about
-        contact
+        <a href="{{ url_for('single_page', name='about') }}"> about</a>
+        <a href="{{ url_for('single_page', name='contact') }}"> contact</a>
     </ul>
 </nav>
 <body>

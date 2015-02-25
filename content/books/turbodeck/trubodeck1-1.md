@@ -4,4 +4,4 @@ book: turbodeck
 chapter: 1
 page_number: 1
 
-![thefirstpage](/static/images/turbodeck.png)
+![thefirstpage](../../../static/images/turbodeck.png)
