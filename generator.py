@@ -14,6 +14,17 @@ app.config.from_pyfile('settings.cfg')
 pages = FlatPages(app)
 freezer = Freezer(app)
 
+def menu_items():
+    path = 'PAGE_DIR'
+    menu_pages = pages.get(path)
+    menu_names = for menu_pages, menu_pages['title']
+    return menu_names
+
+@app.route('/test')
+def test():
+    m_names = menu_items()
+    return render_template('test.html', m_names=m_names)
+
 def latest_comic(pages, limit=None):
     #for sorting published pages that are books by latest
     l_comic = (p for p in pages if p.meta['book'] and 'published' in p.meta)
@@ -44,7 +55,7 @@ def books():
 #     book_page = (p for p in pages if p.meta['book'] == book)
 #     chapter_page = (p for p in book_page if p.meta['page_number'] == 1)
 #     return render_template('chapter_page.html', chapter_page=chapter_page, book_page=book_page)
-#
+
 @app.route('/<name>.html')
 def single_page(name):
     path = '{}/{}'.format(PAGE_DIR, name)

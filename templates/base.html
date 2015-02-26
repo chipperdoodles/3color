@@ -9,11 +9,7 @@
     <h2><a href="{{ url_for('index') }}"> {{ config.SITE_NAME }} </h2>
 </header>
 <nav id="site_nav">
-    <ul>
-        <a href="{{ url_for('books') }}"> Books </a>
-        <a href="{{ url_for('single_page', name='about') }}"> about</a>
-        <a href="{{ url_for('single_page', name='contact') }}"> contact</a>
-    </ul>
+{% include '_menu.html' %}
 </nav>
 <body>
 <div id="content">
