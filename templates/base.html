@@ -2,23 +2,23 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>comicr</title>
+    <title>{{ config.SITE_NAME }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" type="text/css" />
 </head>
-<header>
-    <h2><a href="{{ url_for('index') }}"> {{ config.SITE_NAME }} </h2>
-</header>
-<nav id="site_nav">
-{% include '_menu.html' %}
-</nav>
-<body>
-<div id="content">
-{% block content %}
-    <p> default content to be displayed</p>
-{% endblock content %}
-</div>
-<footer>
-    footer
-</footer>
-</body>
+  <body>
+  <header>
+      <h1><a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo.png') }}"/> </a></h1>
+  </header>
+  <nav id="site_nav">
+      {% include '_menu.html' %}
+  </nav>
+  <div id="content">
+  {% block content %}
+      <p> default content to be displayed</p>
+  {% endblock content %}
+  </div>
+  <footer>
+      <p> <a href="https://github.com/chipperdoodles/comicr"> Comicr can be found on github</a> </p>
+  </footer>
+  </body>
 </html>

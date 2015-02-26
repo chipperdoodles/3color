@@ -1,0 +1,27 @@
+
+    {% for p in book_page if 1==p.page_number and current_book==p.book %}
+    <div class="first">
+      <a href="{{ url_for('comic_page', name=p.path.replace('books/', '')) }}"> first</a>
+    </div>
+    {% else %}
+    {% endfor %}
+    {% for p in previous_page if current_book==p.book %}
+    <div class="back">
+      <a href="{{ url_for('comic_page', name=p.path.replace('books/', '')) }}"> back</a>
+    </div>
+    {% else %}
+    {% endfor %}
+
+    {% for p in next_page if current_book==p.book %}
+    <div class="next">
+      <a href="{{ url_for('comic_page', name=p.path.replace('books/', '')) }}"> next</a>
+    </div>
+    {% else %}
+    {% endfor %}
+
+    {% for p in last_page if current_book==p.book %}
+    <div class="latest">
+      <a href="{{ url_for('comic_page', name=p.path.replace('books/', '')) }}"> latest</a>
+    </div>
+    {% else %}
+    {% endfor %}

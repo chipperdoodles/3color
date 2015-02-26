@@ -2,7 +2,8 @@
 
 {% block content %}
     {% for p in front_page %}
-        <h1> {{ p.title }} </h1>
-        <div id="comic"> <a href="{{ url_for('comic_page', path=p.path) }}">{{ p.html|safe }}</a></div>
+    <div id="comic">
+      <a href="{{ url_for('comic_page', name=p.path.replace('books/', '')) }}">{{ p.html|safe }}</a>
+    </div>
     {% endfor %}
 {% endblock content %}

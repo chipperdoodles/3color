@@ -4,7 +4,7 @@
     <li>
     {% for p in first_page %}
         <ul>
-            <a href="{{ url_for('comic_page', path=p.path) }}">{{ p.book }}</a>
+            <a href="{{ url_for('comic_page', name=p.path.replace('books/', '')) }}">{{ p.book }}</a>
         </ul>
     {% endfor %}
     </li>

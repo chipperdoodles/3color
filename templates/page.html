@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div id="comic_title">
-        <h2>{{ p.title }}</h2>
-    </div>
-    <div id="comic">
-        {{ p.html|safe }}
+    <div id="single_page">
+      <div id="page_title">
+          <h2>{{ page.title }}</h2>
+      </div>
+        {{ page.html|safe }}
     </div>
 {% endblock content %}

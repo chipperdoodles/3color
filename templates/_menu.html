@@ -1,6 +1,7 @@
-
 <ul>
-    <a href="{{ url_for('books') }}"> Books </a>
-    <a href="{{ url_for('single_page', name='about') }}"> about</a>
-    <a href="{{ url_for('single_page', name='contact') }}"> contact</a>
+  <a href="{{ url_for('index') }}">Home</a>
+  <a href="{{ url_for('books') }}">Books</a>
+  {% for p in menu_pages %}
+  <a href="{{ url_for('single_page', name=p.path.replace('single_page/', ''))}}"> {{p.title}} </a>
+  {% endfor %}
 </ul>

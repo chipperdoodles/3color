@@ -1,40 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div id="comic_title">
-        <h2>{{ p.title }}</h2>
-    </div>
     <div id="comic">
         {{ p }}
-    </div>
-    <div id="book_nav">
-        <div class="first">
-            {% for p in book_page if 1==p.page_number and current_book==p.book %}
-            <a href="{{ url_for('comic_page', path=p.path) }}"> first</a>
-            {% else %}
-            <a>first</a>
-            {% endfor %}
-        </div>
-        <div class="back">
-            {% for p in previous_page if current_book==p.book %}
-            <a href="{{ url_for('comic_page', path=p.path) }}"> back</a>
-            {% else %}
-            <a>back</a>
-            {% endfor %}
-        </div>
-        <div class="next">
-            {% for p in next_page if current_book==p.book %}
-            <a href="{{ url_for('comic_page', path=p.path) }}"> next</a>
-            {% else %}
-            <a>next</a>
-            {% endfor %}
-        </div>
-        <div class="latest">
-            {% for p in last_page if current_book==p.book %}
-            <a href="{{ url_for('comic_page', path=p.path) }}"> latest </a>
-            {% else %}
-            <a>latest</a>
-            {% endfor %}
+        <div id="book_nav">
+          {% include '_book_nav.html' %}
         </div>
     </div>
 {% endblock content %}
