@@ -1,4 +1,4 @@
-title: Readme
+title: ReadMe
 published: 2015-02-26
 book: none
 chapter:
@@ -11,7 +11,7 @@ This is a Flask app to intended generate a static webcomic site from markdown fi
 
 To generate static files type `python generator.py build`
 
-To run live with flask's built in webserver in debug just type `python generator.py` and visit localhost:5000 in your browser
+To run live with flask's built in web-server in debug just type `python generator.py` and visit localhost:5000 in your browser
 
 Each page is built from a markdown file located in the content/ folder. Right now I have a few examples placed. They have header containing metadata followed by a markdown body, which is currently just a link to the comic page located in the static/images folder.
 
@@ -30,3 +30,7 @@ requirements:
  * Flask
  * Flask-Flatpages
  * Flask-Freeze
+
+suggested:
+
+ * python virtualenv

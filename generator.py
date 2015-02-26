@@ -12,6 +12,20 @@ app.config.from_pyfile('settings.cfg')
 pages = FlatPages(app)
 freezer = Freezer(app)
 
+# @app.context_processor
+# def path():
+#     p = pages.get(path, default='/')
+#     menu_pages = (p for p in pages if (p.meta['main-menu']))
+#     book_page = (p for p in pages if p.meta['book'] != 'none')
+#     return dict(book_page=book_page, menu_pages=menu_pages)
+
+@app.context_processor
+def menu_pages():
+    #injects variables for book pages and menu pages, menu pages are used to build main menu links
+    menu_pages = (p for p in pages if (p.meta['main-menu']))
+    book_page = (p for p in pages if p.meta['book'] != 'none')
+    return dict(book_page=book_page, menu_pages=menu_pages)
+
 def total_pages(pages, book):
     t_pages = (1 for p in pages if p.meta['book'] == book)
     t_pages = sum(t_pages)
@@ -23,24 +37,23 @@ def latest_comic(pages, limit=None):
     l_comic = sorted(l_comic, reverse=True, key=lambda p: p.meta['published'])
     return l_comic[:limit]
 
-@app.context_processor
-def menu_pages():
-    menu_pages = (p for p in pages if (p.meta['main-menu']))
-    book_page = (p for p in pages if p.meta['book'])
-    return dict(book_page=book_page, menu_pages=menu_pages)
-
 @app.route('/')
 def index():
-    #take 1 most recent page of comics
+    #take 1 most recent page of published comics
     front_page = latest_comic(pages, 1)
     return render_template('home.html', front_page=front_page)
 
 @app.route('/books/')
 def books():
     #finds and lists pages that are chapter: 1 and page_number: 1 in yaml header
-    book_page = (p for p in pages if p.meta['book'] is not 'none')
     first_page = (p for p in pages if p.meta['chapter'] == 1 and p.meta['page_number'] == 1)
-    return render_template('books.html', book_page=book_page, first_page=first_page)
+    return render_template('books.html', first_page=first_page)
+
+@app.route('/archive/')
+def archive():
+    #uses latest_comic to display every published comic page sorted by date
+    all_pages = latest_comic(pages)
+    return render_template('archive.html', all_pages = all_pages)
 
 # @app.route('/books/<string:book>/')
 # def chapter_page(book):
@@ -51,6 +64,7 @@ def books():
 
 @app.route('/<name>.html')
 def single_page(name):
+    #route for single pages, usually text pages
     path = '{}/{}'.format(PAGE_DIR, name)
     page = pages.get_or_404(path)
     return render_template('page.html', page=page)

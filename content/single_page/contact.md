@@ -5,4 +5,4 @@ chapter:
 page_number:
 main-menu: yes
 
-If you need to reach me you can find me on the *tweeters*
+If you need to reach me you can find me on the <a href="chipperdoodles.twitter.com">*tweeters*</a>

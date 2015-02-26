@@ -1,11 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <li>
+  <div id="page">
+    <ul>
     {% for p in first_page %}
         <ul>
             <a href="{{ url_for('comic_page', name=p.path.replace('books/', '')) }}">{{ p.book }}</a>
+            {% for p in book_page if p.book == p.book %}
+            <ul>
+              <a href="{{ url_for('comic_page', name=p.path.replace('books/', '')) }}">{{ p.title }}</a>
+            </ul>
+            {% endfor %}
         </ul>
     {% endfor %}
-    </li>
+    </ul>
+  </div>
 {% endblock content %}

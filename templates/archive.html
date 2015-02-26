@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div id="page">
+    <h2>Archive of Pages<h2>
+    {% for p in all_pages %}
+      <ul>
+        <a href="{{ url_for('comic_page', name=p.path.replace('books/', '')) }}">{{p.title}}: chapter-{{p.chapter}}: {{ p.book }}: page-{{p.page_number}}</a>
+      </ul>
+    {% endfor %}
+  </div>
+{% endblock content %}
