@@ -26,7 +26,6 @@
 }
 
 a {
-    font-family: 'sourceSanslight', sans-serif;
     text-decoration: none;
     color: #757575;
 }
@@ -132,4 +131,8 @@ footer {
 
 #single_page {
     padding: 5%;
+    max-width: 80%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
 }
