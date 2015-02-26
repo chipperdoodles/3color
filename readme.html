@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>comicr</title>
+    <link rel="stylesheet" href="/static/css/main.css" type="text/css" />
+</head>
+  <body>
+  <header>
+      <h1><a href="/"><img src="/static/images/logo.png"/> </a></h1>
+  </header>
+  <nav id="site_nav">
+      <ul>
+  <a href="/">Home</a>
+  <a href="/books/">Books</a>
+  
+  <a href="/contact.html"> Contact </a>
+  
+  <a href="/about.html"> About </a>
+  
+  <a href="/readme.html"> Readme </a>
+  
+</ul>
+  </nav>
+  <div id="content">
+  
+    <div id="single_page">
+      <div id="page_title">
+          <h2>Readme</h2>
+      </div>
+        <h1>comicr</h1>
+<p>This is a Flask app to intended generate a static webcomic site from markdown files using the flask extension flatpages. The name is currently just a placeholder.</p>
+<p>To generate static files type <code>python generator.py build</code></p>
+<p>To run live with flask's built in webserver in debug just type <code>python generator.py</code> and visit localhost:5000 in your browser</p>
+<p>Each page is built from a markdown file located in the content/ folder. Right now I have a few examples placed. They have header containing metadata followed by a markdown body, which is currently just a link to the comic page located in the static/images folder.</p>
+<p>I am new to programming and I'm kind of brute learning python and flask by just working on this project.</p>
+<p>For credit I have been using the following as references as well as documentation.</p>
+<ul>
+<li>https://nicolas.perriault.net/code/2012/dead-easy-yet-powerful-static-website-generator-with-flask/</li>
+<li>http://royprins.com/add-flatpages-to-flatfreeze</li>
+<li>http://obsoleter.com/2012/12/12/creating-plume-a-static-site-generator-with-flask-part-1/</li>
+<li>https://pythonhosted.org/Flask-FlatPages/</li>
+<li>https://pythonhosted.org/Frozen-Flask/</li>
+</ul>
+<p>requirements:</p>
+<ul>
+<li>Flask</li>
+<li>Flask-Flatpages</li>
+<li>Flask-Freeze</li>
+</ul>
+    </div>
+
+  </div>
+  <footer>
+      <p> <a href="https://github.com/chipperdoodles/comicr"> Comicr can be found on github</a> </p>
+  </footer>
+  </body>
+</html>
