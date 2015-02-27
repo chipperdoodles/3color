@@ -4,10 +4,18 @@
     <meta charset="utf-8">
     <title>comicr</title>
     <link rel="stylesheet" href="/static/css/main.css" type="text/css" />
+    <script type="text/javascript">
+    function keyNav(event) {
+      var key = event.keyCode || event.which;
+      if (key == 37) { document.getElementById("back").click();}
+      else if (key == 39) { document.getElementById("next").click();}
+      else { }
+    }
+    </script>
 </head>
-  <body>
+  <body onkeydown="keyNav(event)">
   <header>
-      <h1><a href="/"><img src="/static/images/logo.png"/> </a></h1>
+      <h1 class="header"><a href="/"><img class="headerimg" src="/static/images/logo.png"/> </a></h1>
   </header>
   <nav id="site_nav">
       <ul>

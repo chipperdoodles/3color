@@ -4,10 +4,18 @@
     <meta charset="utf-8">
     <title>comicr</title>
     <link rel="stylesheet" href="/static/css/main.css" type="text/css" />
+    <script type="text/javascript">
+    function keyNav(event) {
+      var key = event.keyCode || event.which;
+      if (key == 37) { document.getElementById("back").click();}
+      else if (key == 39) { document.getElementById("next").click();}
+      else { }
+    }
+    </script>
 </head>
-  <body>
+  <body onkeydown="keyNav(event)">
   <header>
-      <h1><a href="/"><img src="/static/images/logo.png"/> </a></h1>
+      <h1 class="header"><a href="/"><img class="headerimg" src="/static/images/logo.png"/> </a></h1>
   </header>
   <nav id="site_nav">
       <ul>
@@ -24,31 +32,14 @@
   </nav>
   <div id="content">
   
-    <div id="comic">
-        <p><img alt="thefirstpage" src="/static/images/turbodeck.png" /></p>
-        <div id="book_nav">
-          
     
-    <div class="first">
-      <a href="/comic/trubodeck1-1.html"> first</a>
+    <div id="news_page">
+      <div id="page_title">
+          <h2>Update</h2>
+      </div>
+        <p>This just in! Things are happening!</p>
     </div>
     
-    
-    
-
-    
-    <div class="next">
-      <a href="/comic/turbodeck1-2.html"> next</a>
-    </div>
-    
-
-    
-    <div class="latest">
-      <a href="/comic/turbodeck1-2.html"> latest</a>
-    </div>
-    
-        </div>
-    </div>
 
   </div>
   <footer>
