@@ -30,11 +30,12 @@ a {
     color: #757575;
 }
 
-a :hover{
+a:hover{
   font-family: 'sourceSansxlight';
+  text-decoration: blink;
 }
 
-a :active{
+a:active{
   font-family: 'sourceSansxlight';
 }
 
@@ -47,16 +48,8 @@ body {
 }
 
 header {
-    margin: auto;
-    max-width:100%;
 }
 
-header img{
-    border: 5px dashed #757575;
-    border-radius: 10px;
-    max-width: 100%;
-    display: block;
-}
 
 footer {
     min-height: 100px;
@@ -66,23 +59,32 @@ footer {
     text-align: center;
 }
 
+.headerimg {
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+}
+
+.headerimg{
+    border: 5px dashed #757575;
+    border-radius: 10px;
+    max-width: 100%;
+    display: block;
+}
 #site_nav {
-    box-sizing: border-box;
-    min-width: 100%;
 }
 
 #site_nav ul {
-    min-width: 100%;
-    display: inline-block;
+    min-width: 80%;
+    display: block;
+    text-align: center;
 }
 
 #site_nav a{
-    font-size: 1.3em;
+    font-size: 1.5em;
     text-align: center;
     min-width: 15%;
     display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 #content {
@@ -103,29 +105,23 @@ footer {
 }
 
 #book_nav {
-    display: block;
-    max-width: 80%;
+    max-width: 95%;
     margin-left: auto;
     margin-right: auto;
+    display: block;
 }
 
 #book_nav .first, .back, .next, .latest{
-  max-width: 25%;
-  min-width: 20%;
-  display: inline-block;
-  box-sizing: border-box;
-  margin-left: 20%;
-  margin-right: -20%;
-  border: 4px dotted #757575;
-  border-radius: 5px;
+    max-width: 25%;
+    min-width: 20%;
+    display: inline-block;
+    box-sizing: border-box;
+    border: 4px dotted #757575;
+    border-radius: 5px;
 
 }
 
-#book_nav .first, .back, .next, .latest, a {
-  text-align: center;
-}
-
-#page_title, h2{
+#book_nav, #page_title, .book_nav .first, .back, .next, .latest {
     text-align: center;
 }
 

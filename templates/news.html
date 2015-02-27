@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% for p in news_page %}
+    <div id="news_page">
+      <div id="page_title">
+          <h2>{{ p.title }}</h2>
+      </div>
+        {{ p.html|safe }}
+    </div>
+    {% endfor %}
+{% endblock content %}

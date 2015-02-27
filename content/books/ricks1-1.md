@@ -1,6 +1,7 @@
-title: Ricks Page 1
+title: "Ricks Page 1"
 published: 2016-02-15
-book: ricks
+type: book
+book: "Ensign Ricks"
 chapter: 1
 page_number: 1
 main-menu: no

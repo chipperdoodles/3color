@@ -1,6 +1,7 @@
-title: Ricks Page 3
+title: "Ricks Page 3"
 published: 2016-02-18
-book: ricks
+type: book
+book: "Ensign Ricks"
 chapter: 2
 page_number: 3
 main-menu: no

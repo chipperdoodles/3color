@@ -1,6 +1,7 @@
-title: ReadMe
+title: "ReadMe"
 published: 2015-02-26
-book: none
+type: single_page
+book:
 chapter:
 page_number:
 main-menu: yes

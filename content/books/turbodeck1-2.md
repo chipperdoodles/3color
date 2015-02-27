@@ -1,6 +1,7 @@
-title: woosh
+title: "woosh"
 published: 2010-01-16
-book: turbodeck
+type: book
+book: "turbodeck"
 chapter: 1
 page_number: 2
 main-menu: no

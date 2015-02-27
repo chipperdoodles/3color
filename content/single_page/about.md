@@ -1,6 +1,7 @@
-title: About
+title: "About"
 published: 2015-02-17
-book: none
+type: single_page
+book:
 chapter:
 page_number:
 main-menu: yes

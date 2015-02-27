@@ -4,17 +4,24 @@
     <meta charset="utf-8">
     <title>{{ config.SITE_NAME }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" type="text/css" />
+    <script type="text/javascript">
+    function keyNav(event) {
+      var key = event.keyCode || event.which;
+      if (key == 37) { document.getElementById("back").click();}
+      else if (key == 39) { document.getElementById("next").click();}
+      else { }
+    }
+    </script>
 </head>
-  <body>
+  <body onkeydown="keyNav(event)">
   <header>
-      <h1><a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo.png') }}"/> </a></h1>
+      <h1 class="header"><a href="{{ url_for('index') }}"><img class="headerimg" src="{{ url_for('static', filename='images/logo.png') }}"/> </a></h1>
   </header>
   <nav id="site_nav">
       {% include '_menu.html' %}
   </nav>
   <div id="content">
   {% block content %}
-      <p> default content to be displayed</p>
   {% endblock content %}
   </div>
   <footer>
