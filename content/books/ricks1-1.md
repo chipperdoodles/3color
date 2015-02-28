@@ -4,6 +4,7 @@ type: book
 book: "Ensign Ricks"
 chapter: 1
 page_number: 1
+image: "ricks1.png"
 main-menu: no
 
-![thefirstpage](/static/images/ricks1.png)
+<img src="{{ url_for('images', name="ricks1.png") }}">

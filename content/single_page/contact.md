@@ -4,6 +4,7 @@ type: single_page
 book:
 chapter:
 page_number:
+image:
 main-menu: yes
 
 If you need to reach me you can find me on the <a href="chipperdoodles.twitter.com">*tweeters*</a>

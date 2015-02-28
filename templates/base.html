@@ -14,8 +14,13 @@
     </script>
 </head>
   <body onkeydown="keyNav(event)">
-  <header>
-      <h1 class="header"><a href="{{ url_for('index') }}"><img class="headerimg" src="{{ url_for('static', filename='images/logo.png') }}"/> </a></h1>
+  <header id="header">
+      <div class="header">
+      <a href="{{ url_for('index') }}"><img class="headerimg" src="{{ url_for('static', filename='images/logo.png') }}"/></a>
+      </div>
+      <div class=thumbnail>
+      {% include '_latest.html' %}
+      </div>
   </header>
   <nav id="site_nav">
       {% include '_menu.html' %}

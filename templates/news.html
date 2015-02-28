@@ -2,9 +2,9 @@
 
 {% block content %}
     {% for p in news_page %}
-    <div id="news_page">
+    <div id="single_page">
       <div id="page_title">
-          <h2>{{ p.title }}</h2>
+          <a href="{{url_for('news', name=p.path.replace('news/', ''))}}">{{ p.title }}</a>
       </div>
         {{ p.html|safe }}
     </div>

@@ -2,9 +2,9 @@
 
 {% block content %}
   <div id="page">
-    <h2>Archive of Pages<h2>
+    <h2 id="page_title">Archive of Pages<h2>
     {% for p in all_pages %}
-      <ul>
+      <ul style="text-align:center;">
         <a href="{{ url_for('comic_page', name=p.path.replace('books/', '')) }}"> {{ p.book }}: chapter {{p.chapter}}: page {{p.page_number}}</a>
       </ul>
     {% endfor %}

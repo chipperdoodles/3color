@@ -10,6 +10,11 @@
       <a id="back" href="{{ url_for('comic_page', _anchor='content', name=p.path.replace('books/', '')) }}"> back</a>
     </div>
     {% else %}
+    {% for p in front_page %}
+    <div class="back">
+      <a id="back" href="{{ url_for('comic_page', _anchor='content', name=p.path.replace('books/', '')) }}"> back</a>
+    </div>
+    {% endfor %}
     {% endfor %}
 
     {% for p in next_page if current_book==p.book %}
@@ -17,6 +22,11 @@
       <a id="next" href="{{ url_for('comic_page', _anchor='content', name=p.path.replace('books/', '')) }}"> next</a>
     </div>
     {% else %}
+    {% for p in front_page %}
+    <div class="next">
+      <a id="next" href="{{ url_for('comic_page', _anchor='content', name=p.path.replace('books/', '')) }}"> next</a>
+    </div>
+    {% endfor %}
     {% endfor %}
 
     {% for p in last_page if current_book==p.book %}
@@ -24,5 +34,10 @@
       <a href="{{ url_for('comic_page', _anchor='content', name=p.path.replace('books/', '')) }}"> latest</a>
     </div>
     {% else %}
+    {% for p in front_page %}
+    <div class="latest">
+      <a href="{{ url_for('comic_page', _anchor='content', name=p.path.replace('books/', '')) }}"> latest</a>
+    </div>
+    {% endfor %}
     {% endfor %}
     </ul>

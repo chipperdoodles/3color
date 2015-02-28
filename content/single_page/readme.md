@@ -4,6 +4,7 @@ type: single_page
 book:
 chapter:
 page_number:
+image:
 main-menu: yes
 
 # comicr

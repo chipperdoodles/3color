@@ -25,3 +25,11 @@ requirements:
 
 suggested:
  * python virtualenv
+
+TODO
+ * rss/atom feed
+ * site map ?
+ * better {% block %} usage in templates
+ * push build with ftp/sftp/rsync
+ * child menu links?
+ * make clean default template and example site

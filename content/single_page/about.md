@@ -4,6 +4,7 @@ type: single_page
 book:
 chapter:
 page_number:
+image:
 main-menu: yes
 
 This is a sample static page written in the markdown language, then generated into html with the help of Flask, Flask-Flatpages, and Froozen-Flask. The Goal of this project is to have a static site generator with a template that covers the basic needs of a webcomic website. I currently use drupal for my webcomic, but felt like it has been too much for my needs. In addition to that I have always felt I needed to hack too much of it for a default webcomic layout. Although I love my site, I decided to give building a static-site generator a try. the Flask-Flatpages and Froozen-Flask extensions for Flask gave me an easy way to start that.

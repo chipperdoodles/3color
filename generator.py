@@ -1,22 +1,30 @@
 import sys
 
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, send_from_directory, send_file, render_template_string, Markup
 from flask_flatpages import FlatPages, pygmented_markdown
 from flask_frozen import Freezer
 
+def prerender_jinja(text):
+    prerendered_body = render_template_string(Markup(text))
+    return pygmented_markdown(prerendered_body)
+
+DEBUG = True
+FLATPAGES_AUTO_RELOAD = DEBUG
+FLATPAGES_EXTENSION = '.md'
+FLATPAGES_ROOT =  'content'
+FLATPAGES_HTML_RENDERER = prerender_jinja
+FREEZER_DESTINATION = 'gh-pages'
+FREEZER_DESTINATION_IGNORE = ['.git*','.gitignore','CNAME']
+FEEZER_RELATIVE_URLS = True
+SITE_NAME = 'comicr'
 BOOK_DIR = 'books'
 PAGE_DIR = 'single_page'
 NEWS_DIR = 'news'
 
 app = Flask(__name__)
-app.config.from_pyfile('settings.cfg')
+app.config.from_object(__name__)
 pages = FlatPages(app)
 freezer = Freezer(app)
-
-# @app.context_processor
-# def path():
-#     p = (p for p in pages if p.meta['book'])
-#     return dict( )
 
 @app.context_processor
 def page_types():
@@ -24,7 +32,8 @@ def page_types():
     menu_pages = (p for p in pages if (p.meta['main-menu']))
     book_page = (p for p in pages if p.meta['type'] == 'book' )
     news_page = (p for p in pages if p.meta['type'] == 'news')
-    return dict(book_page=book_page, menu_pages=menu_pages, news_page=news_page)
+    front_page = latest_comic(pages, 1)
+    return dict(book_page=book_page, menu_pages=menu_pages, news_page=news_page, front_page = front_page)
 
 def total_pages(pages, book):
     t_pages = (1 for p in pages if p.meta['book'] == book)
@@ -36,6 +45,13 @@ def latest_comic(pages, limit=None):
     l_comic = (p for p in pages if ((p['type'] == 'book') and 'published'))
     l_comic = sorted(l_comic, reverse=True, key=lambda p: p.meta['published'])
     return l_comic[:limit]
+
+@app.route('/images/<name>')
+def images(name):
+    if '..' in name or name.startswith('/'):
+        abort(404)
+    else:
+        return send_from_directory('images', name)
 
 @app.route('/')
 def index():
@@ -81,7 +97,7 @@ def news_page(name):
     page = pages.get_or_404(path)
     return render_template('page.html', page=page)
 
-@app.route('/comic/<name>.html')
+@app.route('/book/<name>.html')
 def comic_page(name):
     #messy, trying to see if i could get pagination on page for back and next pages in a current chapter
     path = '{}/{}'.format(BOOK_DIR, name)

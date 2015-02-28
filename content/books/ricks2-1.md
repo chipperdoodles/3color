@@ -4,6 +4,7 @@ type: book
 book: "Ensign Ricks"
 chapter: 2
 page_number: 3
+image: "rick_15.png"
 main-menu: no
 
-![the most recent page](/static/images/rick_15.png)
+<img src="{{ url_for('images', name="rick_15.png") }}">
