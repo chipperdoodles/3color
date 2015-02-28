@@ -36,3 +36,71 @@ requirements:
 suggested:
 
  * python virtualenv
+
+ TODO
+  * rss/atom feed
+  * site map ?
+  * better {% block %} usage in templates
+  * push build with ftp/sftp/rsync
+  * child menu links?
+  * make clean default template and example site
+  * finalize pyaml needed (metadata tags) in header of markdown files
+
+ ### Directory Structure
+ here is the layout of the project
+ ---
+ ```
+ comicr
+ ├── README.md
+ ├── content
+ │   ├── books
+ │   │   └── ///Book page markdown files go here 'bookpagename.md'
+ │   ├── news
+ │   │   └── ///News page markdown files go here 'newspagename.md'
+ │   └── single_page
+ │       └── ///Single page markdown files go here 'singlepagename.md'
+ ├── generator.py /// the app module for now
+ ├── images
+ │   └── /// all images for the comics go here turbodeck2.png
+ ├── push-pages.sh /// this is a shell script to the build folder gh-pages to my gh-pages branch
+ ├── requirements.txt /// a pip freeze
+ ├── settings.cfg /// currently not in use
+ ├── static ///static files flask convention, holds all static files for the template design these define the look
+ │   ├── css
+ │   │   └── main.css
+ │   ├── fonts
+ │   │   └── sourceSans
+ │   └── images
+ │       ├── lined_paper.png
+ │       ├── logo.png
+ │       └── retina_wood.png
+ └── templates /// jinja templates, these define the layout
+     ├── _book_nav.html
+     ├── _latest.html
+     ├── _menu.html
+     ├── archive.html
+     ├── base.html
+     ├── books.html
+     ├── chapters.html
+     ├── comic.html
+     ├── home.html
+     ├── news.html
+     ├── page.html
+     └── test.html
+ ```
+ ### content file structure
+ ---
+ Pages are markdown files with a pyaml header followed by an empty line and then the post content. They are put in the folder the corresponds for their type. The types `news` and `single_pages` have a blank field for `book: chapter: page_number: image:` . For the Type of book, the post is simply a jinja formatted link with the `name` = the filename located in the images folder.
+
+ ```yaml
+ title: "Ricks Page 3"
+ published: 2016-02-18
+ type: book
+ book: "Ensign Ricks"
+ chapter: 2
+ page_number: 3
+ image: "rick_15.png"
+ main-menu: no
+
+ <img src="{{ url_for('images', name="rick_15.png") }}">
+ ```

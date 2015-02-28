@@ -36,6 +36,7 @@ def page_types():
     return dict(book_page=book_page, menu_pages=menu_pages, news_page=news_page, front_page = front_page)
 
 def total_pages(pages, book):
+    #takes a count of pages in the book and returns sum of pages, used for page navigation
     t_pages = (1 for p in pages if p.meta['book'] == book)
     t_pages = sum(t_pages)
     return t_pages
@@ -56,8 +57,8 @@ def images(name):
 @app.route('/')
 def index():
     #take 1 most recent page of published comics
-    front_page = latest_comic(pages, 1)
-    return render_template('home.html', front_page=front_page)
+    # front_page = latest_comic(pages, 1)
+    return render_template('home.html')
 
 @app.route('/books/')
 def books():
@@ -99,7 +100,8 @@ def news_page(name):
 
 @app.route('/book/<name>.html')
 def comic_page(name):
-    #messy, trying to see if i could get pagination on page for back and next pages in a current chapter
+    #variables after 'p' are used to create pagination links within the book stories.
+    #these are only passed into the page.html template and work on 'comic_page' urls
     path = '{}/{}'.format(BOOK_DIR, name)
     p = pages.get_or_404(path)
     t_pages = total_pages(pages, p.meta['book'])
@@ -113,7 +115,6 @@ def comic_page(name):
     return render_template('comic.html', current_book=current_book,
     current_chapter=current_chapter, p=p, previous_page=previous_page,
     next_page=next_page, t_pages=t_pages, last_page=last_page)
-
 
 
 if __name__ == "__main__":
