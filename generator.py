@@ -1,13 +1,17 @@
 import sys
+import subprocess
 
 from flask import Flask, render_template, url_for, send_from_directory, send_file, render_template_string, Markup
 from flask_flatpages import FlatPages, pygmented_markdown
 from flask_frozen import Freezer
 
+#used to render jinja formated text in the body of a post
+#will probably remove this and go back to default markdown rendering
 def prerender_jinja(text):
     prerendered_body = render_template_string(Markup(text))
     return pygmented_markdown(prerendered_body)
 
+#configuration
 DEBUG = True
 FLATPAGES_AUTO_RELOAD = DEBUG
 FLATPAGES_EXTENSION = '.md'
@@ -83,7 +87,6 @@ def news():
 #     chapter_page = (p for p in book_page if p.meta['page_number'] == 1)
 #     return render_template('chapter_page.html', chapter_page=chapter_page, book_page=book_page)
 
-
 @app.route('/<name>.html')
 def single_page(name):
     #route for single pages, usually text pages
@@ -101,7 +104,7 @@ def news_page(name):
 @app.route('/book/<name>.html')
 def comic_page(name):
     #variables after 'p' are used to create pagination links within the book stories.
-    #these are only passed into the page.html template and work on 'comic_page' urls
+    #these are only passed into the page.html template and work only on 'comic_page' urls
     path = '{}/{}'.format(BOOK_DIR, name)
     p = pages.get_or_404(path)
     t_pages = total_pages(pages, p.meta['book'])
@@ -116,9 +119,15 @@ def comic_page(name):
     current_chapter=current_chapter, p=p, previous_page=previous_page,
     next_page=next_page, t_pages=t_pages, last_page=last_page)
 
+@app.route('/test/')
+def test():
+    return render_template('test.html', pages=pages)
 
 if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "build":
         freezer.freeze()
+    elif len(sys.argv) > 1 and sys.argv[1] == "push":
+        print ("calling rsync")
+        subprocess.check_call(["rsync", "-avc", "--delete", "gh-pages/", "rsyncoutput/"])
     else:
         app.run()

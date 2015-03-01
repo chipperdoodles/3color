@@ -1,7 +1,7 @@
     <ul class="book_nav" >
     {% for p in book_page if 1==p.page_number and current_book==p.book %}
     <div class="first">
-      <a href="{{ url_for('comic_page', _anchor='content', name=p.path.replace('books/', '')) }}"> first</a>
+      <a  href="{{ url_for('comic_page', _anchor='content', name=p.path.replace('books/', '')) }}"> first</a>
     </div>
     {% else %}
     {% endfor %}
@@ -36,7 +36,7 @@
     {% else %}
     {% for p in front_page %}
     <div class="latest">
-      <a href="{{ url_for('comic_page', _anchor='content', name=p.path.replace('books/', '')) }}"> latest</a>
+      <a  href="{{ url_for('comic_page', _anchor='content', name=p.path.replace('books/', '')) }}"> latest</a>
     </div>
     {% endfor %}
     {% endfor %}
