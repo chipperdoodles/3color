@@ -104,7 +104,7 @@ footer {
 
 #content {
   background-image: url('/static/images/lined_paper.png');
-  padding-top: 5%;
+  padding-top: 1%;
   padding-bottom: 5%;
 }
 
@@ -140,7 +140,6 @@ footer {
 }
 
 #single_page {
-    padding: 5%;
     max-width: 80%;
     display: block;
     margin-left: auto;
@@ -161,10 +160,11 @@ footer {
     margin-right: auto;
     border: 5px dashed #757575;
     border-radius: 10px;
+    margin-top: 3%;
+    padding: 10px;
 }
 
 #news_blurb.odd {
-  background-color: rgba(117, 117, 117, 0.5);
 }
 
 #news_blurb.even {
