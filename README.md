@@ -79,10 +79,12 @@ comicr
     ├── page.html
     └── test.html
 ```
-### content file structure
+
 ---
+## file structure for text files in content folders
 Pages are markdown files with a pyaml header followed by an empty line and then the post content. They are put in the folder the corresponds for their type. The types `news` and `single_pages` have a blank field for `book: chapter: page_number: image:` . For the Type of book, the post is simply a jinja formatted link with the `name` = the filename located in the images folder.
 
+for comic pages:
 ```yaml
 title: "Ricks Page 3"
 published: 2016-02-18
@@ -93,5 +95,18 @@ page_number: 3
 image: "rick_15.png"
 main-menu: no
 
-<img src="{{ url_for('images', name="rick_15.png") }}">
+```
+
+for news and single_page :
+```yaml
+title: "Contact"
+published: 2016-03-01
+type: single_page
+book:
+chapter:
+page_number:
+image:
+main-menu: yes
+
+If you need to reach me you can find me on the [tweeters]("https://twitter.com/chipperdoodles")
 ```

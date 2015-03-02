@@ -1,7 +1,9 @@
 {% extends "base.html" %}
-
+{% block title %}
+<h2 id="page_title"> List of pages by book</h2>
+{% endblock title %}
 {% block content %}
-  <div id="page">
+  <div id="book_page">
     {% for p in first_page %}
     {% set book = p.book %}
         <ul>
@@ -13,3 +15,5 @@
     {% endfor %}
   </div>
 {% endblock content %}
+{% block content_footer %}
+{% endblock content_footer %}

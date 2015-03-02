@@ -1,4 +1,4 @@
-{% for p in front_page %}
+{% for p in thumb_nail %}
 <h4>Latest Comic: {{p.title}}</h4>
 <a href="{{ url_for('comic_page', _anchor='content', name=p.path.replace('books/', '')) }}"><img class="thumbnailimg" src="{{ url_for('images', name=p.image) }}"></a>
 {% endfor %}

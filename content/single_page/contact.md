@@ -7,4 +7,4 @@ page_number:
 image:
 main-menu: yes
 
-If you need to reach me you can find me on the <a href="chipperdoodles.twitter.com">*tweeters*</a>
+If you need to reach me you can find me on the [tweeters]("https://twitter.com/chipperdoodles")

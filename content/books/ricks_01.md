@@ -6,5 +6,3 @@ chapter: 1
 page_number: 1
 image: "ricks1.png"
 main-menu: no
-
-<img src="{{ url_for('images', name="ricks1.png") }}">

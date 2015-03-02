@@ -1,12 +1,16 @@
 {% extends "base.html" %}
-
+{% block title %}
+  {% for p in front_page %}
+  <h2 id="page_title">{{p.title}}<h2>
+  {% endfor %}
+{% endblock title %}
 {% block content %}
 <div id="comic">
     {% for p in front_page %}
-      <a href="{{ url_for('comic_page', _anchor='content', name=p.path.replace('books/', '')) }}">{{ p.html|safe }}</a>
+    <a href="{{ url_for('comic_page', _anchor='content', name=p.path.replace('books/', '')) }}"> <img src="{{ url_for('images', name=p.image) }}"></a>
     {% endfor %}
-    <div id="book_nav">
-      {% include '_book_nav.html' %}
-    </div>
 </div>
 {% endblock content %}
+{% block content_footer %}
+  {% include '_book_nav.html' %}
+{% endblock content_footer %}

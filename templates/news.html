@@ -1,13 +1,15 @@
 {% extends "base.html" %}
-
+{% block title %}
+  <h2 id="page_title">News Posts</h2>
+{% endblock title %}
 {% block content %}
     {% for p in news_page %}
     {% set row_class = cycler('odd', 'even') %}
-    <div id="news_blurb" class="row_class.next()">
-      <div id="page_title">
-          <a href="{{url_for('news', name=p.path.replace('news/', ''))}}">{{ p.title }}</a>
-      </div>
+    <div id="news_blurb" class="{{row_class.next()}}">
+      <h2 id="page_title"><a href="{{ url_for('news_page', name=p.path.replace('news/', '')) }}">{{ p.title }}</a></h2>
         {{ p.html|safe }}
     </div>
     {% endfor %}
 {% endblock content %}
+{% block content_footer %}
+{% endblock content_footer %}

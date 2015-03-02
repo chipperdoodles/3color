@@ -2,21 +2,18 @@ import sys
 import subprocess
 
 from flask import Flask, render_template, url_for, send_from_directory, send_file, render_template_string, Markup
-from flask_flatpages import FlatPages, pygmented_markdown
+from flask_flatpages import FlatPages, pygmented_markdown, pygments_style_defs
 from flask_frozen import Freezer
 
 #used to render jinja formated text in the body of a post
 #will probably remove this and go back to default markdown rendering
-def prerender_jinja(text):
-    prerendered_body = render_template_string(Markup(text))
-    return pygmented_markdown(prerendered_body)
 
 #configuration
 DEBUG = True
 FLATPAGES_AUTO_RELOAD = DEBUG
 FLATPAGES_EXTENSION = '.md'
 FLATPAGES_ROOT =  'content'
-FLATPAGES_HTML_RENDERER = prerender_jinja
+FLATPAGES_HTML_RENDERER = pygmented_markdown
 FREEZER_DESTINATION = 'gh-pages'
 FREEZER_DESTINATION_IGNORE = ['.git*','.gitignore','CNAME']
 FEEZER_RELATIVE_URLS = True
@@ -36,8 +33,8 @@ def page_types():
     menu_pages = (p for p in pages if (p.meta['main-menu']))
     book_page = (p for p in pages if p.meta['type'] == 'book' )
     news_page = (p for p in pages if p.meta['type'] == 'news')
-    front_page = latest_comic(pages, 1)
-    return dict(book_page=book_page, menu_pages=menu_pages, news_page=news_page, front_page = front_page)
+    thumb_nail = latest_comic(book_page, 1)
+    return dict(book_page=book_page, menu_pages=menu_pages, news_page=news_page, thumb_nail=thumb_nail)
 
 def total_pages(pages, book):
     #takes a count of pages in the book and returns sum of pages, used for page navigation
@@ -58,11 +55,15 @@ def images(name):
     else:
         return send_from_directory('images', name)
 
+@app.route('/pygments.css')
+def pygments_css():
+    return pygments_style_defs('tango'), 200, {'Content-Type': 'text/css'}
+
 @app.route('/')
 def index():
     #take 1 most recent page of published comics
-    # front_page = latest_comic(pages, 1)
-    return render_template('home.html')
+    front_page = latest_comic(pages, 1)
+    return render_template('home.html', front_page = front_page)
 
 @app.route('/books/')
 def books():
@@ -70,11 +71,11 @@ def books():
     first_page = (p for p in pages if p.meta['chapter'] == 1 and p.meta['page_number'] == 1)
     return render_template('books.html', first_page=first_page, pages=pages)
 
-@app.route('/archive/')
-def archive():
-    #uses latest_comic to display every published comic page sorted by date
-    all_pages = latest_comic(pages)
-    return render_template('archive.html', all_pages = all_pages)
+# @app.route('/archive/')
+# def archive():
+#     #uses latest_comic to display every published comic page sorted by date
+#     all_pages = latest_comic(pages)
+#     return render_template('archive.html', all_pages = all_pages)
 
 @app.route('/news/')
 def news():
@@ -116,12 +117,12 @@ def comic_page(name):
     previous_page = ( p for p in pages if p.meta['page_number'] == minus)
     next_page = ( p for p in pages if p.meta['page_number'] == plus )
     return render_template('comic.html', current_book=current_book,
-    current_chapter=current_chapter, p=p, previous_page=previous_page,
-    next_page=next_page, t_pages=t_pages, last_page=last_page)
+        current_chapter=current_chapter, p=p, previous_page=previous_page,
+        next_page=next_page, t_pages=t_pages, last_page=last_page)
 
-@app.route('/test/')
-def test():
-    return render_template('test.html', pages=pages)
+# @app.route('/test/')
+# def test():
+#     return render_template('test.html', pages=pages)
 
 if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "build":
