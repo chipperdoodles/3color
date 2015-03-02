@@ -21,11 +21,11 @@ I am new to programming and I'm kind of brute learning python and flask by just 
 
 For credit I have been using the following as references as well as documentation.
 
- * https://nicolas.perriault.net/code/2012/dead-easy-yet-powerful-static-website-generator-with-flask/
- * http://royprins.com/add-flatpages-to-flatfreeze
- * http://obsoleter.com/2012/12/12/creating-plume-a-static-site-generator-with-flask-part-1/
- * https://pythonhosted.org/Flask-FlatPages/
- * https://pythonhosted.org/Frozen-Flask/
+ * <https://nicolas.perriault.net/code/2012/dead-easy-yet-powerful-static-website-generator-with-flask/>
+ * <http://royprins.com/add-flatpages-to-flatfreeze>
+ * <http://obsoleter.com/2012/12/12/creating-plume-a-static-site-generator-with-flask-part-1/>
+ * <https://pythonhosted.org/Flask-FlatPages/>
+ * <https://pythonhosted.org/Frozen-Flask/>
 
 requirements:
 
@@ -46,3 +46,76 @@ TODO:
   * child menu links?
   * make clean default template and example site
   * finalize pyaml needed (metadata tags) in header of markdown files
+
+## Directory Structure
+here is the layout of the project
+
+---
+
+        comicr
+        ├── README.md
+        ├── content
+        │   ├── books
+        │   │   └── ///Book page markdown files go here 'bookpagename.md'
+        │   ├── news
+        │   │   └── ///News page markdown files go here 'newspagename.md'
+        │   └── single_page
+        │       └── ///Single page markdown files go here 'singlepagename.md'
+        ├── generator.py /// the app module for now
+        ├── images
+        │   └── /// all images for the comics go here turbodeck2.png
+        ├── push-pages.sh /// this is a shell script to the build folder gh-pages to my gh-pages branch
+        ├── requirements.txt /// a pip freeze
+        ├── settings.cfg /// currently not in use
+        ├── static ///static files flask convention, holds all static files for the template design these define the look
+        │   ├── css
+        │   │   └── main.css
+        │   ├── fonts
+        │   │   └── sourceSans
+        │   └── images
+        │       ├── lined_paper.png
+        │       ├── logo.png
+        │       └── retina_wood.png
+        └── templates /// jinja templates, these define the layout
+            ├── _book_nav.html
+            ├── _latest.html
+            ├── _menu.html
+            ├── archive.html
+            ├── base.html
+            ├── books.html
+            ├── chapters.html
+            ├── comic.html
+            ├── home.html
+            ├── news.html
+            ├── page.html
+            └── test.html
+
+
+---
+## file structure for text files in content folders
+Pages are markdown files with a pyaml header followed by an empty line and then the post content. They are put in the folder the corresponds for their type. The types `news` and `single_pages` have a blank field for `book: chapter: page_number: image:`. For the type of book, you don't need to write anything after main-menu, just make sure that`image: ""` has the correct filename for your comic page image.
+
+for comic pages:
+
+    title: "Ricks Page 3"
+    published: 2016-02-18
+    type: book
+    book: "Ensign Ricks"
+    chapter: 2
+    page_number: 3
+    image: "rick_15.png"
+    main-menu: no
+
+
+for news and single_page :
+
+    title: "Contact"
+    published: 2016-03-01
+    type: single_page
+    book:
+    chapter:
+    page_number:
+    image:
+    main-menu: yes
+
+    If you need to reach me you can find me on the [tweeters]("https://twitter.com/chipperdoodles")

@@ -113,7 +113,7 @@ def comic_page(name):
     plus = p.meta['page_number'] + 1
     current_book = p.meta['book']
     current_chapter = p.meta['chapter']
-    last_page = (p for p in pages if p.meta['page_number'] == t_pages )
+    last_page = (p for p in pages if p.meta['page_number'] == t_pages  )
     previous_page = ( p for p in pages if p.meta['page_number'] == minus)
     next_page = ( p for p in pages if p.meta['page_number'] == plus )
     return render_template('comic.html', current_book=current_book,

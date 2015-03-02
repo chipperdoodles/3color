@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %}
   {% for p in front_page %}
-  <h2 id="page_title">{{p.title}}<h2>
+  <h2 id="page_title">{{p.title}}</h2>
   {% endfor %}
 {% endblock title %}
 {% block content %}
@@ -10,7 +10,15 @@
     <a href="{{ url_for('comic_page', _anchor='content', name=p.path.replace('books/', '')) }}"> <img src="{{ url_for('images', name=p.image) }}"></a>
     {% endfor %}
 </div>
+{% block lowerbooknav %}
+  {% include 'book_nav.html' %}
+{% endblock lowerbooknav %}
 {% endblock content %}
 {% block content_footer %}
-  {% include '_book_nav.html' %}
+{% for p in news_page %}
+<div id="news_blurb" class="{{ loop.cycle('odd', 'even') }}">
+  <h2 id="page_title"><a href="{{ url_for('news_page', name=p.path.replace('news/', '')) }}">{{ p.title }}</a></h2>
+    {{ p.body|truncate(255) }}
+</div>
+{% endfor %}
 {% endblock content_footer %}

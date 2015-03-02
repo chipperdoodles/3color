@@ -4,10 +4,9 @@
 {% endblock title %}
 {% block content %}
     {% for p in news_page %}
-    {% set row_class = cycler('odd', 'even') %}
-    <div id="news_blurb" class="{{row_class.next()}}">
+    <div id="news_blurb" class="{{ loop.cycle('odd', 'even') }}">
       <h2 id="page_title"><a href="{{ url_for('news_page', name=p.path.replace('news/', '')) }}">{{ p.title }}</a></h2>
-        {{ p.html|safe }}
+        {{ p.body|truncate(255) }}
     </div>
     {% endfor %}
 {% endblock content %}
