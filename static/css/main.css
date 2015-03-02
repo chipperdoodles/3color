@@ -104,12 +104,12 @@ footer {
 
 #content {
   background-image: url('/static/images/lined_paper.png');
+  padding-top: 5%;
+  padding-bottom: 5%;
 }
 
 #comic {
     width: 100%;
-    padding-top: 5%;
-    padding-bottom: 5%;
 }
 
 #comic img{
@@ -144,5 +144,29 @@ footer {
     max-width: 80%;
     display: block;
     margin-left: auto;
-    margin-right: auto
+    margin-right: auto;
+}
+
+#book_page {
+  max-width: 75%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#news_blurb {
+    max-width: 60%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 5px dashed #757575;
+    border-radius: 10px;
+}
+
+#news_blurb.odd {
+  background-color: rgba(117, 117, 117, 0.5);
+}
+
+#news_blurb.even {
+  background-color: rgba(117, 117, 117, 0.5);
 }

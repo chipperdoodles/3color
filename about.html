@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>comicr</title>
     <link rel="stylesheet" href="/static/css/main.css" type="text/css" />
+    <link rel="stylesheet" href="/pygments.css">
     <script type="text/javascript">
     function keyNav(event) {
       var key = event.keyCode || event.which;
@@ -21,34 +22,39 @@
       <div class=thumbnail>
       
 <h4>Latest Comic: Ricks Page 3</h4>
-<a href="/book/ricks2-1.html#content"><img class="thumbnailimg" src="/images/rick_15.png"></a>
+<a href="/book/ricks_03.html#content"><img class="thumbnailimg" src="/images/rick_15.png"></a>
 
       </div>
   </header>
   <nav id="site_nav">
       <ul>
-  <a href="/">Home</a>
-  <a href="/books/">Books</a>
+  <a class="main-menu" href="/">Home</a>
+  <a class="main-menu" href="/books/">Books</a>
+  <a class="main-menu" href="/news/">News</a>
   
-  <a href="/contact.html"> Contact </a>
+  <a class="main-menu" href="/contact.html"> Contact </a>
   
-  <a href="/about.html"> About </a>
+  <a class="main-menu" href="/about.html"> About </a>
   
-  <a href="/readme.html"> ReadMe </a>
+  <a class="main-menu" href="/readme.html"> ReadMe </a>
   
 </ul>
   </nav>
   <div id="content">
   
+    <h2 id="page_title">About</h2>
+
+  
     <div id="single_page">
-      <div id="page_title">
-          <h2>About</h2>
-      </div>
-        <p>This is a sample static page written in the markdown language, then generated into html with the help of Flask, Flask-Flatpages, and Froozen-Flask. The Goal of this project is to have a static site generator with a template that covers the basic needs of a webcomic website. I currently use drupal for my webcomic, but felt like it has been too much for my needs. In addition to that I have always felt I needed to hack too much of it for a default webcomic layout. Although I love my site, I decided to give building a static-site generator a try. the Flask-Flatpages and Froozen-Flask extensions for Flask gave me an easy way to start that.</p>
+        <p>This is a sample static page written in the markdown language, then generated into html with the help of Flask, Flask-Flatpages, and Frozen-Flask. The Goal of this project is to have a static site generator with a template that covers the basic needs of a webcomic website. I currently use drupal for my webcomic, but felt like it has been too much for my needs. In addition to that I have always felt I needed to hack too much of it for a default webcomic layout. Although I love my site, I decided to give building a static-site generator a try. the Flask-Flatpages and Froozen-Flask extensions for Flask gave me an easy way to start that.</p>
 <p>It's kind of a mess right now, but I'm learning. if you're interested head over to the <a href="https://github.com/chipperdoodles/comicr">github page</a> and check out the source code.
 The static site generator part of this project is just part 1 of a bigger idea, but is a good starting place and will be completely functional on it's own</p>
 <p>Sample comics taken from my personal webcomic site <a href="https://noties.org">noties.org</a></p>
     </div>
+
+
+
+  
 
   </div>
   <footer>
