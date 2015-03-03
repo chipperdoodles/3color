@@ -1,48 +1,5 @@
-@charset "utf-8";
-@font-face {
-  font-family: 'sourceSanslight';
-      src:url('/static/fonts/sourceSans/SourceSansPro-Light.otf') format('otf'),
-      url('/static/fonts/sourceSans/SourceSansPro-Light.ttf') format('truetype');
-  font-weight: 300;
-  font-style: normal;
-}
-
-@charset "utf-8";
-@font-face {
-  font-family: 'sourceSanslightit';
-      src:url('/static/fonts/sourceSans/SourceSansPro-LightIt.otf') format('otf'),
-      url('/static/fonts/sourceSans/SourceSansPro-LightIt.ttf') format('truetype');
-  font-weight: 300;
-  font-style: italic;
-}
-
-@charset "utf-8";
-@font-face {
-  font-family: 'sourceSansxlight';
-      src:url('/static/fonts/sourceSans/SourceSansPro-ExtraLight.otf') format('otf'),
-      url('/static/fonts/sourceSans/SourceSansPro-ExtraLight.ttf') format('truetype');
-  font-weight: 200;
-  font-style: normal;
-}
-
-a {
-    text-decoration: none;
-    color: #757575;
-}
-
-a:hover{
-  font-family: 'sourceSansxlight';
-  text-decoration: blink;
-}
-
-a:active{
-  font-family: 'sourceSansxlight';
-}
 
 body {
-    font-size: 1.2em;
-    font-family: 'sourceSanslight', serif;
-    line-height: 1.5;
     background-image: url('/static/images/retina_wood.png');
     margin: 0px;
 }
@@ -55,7 +12,6 @@ footer {
     padding-top: 5%;
     padding-bottom: 5%;
     border-top: 20px solid #0d80a3;
-    text-align: center;
 }
 
 #header {
@@ -86,6 +42,7 @@ footer {
     width: 100%;
   }
 
+
 #site_nav {
 }
 
@@ -96,8 +53,6 @@ footer {
 }
 
 #site_nav a{
-    font-size: 1.5em;
-    text-align: center;
     min-width: 15%;
     display: inline-block;
 }
@@ -136,7 +91,6 @@ footer {
 }
 
 #book_nav, #page_title, .book_nav .first, .back, .next, .latest {
-    text-align: center;
 }
 
 #single_page {

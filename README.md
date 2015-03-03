@@ -29,13 +29,13 @@ suggested:
  * python virtualenv
 
 TODO
- * rss/atom feed
- * site map ?
+ * clean and fix, atom feed look into datetime problem
  * better {% block %} usage in templates
  * push build with ftp/sftp/rsync
  * child menu links?
  * make clean default template and example site
- * finalize pyaml needed (metadata tags) in header of markdown files
+ * look into better usage of YAML header tags and page metadata
+ * change the front page option to be able to not just latest page but latest page of a selected book
 
 ### Directory Structure
 here is the layout of the project

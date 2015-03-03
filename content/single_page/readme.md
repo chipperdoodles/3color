@@ -39,13 +39,12 @@ suggested:
 
 TODO:
 
-  * rss/atom feed
-  * site map ?
+  * clean and fix atom feed, look into datetime problem
   * better jinja block usage in templates
-  * push build with ftp/sftp/rsync
+  * push build with ftp/sftp/rsync (not to hard add, will put in once I settle on templates and file format)
   * child menu links?
   * make clean default template and example site
-  * finalize pyaml needed (metadata tags) in header of markdown files
+  * look into better usage of YAML header tags and page metadata
 
 ## Directory Structure
 here is the layout of the project
@@ -97,6 +96,7 @@ Pages are markdown files with a pyaml header followed by an empty line and then 
 
 for comic pages:
 
+    :::yaml
     title: "Ricks Page 3"
     published: 2016-02-18
     type: book
@@ -109,6 +109,7 @@ for comic pages:
 
 for news and single_page :
 
+    :::yaml
     title: "Contact"
     published: 2016-03-01
     type: single_page
