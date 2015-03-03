@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>comicr</title>
     <link rel="stylesheet" href="/static/css/main.css" type="text/css" />
+    <link rel="stylesheet" href="/static/css/fonts.css" type="text/css" />
     <link rel="stylesheet" href="/pygments.css">
     <script type="text/javascript">
     function keyNav(event) {
@@ -21,8 +22,8 @@
       </div>
       <div class=thumbnail>
       
-<h4>Latest Comic: Ricks Page 3</h4>
-<a href="/book/ricks_03.html#content"><img class="thumbnailimg" src="/images/rick_15.png"></a>
+<p>Latest Side Comic: The Dining</p>
+<a href="/books/dining.html#content"><img class="thumbnailimg" src="/images/dining.png"></a>
 
       </div>
   </header>
@@ -50,15 +51,17 @@
 <p>It's kind of a mess right now, but I'm learning. if you're interested head over to the <a href="https://github.com/chipperdoodles/comicr">github page</a> and check out the source code.
 The static site generator part of this project is just part 1 of a bigger idea, but is a good starting place and will be completely functional on it's own</p>
 <p>Sample comics taken from my personal webcomic site <a href="https://noties.org">noties.org</a></p>
-<p>features:</p>
+<p>features so far:</p>
 <ul>
 <li>automatic book pagination (first, back, next, latest) based on which book it belongs to.</li>
 <li>different page(or post) types. Books(for comic storylines or just one comic), News(for news updates), Single_Page(for site pages like about, contact, readme)</li>
 <li>can automatically display the most recent comic on the front page</li>
-<li>a /books/ page that will automatically list the book and their pages</li>
+<li>a /books/ page that will automatically list the books and their respective pages</li>
 <li>a /news/ page that acts as a feed of news posts. This can also be displayed on the front page</li>
-<li>the html/css templates use jinja2 so skinning and theming should be pretty accessible.</li>
+<li>the html templates use jinja2 so skinning and theming should be pretty accessible.</li>
 <li>builds your entire site into static html files which can be easily hosted from any web hosting service</li>
+<li>current template includes keyboard navigation for previous and next pages</li>
+<li>a main menu option if yes then a link for the page will appear in the main menu</li>
 </ul>
     </div>
 
