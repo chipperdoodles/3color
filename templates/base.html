@@ -1,43 +1,45 @@
 <!doctype html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <title>{{ config.SITE_NAME }}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" type="text/css" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/fonts.css') }}" type="text/css" />
-    <link rel="stylesheet" href="{{ url_for('pygments_css') }}">
-    <script type="text/javascript">
-    function keyNav(event) {
-      var key = event.keyCode || event.which;
-      if (key == 37) { document.getElementById("back").click();}
-      else if (key == 39) { document.getElementById("next").click();}
-      else { }
-    }
-    </script>
-</head>
+  <head>
+      <meta charset="utf-8">
+      <title>{{ config.SITE_NAME }}</title>
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" type="text/css" />
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/fonts.css') }}" type="text/css" />
+      <link rel="stylesheet" href="{{ url_for('pygments_css') }}">
+      <script type="text/javascript">
+      function keyNav(event) {
+        var key = event.keyCode || event.which;
+        if (key == 37) { document.getElementById("back").click();}
+        else if (key == 39) { document.getElementById("next").click();}
+        else { }
+      }
+      </script>
+  </head>
   <body onkeydown="keyNav(event)">
-  <header id="header">
-      <div class="header">
-      <a href="{{ url_for('index') }}"><img class="headerimg" src="{{ url_for('static', filename='images/logo.png') }}"/></a>
-      </div>
-      <div class=thumbnail>
-      {% include '_latest.html' %}
-      </div>
-  </header>
-  <nav id="site_nav">
-      {% include '_menu.html' %}
-  </nav>
-  <div id="content">
-  {% block title %}
-  {% endblock title %}
-  {% block content %}
-  {% endblock content %}
-  {% block content_footer %}
-  {% endblock content_footer %}
-  </div>
-  <footer>
-      <p><a href="https://github.com/chipperdoodles/comicr">source code for comicr can be found on github</a></p>
-      <p><a href="https://noties.org">the comics on this example site are found on Noties.org</a></p>
-  </footer>
+    <header id="header" class="flex_head">
+        <div class="flex_logo">
+          <a href="{{ url_for('index') }}"><img class="headerimg" src="{{ url_for('static', filename='images/logo.png') }}"/></a>
+        </div>
+        <div class="flex_thumb">
+          {% include '_latest.html' %}
+        </div>
+    </header>
+    <div id='container'>
+      <nav id="main_menu">
+          {% include '_menu.html' %}
+      </nav>
+        <div id="content">
+          {% block title %}
+          {% endblock title %}
+          {% block content %}
+          {% endblock content %}
+          {% block content_footer %}
+          {% endblock content_footer %}
+        </div>
+    </div>
+    <footer>
+        <p><a href="https://github.com/chipperdoodles/comicr">source code for comicr can be found on github</a></p>
+        <p><a href="https://noties.org">the comics on this example site are found on Noties.org</a></p>
+    </footer>
   </body>
 </html>

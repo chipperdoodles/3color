@@ -39,12 +39,13 @@ suggested:
 
 TODO:
 
-  * clean and fix atom feed, look into datetime problem
-  * better jinja block usage in templates
+  * clean and fix atom feed and look into datetime problem
+  * better jinja2 block usage in templates
   * push build with ftp/sftp/rsync (not to hard add, will put in once I settle on templates and file format)
   * child menu links?
   * make clean default template and example site
   * look into better usage of YAML header tags and page metadata
+  * figure out file naming convention for comic pages
 
 ## Directory Structure
 here is the layout of the project
@@ -75,19 +76,16 @@ here is the layout of the project
         │       ├── lined_paper.png
         │       ├── logo.png
         │       └── retina_wood.png
-        └── templates /// jinja templates, these define the layout
+        └── templates /// jinja2 templates, these define the layout
             ├── _book_nav.html
             ├── _latest.html
             ├── _menu.html
-            ├── archive.html
             ├── base.html
             ├── books.html
-            ├── chapters.html
             ├── comic.html
             ├── home.html
             ├── news.html
-            ├── page.html
-            └── test.html
+            └── page.html
 
 
 ---

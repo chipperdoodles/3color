@@ -29,13 +29,13 @@ suggested:
  * python virtualenv
 
 TODO
- * clean and fix, atom feed look into datetime problem
+ * clean and fix atom feed and look into date-time problem
  * better {% block %} usage in templates
- * push build with ftp/sftp/rsync
+ * push build with ftp/sftp/rsync(not to hard add, will put in once I settle on templates and file format)
  * child menu links?
  * make clean default template and example site
  * look into better usage of YAML header tags and page metadata
- * change the front page option to be able to not just latest page but latest page of a selected book
+ * figure out file naming convention for comic pages
 
 ### Directory Structure
 here is the layout of the project
@@ -65,19 +65,16 @@ comicr
 │       ├── lined_paper.png
 │       ├── logo.png
 │       └── retina_wood.png
-└── templates /// jinja templates, these define the layout
+└── templates /// jinja2 templates, these define the layout
     ├── _book_nav.html
     ├── _latest.html
     ├── _menu.html
-    ├── archive.html
     ├── base.html
     ├── books.html
-    ├── chapters.html
     ├── comic.html
     ├── home.html
     ├── news.html
-    ├── page.html
-    └── test.html
+    └── page.html
 ```
 
 ---

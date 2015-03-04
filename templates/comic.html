@@ -3,13 +3,12 @@
   <h2 id="page_title">{{p.title}}</h2>
 {% endblock title %}
 {% block content %}
-{% block booknav%}
-
-{% endblock booknav%}
 <div id="comic">
     <img src="{{ url_for('images', name=p.image) }}">
 </div>
 {% block lowerbooknav %}
-  {% include 'book_nav.html' %}
+  {% include '_book_nav.html' %}
 {% endblock lowerbooknav %}
 {% endblock  content%}
+{% block content_footer %}
+{% endblock content_footer %}

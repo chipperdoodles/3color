@@ -69,13 +69,11 @@ footer {
 
 .thumbnailimg  {}
 
-#site_nav {}
-
-#site_nav ul {
-    text-align: center;
+#main_manu {
 }
 
-#site_nav a{
+
+#main_menu a{
     font-size: 1.5em;
     text-align: center;
 }

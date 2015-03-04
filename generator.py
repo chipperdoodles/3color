@@ -84,7 +84,7 @@ def news():
 #https://github.com/mitsuhiko/werkzeug/issues/695
 def atom_feed():
     feed = AtomFeed('Feed for '+SITE_NAME, feed_url=DOMAIN+url_for('atom_feed'), url=DOMAIN)
-    comic_feed = latest_comic(pages, 10)
+    comic_feed = (p for p in pages if p.meta['type'] != 'single_page')
     for p in comic_feed:
         feed.add(p.meta['title'],
                 content_type='html',
@@ -118,12 +118,13 @@ def comic_page(name):
     plus = p.meta['page_number'] + 1
     current_book = p.meta['book']
     current_chapter = p.meta['chapter']
-    last_page = (p for p in pages if p.meta['page_number'] == t_pages  )
+    first_page = (p for p in pages if p.meta['page_number'] ==1 and p.meta['book'] == current_book)
+    last_page = (p for p in pages if p.meta['page_number'] == t_pages)
     previous_page = ( p for p in pages if p.meta['page_number'] == minus)
     next_page = ( p for p in pages if p.meta['page_number'] == plus )
     return render_template('comic.html', current_book=current_book,
         current_chapter=current_chapter, p=p, previous_page=previous_page,
-        next_page=next_page, t_pages=t_pages, last_page=last_page)
+        next_page=next_page, t_pages=t_pages, last_page=last_page, first_page=first_page)
 
 @app.route('/test/')
 def test():
