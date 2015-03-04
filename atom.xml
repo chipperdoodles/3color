@@ -2,8 +2,76 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Feed for comicr</title>
   <id>http://comicr.noties.org//atom.xml</id>
-  <updated>2015-03-03T04:10:38.836208Z</updated>
+  <updated>2016-03-03Z</updated>
   <link href="http://comicr.noties.org/" />
   <link href="http://comicr.noties.org//atom.xml" rel="self" />
+  <author>
+    <name>Unknown author</name>
+  </author>
   <generator>Werkzeug</generator>
+  <entry xml:base="http://comicr.noties.org//atom.xml">
+    <title type="text">Ricks Page 1</title>
+    <id>http://comicr.noties.org/books/ricks_01.html</id>
+    <updated>2016-02-15Z</updated>
+    <link href="http://comicr.noties.org/books/ricks_01.html" />
+  </entry>
+  <entry xml:base="http://comicr.noties.org//atom.xml">
+    <title type="text">Ricks Page 2</title>
+    <id>http://comicr.noties.org/books/ricks_02.html</id>
+    <updated>2016-02-16Z</updated>
+    <link href="http://comicr.noties.org/books/ricks_02.html" />
+  </entry>
+  <entry xml:base="http://comicr.noties.org//atom.xml">
+    <title type="text">Ricks Page 3</title>
+    <id>http://comicr.noties.org/books/ricks_03.html</id>
+    <updated>2016-02-18Z</updated>
+    <link href="http://comicr.noties.org/books/ricks_03.html" />
+  </entry>
+  <entry xml:base="http://comicr.noties.org//atom.xml">
+    <title type="text">so it begins</title>
+    <id>http://comicr.noties.org/books/turbodeck_01.html</id>
+    <updated>2010-01-15Z</updated>
+    <link href="http://comicr.noties.org/books/turbodeck_01.html" />
+  </entry>
+  <entry xml:base="http://comicr.noties.org//atom.xml">
+    <title type="text">woosh</title>
+    <id>http://comicr.noties.org/books/turbodeck_02.html</id>
+    <updated>2010-01-16Z</updated>
+    <link href="http://comicr.noties.org/books/turbodeck_02.html" />
+  </entry>
+  <entry xml:base="http://comicr.noties.org//atom.xml">
+    <title type="text">Update</title>
+    <id>http://comicr.noties.org/news/2015-02-26.html</id>
+    <updated>2015-02-26Z</updated>
+    <link href="http://comicr.noties.org/news/2015-02-26.html" />
+    <summary type="html">This just in! Things are happening! here is a lengthy log post that you might be able to truncate with jinja!
+
+   Return a truncated copy of the string. The length is specified with the first parameter which defaults to 255. If the second parameter is true the filter will cut the text at length. Otherwise it will discard the last word. If the text was in fact truncated it will append an ellipsis sign (&quot;...&quot;). If you want a different ellipsis sign than &quot;...&quot; you can specify it using the third parameter.
+
+        {{ &quot;foo bar baz&quot;|truncate(9) }}
+            -&gt; &quot;foo ba...&quot;
+        {{ &quot;foo bar baz&quot;|truncate(9, True) }}
+            -&gt; &quot;foo ...&quot;
+</summary>
+  </entry>
+  <entry xml:base="http://comicr.noties.org//atom.xml">
+    <title type="text">Dumbgeons and Dragones</title>
+    <id>http://comicr.noties.org/books/dumbgeons.html</id>
+    <updated>2016-03-03Z</updated>
+    <link href="http://comicr.noties.org/books/dumbgeons.html" />
+  </entry>
+  <entry xml:base="http://comicr.noties.org//atom.xml">
+    <title type="text">Progress</title>
+    <id>http://comicr.noties.org/news/2015-03-01.html</id>
+    <updated>2015-03-01Z</updated>
+    <link href="http://comicr.noties.org/news/2015-03-01.html" />
+    <summary type="html">Progress is going pretty well on this project, I'm not sure when it'll be ready but things are coming along nicely! My friend has been helping me out a bit today and it looks like a basic static site generator could be ready soon!
+</summary>
+  </entry>
+  <entry xml:base="http://comicr.noties.org//atom.xml">
+    <title type="text">The Dining</title>
+    <id>http://comicr.noties.org/books/dining.html</id>
+    <updated>2016-02-15Z</updated>
+    <link href="http://comicr.noties.org/books/dining.html" />
+  </entry>
 </feed>
