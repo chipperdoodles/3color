@@ -6,9 +6,6 @@ from flask import Flask, render_template, url_for, send_from_directory, send_fil
 from flask_flatpages import FlatPages, pygmented_markdown, pygments_style_defs
 from flask_frozen import Freezer
 
-#used to render jinja formated text in the body of a post
-#will probably remove this and go back to default markdown rendering
-
 #configuration
 DEBUG = True
 FLATPAGES_AUTO_RELOAD = DEBUG
