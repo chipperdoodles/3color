@@ -15,8 +15,8 @@ freezer = Freezer(app)
 def page_types():
     #injects variables for book pages and menu pages, menu pages are used to build main menu links
     menu_pages = (p for p in pages if (p.meta['menu']))
-    book_page = (p for p in pages if p.meta['type'] == 'book' )
-    news_page = (p for p in pages if p.meta['type'] == 'news')
+    book_page = (p for p in pages if p.meta['page_type'] == 'book' )
+    news_page = (p for p in pages if p.meta['page_type'] == 'news')
     thumb_nail = latest_comic(book_page, app.config['THUMB_STORY'], 1)
     return dict(book_page=book_page, menu_pages=menu_pages, news_page=news_page, thumb_nail=thumb_nail)
 
@@ -28,7 +28,7 @@ def total_pages(pages, book):
 
 def latest_comic(pages, book, limit=None):
     #for sorting published pages that are books by latest
-    l_comic = (p for p in pages if ((p['type'] == 'book') and p['book'] == book))
+    l_comic = (p for p in pages if ((p['page_type'] == 'book') and p['book'] == book))
     l_comic = sorted(l_comic, reverse=True, key=lambda p: p.meta['published'])
     return l_comic[:limit]
 
@@ -64,7 +64,7 @@ def news():
 #https://github.com/mitsuhiko/werkzeug/issues/695
 def atom_feed():
     feed = AtomFeed('Feed for '+app.config['SITE_NAME'], feed_url=app.config['DOMAIN']+url_for('atom_feed'), url=app.config['DOMAIN'])
-    comic_feed = (p for p in pages if p.meta['type'] != 'single_page')
+    comic_feed = (p for p in pages if p.meta['page_type'] != 'single_page')
     for p in comic_feed:
         feed.add(p.meta['title'],
                 content_type='html',
@@ -76,14 +76,14 @@ def atom_feed():
 @app.route('/<name>.html')
 def single_page(name):
     #route for single pages, usually text pages
-    path = '{}/{}'.format(PAGE_DIR, name)
+    path = '{}/{}'.format(app.config['PAGE_DIR'], name)
     page = pages.get_or_404(path)
     return render_template('page.html', page=page)
 
 @app.route('/news/<name>.html')
 def news_page(name):
     #route for single pages, usually text pages
-    path = '{}/{}'.format(NEWS_DIR, name)
+    path = '{}/{}'.format(app.config['NEWS_DIR'], name)
     page = pages.get_or_404(path)
     return render_template('page.html', page=page)
 
@@ -91,7 +91,7 @@ def news_page(name):
 def comic_page(name):
     #variables after 'p' are used to create pagination links within the book stories.
     #these are only passed into the page.html template and work only on 'comic_page' urls
-    path = '{}/{}'.format(BOOK_DIR, name)
+    path = '{}/{}'.format(app.config['BOOK_DIR'], name)
     p = pages.get_or_404(path)
     t_pages = total_pages(pages, p.meta['book'])
     minus = p.meta['page_number'] - 1
