@@ -1,4 +1,6 @@
-# comicr
+# 3color Press
+
+(project name changed from temporary comicr)
 
 This is a Flask app to intended generate a static webcomic site from markdown files using the flask extension flatpages. The name is currently just a placeholder.
 
@@ -50,7 +52,8 @@ comicr
 │   │   └── ///News page markdown files go here 'newspagename.md'
 │   └── single_page
 │       └── ///Single page markdown files go here 'singlepagename.md'
-├── generator.py /// the app module for now
+├── flatpager.py /// the app module for now
+├── default_settings.py /// contains default and app settings
 ├── images
 │   └── /// all images for the comics go here turbodeck2.png
 ├── push-pages.sh /// this is a shell script to the build folder gh-pages to my gh-pages branch
@@ -85,12 +88,12 @@ for comic pages:
 ```yaml
 title: "Ricks Page 3"
 published: 2016-02-18
-type: book
+page_type: book
 book: "Ensign Ricks"
 chapter: 2
 page_number: 3
 image: "rick_15.png"
-main-menu: no
+menu: False
 
 ```
 
@@ -98,12 +101,12 @@ for news and single_page :
 ```yaml
 title: "Contact"
 published: 2016-03-01
-type: single_page
+page_type: single_page
 book:
 chapter:
 page_number:
 image:
-main-menu: yes
+menu: True
 
 If you need to reach me you can find me on the [tweeters]("https://twitter.com/chipperdoodles")
 ```

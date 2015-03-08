@@ -1,11 +1,11 @@
 title: "ReadMe"
 published: 2015-02-26
-type: single_page
+page_type: single_page
 book:
 chapter:
 page_number:
 image:
-main-menu: yes
+menu: True
 
 # comicr
 
@@ -97,12 +97,12 @@ for comic pages:
     :::yaml
     title: "Ricks Page 3"
     published: 2016-02-18
-    type: book
+    page_type: book
     book: "Ensign Ricks"
     chapter: 2
     page_number: 3
     image: "rick_15.png"
-    main-menu: no
+    menu: False
 
 
 for news and single_page :
@@ -110,11 +110,11 @@ for news and single_page :
     :::yaml
     title: "Contact"
     published: 2016-03-01
-    type: single_page
+    page_type: single_page
     book:
     chapter:
     page_number:
     image:
-    main-menu: yes
+    menu: True
 
     If you need to reach me you can find me on the [tweeters]("https://twitter.com/chipperdoodles")

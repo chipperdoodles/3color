@@ -6,35 +6,18 @@ from flask import Flask, render_template, url_for, send_from_directory, send_fil
 from flask_flatpages import FlatPages, pygmented_markdown, pygments_style_defs
 from flask_frozen import Freezer
 
-#configuration
-DEBUG = True
-FLATPAGES_AUTO_RELOAD = DEBUG
-FLATPAGES_EXTENSION = '.md'
-FLATPAGES_ROOT =  'content'
-FREEZER_DESTINATION = 'gh-pages'
-FREEZER_DESTINATION_IGNORE = ['.git*','.gitignore','CNAME']
-FEEZER_RELATIVE_URLS = True
-
-SITE_NAME = 'comicr'
-BOOK_DIR = 'books'
-PAGE_DIR = 'single_page'
-NEWS_DIR = 'news'
-DOMAIN = "http://comicr.noties.org/"
-MAIN_STORY = 'Ensign Ricks'
-SIDE_COMICS = 'side comic'
-
 app = Flask(__name__)
-app.config.from_object(__name__)
+app.config.from_object('default_settings')
 pages = FlatPages(app)
 freezer = Freezer(app)
 
 @app.context_processor
 def page_types():
     #injects variables for book pages and menu pages, menu pages are used to build main menu links
-    menu_pages = (p for p in pages if (p.meta['main-menu']))
+    menu_pages = (p for p in pages if (p.meta['menu']))
     book_page = (p for p in pages if p.meta['type'] == 'book' )
     news_page = (p for p in pages if p.meta['type'] == 'news')
-    thumb_nail = latest_comic(book_page, SIDE_COMICS, 1)
+    thumb_nail = latest_comic(book_page, app.config['THUMB_STORY'], 1)
     return dict(book_page=book_page, menu_pages=menu_pages, news_page=news_page, thumb_nail=thumb_nail)
 
 def total_pages(pages, book):
@@ -63,7 +46,7 @@ def pygments_css():
 @app.route('/')
 def index():
     #take 1 most recent page of published comics
-    front_page = latest_comic(pages, MAIN_STORY, 1)
+    front_page = latest_comic(pages, app.config['MAIN_STORY'], 1)
     return render_template('home.html', front_page = front_page)
 
 @app.route('/books/')
@@ -80,12 +63,12 @@ def news():
 #atom feed, only works with a patch to werkzeug/contrip/atom.py file will look into more
 #https://github.com/mitsuhiko/werkzeug/issues/695
 def atom_feed():
-    feed = AtomFeed('Feed for '+SITE_NAME, feed_url=DOMAIN+url_for('atom_feed'), url=DOMAIN)
+    feed = AtomFeed('Feed for '+app.config['SITE_NAME'], feed_url=app.config['DOMAIN']+url_for('atom_feed'), url=app.config['DOMAIN'])
     comic_feed = (p for p in pages if p.meta['type'] != 'single_page')
     for p in comic_feed:
         feed.add(p.meta['title'],
                 content_type='html',
-                url=DOMAIN+p.path+'.html',
+                url=app.config['DOMAIN']+p.path+'.html',
                 updated=p.meta['published'],
                 summary=p.body)
     return feed.get_response()
