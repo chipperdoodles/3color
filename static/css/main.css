@@ -1,17 +1,17 @@
 
 body {
-    background-image: url('/static/images/retina_wood.png');
-    margin: 0px;
+  background-image: url('/static/images/retina_wood.png');
+  margin: 0px;
 }
 
 header {
 }
 
 footer {
-    min-height: 100px;
-    padding-top: 5%;
-    padding-bottom: 5%;
-    border-top: 20px solid #0d80a3;
+  min-height: 100px;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  border-top: 20px solid #0d80a3;
 }
 
 /* header flexboxy styles. Includes logo and thumbnail */
