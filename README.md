@@ -4,13 +4,13 @@
 
 This is a Flask app to intended generate a static webcomic site from markdown files using the flask extension flatpages. The name is currently just a placeholder.
 
-To generate static files type `python generator.py build`
+To generate static files type `python press.py build`
 
-To run live with flask's built in web-server in debug just type `python flatpager.py` and visit localhost:5000 in your browser
+To run live with flask's built in web-server in debug just type `python press.py` and visit localhost:5000 in your browser
 
 Each page is built from a markdown file located in the content/ folder. Right now I have a few examples placed. They have header containing metadata followed by a markdown body, which is currently just a link to the comic page located in the static/images folder.
 
-An example of a site built with comicr is hosted on github pages and can be found at http://comicr.noties.org
+An example of a site built with 3color Press is hosted on github pages and can be found at http://3color.noties.org
 
 I am new to programming and I'm kind of brute learning python and flask by just working on this project.
 
@@ -33,7 +33,7 @@ suggested:
 TODO
  * clean and fix atom feed and look into date-time problem
  * better {% block %} usage in templates
- * push build with ftp/sftp/rsync(not to hard add, will put in once I settle on templates and file format)
+ * push build with ftp/sftp/rsync(not to hard add)
  * child menu links?
  * make clean default template and example site
  * look into better usage of YAML header tags and page metadata
@@ -43,41 +43,51 @@ TODO
 here is the layout of the project
 ---
 ```
-3color
+comicr/
+├── MANIFEST.in
 ├── README.md
-├── content
-│   ├── books
-│   │   └── ///Book page markdown files go here 'bookpagename.md'
-│   ├── news
-│   │   └── ///News page markdown files go here 'newspagename.md'
-│   └── single_page
-│       └── ///Single page markdown files go here 'singlepagename.md'
-├── flatpager.py /// the app module for now
-├── default_settings.py /// contains default and app settings
-├── images
-│   └── /// all images for the comics go here turbodeck2.png
-├── push-pages.sh /// this is a shell script to the build folder gh-pages to my gh-pages branch
+├── instance // this folder contains files you create to be made into web pages and images for your comics
+│   ├── content
+│   │   ├── comics
+│   │   │   └── ///Book page markdown files go here 'bookpagename.md'
+│   │   ├── news
+│   │   │   └── ///News page markdown files go here 'newspagename.md'
+│   │   └── single_page
+│   │       └── ///Single page markdown files go here 'singlepagename.md'
+│   ├── images
+│   │   └── /// all images for the comics go here turbodeck2.png
+│   └── settings.cfg ///this is a configuration file a user can edito for site info
+├── press.py /// main python file to run from the terminal
+├── push-pages.sh // this is a shell script to push my built output to my gh-pages branch with git
 ├── requirements.txt /// a pip freeze
-├── settings.cfg /// currently not in use
-├── static ///static files flask convention, holds all static files for the template design these define the look
-│   ├── css
-│   │   └── main.css
-│   ├── fonts
-│   │   └── sourceSans
-│   └── images
-│       ├── lined_paper.png
-│       ├── logo.png
-│       └── retina_wood.png
-└── templates /// jinja2 templates, these define the layout
-    ├── _book_nav.html
-    ├── _latest.html
-    ├── _menu.html
-    ├── base.html
-    ├── books.html
-    ├── comic.html
-    ├── home.html
-    ├── news.html
-    └── page.html
+├── setup.py /// distutils script
+└── threecolor /// the package that handles building your comic site
+    ├── __init__.py
+    ├── default_settings.py ///Settings file that sets the defaults for your site, is overridden by settings.cfg in your instance folder
+    ├── flatpager.py
+    ├── static ///static files, holds all static files for the template design these define the look of your site
+    │   ├── css
+    │   │   ├── fonts.css
+    │   │   ├── main.css
+    │   │   └── mainprefixed.css
+    │   ├── fonts
+    │   │   └── sourceSans
+    │   │       └── SourceSansPro.ttf
+    │   └── images
+    │       └── reti na_wood.png
+    └── templates /// jinja2 templates, these define the layout of your site
+        ├── _book_nav.html
+        ├── _latest.html
+        ├── _menu.html
+        ├── archive.html
+        ├── base.html
+        ├── books.html
+        ├── chapters.html
+        ├── comic.html
+        ├── home.html
+        ├── news.html
+        ├── page.html
+        └── test.html
 ```
 
 ---

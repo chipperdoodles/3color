@@ -1,0 +1,14 @@
+DEBUG = True
+FLATPAGES_AUTO_RELOAD = DEBUG
+FLATPAGES_EXTENSION = '.md'
+FLATPAGES_ROOT =  'content'
+FREEZER_DESTINATION = 'build'
+FREEZER_DESTINATION_IGNORE = ['.git*','.gitignore','CNAME']
+FEEZER_RELATIVE_URLS = True
+SITE_NAME = '3color Press Site'
+BOOK_DIR = 'books'
+PAGE_DIR = 'single_page'
+NEWS_DIR = 'news'
+DOMAIN = "http://comicr.noties.org/"
+MAIN_STORY = ''
+THUMB_STORY = ''

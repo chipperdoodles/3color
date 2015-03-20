@@ -1,0 +1,104 @@
+@charset "utf-8";
+@font-face {
+  font-family: 'sourceSanslight';
+      src:url('/static/fonts/sourceSans/SourceSansPro-Light.otf') format('otf'),
+      url('/static/fonts/sourceSans/SourceSansPro-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@charset "utf-8";
+@font-face {
+  font-family: 'sourceSanslightit';
+      src:url('/static/fonts/sourceSans/SourceSansPro-LightIt.otf') format('otf'),
+      url('/static/fonts/sourceSans/SourceSansPro-LightIt.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@charset "utf-8";
+@font-face {
+  font-family: 'sourceSansxlight';
+      src:url('/static/fonts/sourceSans/SourceSansPro-ExtraLight.otf') format('otf'),
+      url('/static/fonts/sourceSans/SourceSansPro-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+a {
+    text-decoration: none;
+    color: #757575;
+}
+
+a:hover{
+  font-family: 'sourceSansxlight';
+  text-decoration: blink;
+}
+
+a:active{
+  font-family: 'sourceSansxlight';
+}
+
+body {
+    font-size: 1.2em;
+    font-family: 'sourceSanslight', serif;
+    line-height: 1.5;
+}
+
+header {
+}
+
+footer {
+    text-align: center;
+}
+
+#header {
+
+}
+
+.header{
+
+}
+
+.headerimg{
+}
+
+.thumbnail{
+
+}
+
+.thumbnailimg  {}
+
+#main_manu {
+}
+
+
+#main_menu a{
+    font-size: 1.5em;
+    text-align: center;
+}
+
+#content {}
+
+#comic {}
+
+#comic img{}
+
+#book_nav {}
+
+
+#book_nav .first, .back, .next, .latest {}
+
+#book_nav, #page_title, .book_nav .first, .back, .next, .latest {
+    text-align: center;
+}
+
+#single_page {}
+
+#book_page {}
+
+#news_blurb {}
+
+#news_blurb.odd {}
+
+#news_blurb.even {}

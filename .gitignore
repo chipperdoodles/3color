@@ -8,3 +8,4 @@ imgs.db
 gh-pages
 push.py
 __pycache__
+.pyc
