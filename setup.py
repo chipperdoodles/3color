@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name='3color Press',
-    version='0.01',
+    version='0.1',
     packages=['threecolor'],
     include_package_data=True,
     zip_safe=False,

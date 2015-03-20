@@ -1,3 +1,4 @@
+.pyc
 .DS_Store
 .DS_Store?
 ._*
@@ -8,4 +9,4 @@ imgs.db
 gh-pages
 push.py
 __pycache__
-.pyc
+*.pyc
