@@ -1,2 +1,0 @@
-recursive-include threecolor/templates *
-recursive-include threecolor/static *

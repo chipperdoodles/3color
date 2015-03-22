@@ -26,6 +26,7 @@ requirements:
  * Flask
  * Flask-Flatpages
  * Flask-Freeze
+ * Fabric
 
 suggested:
  * python virtualenv
@@ -33,7 +34,6 @@ suggested:
 TODO
  * clean and fix atom feed and look into date-time problem
  * better {% block %} usage in templates
- * push build with ftp/sftp/rsync(not to hard add)
  * child menu links?
  * make clean default template and example site
  * look into better usage of YAML header tags and page metadata
