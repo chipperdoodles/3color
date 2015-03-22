@@ -2,7 +2,7 @@
 <html>
   <head>
       <meta charset="utf-8">
-      <title>Noties</title>
+      <title>3color Press</title>
       <link rel="stylesheet" href="/static/css/mainprefixed.css" type="text/css" />
       <link rel="stylesheet" href="/static/css/fonts.css" type="text/css" />
       <link rel="stylesheet" href="/pygments.css">
@@ -48,10 +48,10 @@
 
           
     <div id="single_page">
-        <h1>comicr</h1>
+        <h1>3color press</h1>
 <p>This is a Flask app to intended generate a static webcomic site from markdown files using the flask extension flatpages. The name is currently just a placeholder.</p>
-<p>To generate static files type <code>python generator.py build</code></p>
-<p>To run live with flask's built in web-server in debug just type <code>python generator.py</code> and visit localhost:5000 in your browser</p>
+<p>To generate static files type <code>python press.py build</code></p>
+<p>To run live with flask's built in web-server in debug just type <code>python press.py</code> and visit localhost:5000 in your browser</p>
 <p>Each page is built from a markdown file located in the content/ folder. Right now I have a few examples placed. They have header containing metadata followed by a markdown body, which is currently just a link to the comic page located in the static/images folder.</p>
 <p>I am new to programming and I'm kind of brute learning python and flask by just working on this project.</p>
 <p>For credit I have been using the following as references as well as documentation.</p>
@@ -76,7 +76,7 @@
 <ul>
 <li>clean and fix atom feed and look into datetime problem</li>
 <li>better jinja2 block usage in templates</li>
-<li>push build with ftp/sftp/rsync (not to hard add, will put in once I settle on templates and file format)</li>
+<li>push build with ftp/sftp/rsync (not to hard add)</li>
 <li>child menu links?</li>
 <li>make clean default template and example site</li>
 <li>look into better usage of YAML header tags and page metadata</li>
@@ -116,8 +116,8 @@
         │   │   └── sourceSans
         │   │       └── SourceSansPro.ttf
         │   └── images
-        │       └── reti na_wood.png
-        └── templates /// jinja2 templates, these define the layout
+        │       └── retina_wood.png
+        └── templates /// jinja2 templates, these define the layout of your site
             ├── _book_nav.html
             ├── _latest.html
             ├── _menu.html
@@ -169,7 +169,7 @@
         </div>
     </div>
     <footer>
-        <p><a href="https://github.com/chipperdoodles/comicr">source code for comicr can be found on github</a></p>
+        <p><a href="https://github.com/chipperdoodles/3color">source code for comicr can be found on github</a></p>
         <p><a href="https://noties.org">the comics on this example site are found on Noties.org</a></p>
     </footer>
   </body>

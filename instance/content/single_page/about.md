@@ -25,3 +25,4 @@ features so far:
  * builds your entire site into static html files which can be easily hosted from any web hosting service
  * current template includes keyboard navigation for previous and next pages
  * a main menu option if yes then a link for the page will appear in the main menu
+ * if using osX or linux, the ability to publish files with sftp and rsync
