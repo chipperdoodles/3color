@@ -14,6 +14,5 @@ app.config['FREEZER_DESTINATION'] = os.path.join(app.instance_path, app.config['
 from flatpager import pages
 pages.init_app(app)
 
-# import threecolor.flatpager
 import threecolor.flatpager
 import threecolor.publish

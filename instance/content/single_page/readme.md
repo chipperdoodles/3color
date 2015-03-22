@@ -21,6 +21,7 @@ requirements:
  * Flask
  * Flask-Flatpages
  * Flask-Freeze
+ * Fabric
 
 suggested:
 
@@ -30,7 +31,6 @@ TODO:
 
   * clean and fix atom feed and look into datetime problem
   * better jinja2 block usage in templates
-  * push build with ftp/sftp/rsync (not to hard add)
   * child menu links?
   * make clean default template and example site
   * look into better usage of YAML header tags and page metadata
@@ -43,7 +43,6 @@ here is the layout of the project
 ---
 
         3color/
-        ├── MANIFEST.in ///file for setup tools
         ├── README.md
         ├── instance /// this folder contains files you create to be made into web pages and images for your comics
         │   ├── content
@@ -55,11 +54,9 @@ here is the layout of the project
         │   │       └── ///Single page markdown files go here 'singlepagename.md'
         │   ├── images
         │   │   └── /// all images for the comics go here turbodeck2.png
-        │   └── settings.cfg ///this is a configuration file a user can edito for site info
+        │   └── settings.cfg ///this is a configuration file a user can edit for site info
         ├── press.py /// main python file to run from the terminal
-        ├── push-pages.sh // this is a shell script to push my built output to my gh-pages branch with git
         ├── requirements.txt /// a pip freeze
-        ├── setup.py /// distutils script
         └── threecolor /// the package that handles building your comic site
             ├── __init__.py
             ├── default_settings.py ///Settings file that sets the defaults for your site, is overridden by settings.cfg in your instance folder
