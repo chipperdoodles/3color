@@ -14,7 +14,7 @@ def archive():
     """
     Makes a local tar.gz file
     """
-    make_archive('threecolorSite', 'gztar', app.config['BUILD_DIR'])
+    make_archive('threecolorSite', 'gztar', app.config['FREEZER_DESTINATION'])
 
 def uptime():
     """
@@ -29,13 +29,13 @@ def rsync():
     this has the delete option which will delete any remote files that are
     not in your local build folder
     """
-    local = os.path.join(os.getcwd(), app.config['BUILD_DIR']+'/')
+    local = os.path.join(os.getcwd(), app.config['FREEZER_DESTINATION']+'/')
     remote = app.config['REMOTE_SERVER']
     rsync_project(remote, local, delete=True)
 
 def git_deploy():
     project = os.getcwd()
-    local = os.path.join(app.instance_path, app.config['BUILD_DIR'])
+    local = os.path.join(app.instance_path, app.config['FREEZER_DESTINATION'])
     os.chdir(local)
     subprocess.call(['git', 'add', '-A'])
     subprocess.call(['git', 'commit', '-a', '-m', 'updated'])
@@ -48,7 +48,7 @@ def upload():
     The remote folder for your site will be threecolor and contents will be deleted if
     the directory exists remotely therefore ensuring to remove any site changes before the upload
     """
-    make_archive('threecolorSite', 'gztar', app.config['BUILD_DIR'])
+    make_archive('threecolorSite', 'gztar', app.config['FREEZER_DESTINATION'])
 
     if exists('~/threecolor'):
         run('rm -rf ~/threecolor/*')
@@ -63,7 +63,7 @@ def upload():
             run('tar xzf threecolor.tar.gz')
             run('rm -rf threecolor.tar.gz')
 
-    local('rm -rf threecolorSite.tar.gz')
+    os.remove('threecolorSite.tar.gz')
 
 def publish():
     if app.config['PUB_METHOD'] == 'sftp':

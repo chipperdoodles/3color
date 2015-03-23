@@ -89,7 +89,7 @@ def news_page(name):
     page = pages.get_or_404(path)
     return render_template('page.html', page=page)
 
-@app.route('/comics/<name>.html')
+@app.route('/books/<name>.html')
 def comic_page(name):
     #variables after 'p' are used to create pagination links within the book stories.
     #these are only passed into the page.html template and work only on 'comic_page' urls
