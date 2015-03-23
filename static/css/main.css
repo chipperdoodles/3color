@@ -179,11 +179,11 @@ those are sytled by #single_page*/
   align-items: center;
 }
 .news_blurb{
-  max-width: 40%;
+  max-width: 60%;
   border: 5px dashed #757575;
   border-radius: 10px;
   padding: 20px;
-  margin:20px;
+  margin: 20px;
 }
 
 .news_blurb.odd {

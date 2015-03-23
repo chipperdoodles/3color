@@ -10,16 +10,34 @@
   </author>
   <generator>Werkzeug</generator>
   <entry xml:base="http://3color.noties.org//atom.xml">
-    <title type="text">Dumbgeons and Dragones</title>
-    <id>http://3color.noties.org/comics/dumbgeons.html</id>
-    <updated>2016-03-03Z</updated>
-    <link href="http://3color.noties.org/comics/dumbgeons.html" />
+    <title type="text">Ricks Page 1</title>
+    <id>http://3color.noties.org/books/ricks_01.html</id>
+    <updated>2016-02-15Z</updated>
+    <link href="http://3color.noties.org/books/ricks_01.html" />
   </entry>
   <entry xml:base="http://3color.noties.org//atom.xml">
-    <title type="text">The Dining</title>
-    <id>http://3color.noties.org/comics/dining.html</id>
-    <updated>2016-02-15Z</updated>
-    <link href="http://3color.noties.org/comics/dining.html" />
+    <title type="text">Ricks Page 2</title>
+    <id>http://3color.noties.org/books/ricks_02.html</id>
+    <updated>2016-02-16Z</updated>
+    <link href="http://3color.noties.org/books/ricks_02.html" />
+  </entry>
+  <entry xml:base="http://3color.noties.org//atom.xml">
+    <title type="text">Ricks Page 3</title>
+    <id>http://3color.noties.org/books/ricks_03.html</id>
+    <updated>2016-02-18Z</updated>
+    <link href="http://3color.noties.org/books/ricks_03.html" />
+  </entry>
+  <entry xml:base="http://3color.noties.org//atom.xml">
+    <title type="text">so it begins</title>
+    <id>http://3color.noties.org/books/turbodeck_01.html</id>
+    <updated>2010-01-15Z</updated>
+    <link href="http://3color.noties.org/books/turbodeck_01.html" />
+  </entry>
+  <entry xml:base="http://3color.noties.org//atom.xml">
+    <title type="text">woosh</title>
+    <id>http://3color.noties.org/books/turbodeck_02.html</id>
+    <updated>2010-01-16Z</updated>
+    <link href="http://3color.noties.org/books/turbodeck_02.html" />
   </entry>
   <entry xml:base="http://3color.noties.org//atom.xml">
     <title type="text">Update</title>
@@ -37,16 +55,10 @@
 </summary>
   </entry>
   <entry xml:base="http://3color.noties.org//atom.xml">
-    <title type="text">so it begins</title>
-    <id>http://3color.noties.org/comics/turbodeck_01.html</id>
-    <updated>2010-01-15Z</updated>
-    <link href="http://3color.noties.org/comics/turbodeck_01.html" />
-  </entry>
-  <entry xml:base="http://3color.noties.org//atom.xml">
-    <title type="text">woosh</title>
-    <id>http://3color.noties.org/comics/turbodeck_02.html</id>
-    <updated>2010-01-16Z</updated>
-    <link href="http://3color.noties.org/comics/turbodeck_02.html" />
+    <title type="text">Dumbgeons and Dragones</title>
+    <id>http://3color.noties.org/books/dumbgeons.html</id>
+    <updated>2016-03-03Z</updated>
+    <link href="http://3color.noties.org/books/dumbgeons.html" />
   </entry>
   <entry xml:base="http://3color.noties.org//atom.xml">
     <title type="text">Progress</title>
@@ -57,21 +69,9 @@
 </summary>
   </entry>
   <entry xml:base="http://3color.noties.org//atom.xml">
-    <title type="text">Ricks Page 1</title>
-    <id>http://3color.noties.org/comics/ricks_01.html</id>
+    <title type="text">The Dining</title>
+    <id>http://3color.noties.org/books/dining.html</id>
     <updated>2016-02-15Z</updated>
-    <link href="http://3color.noties.org/comics/ricks_01.html" />
-  </entry>
-  <entry xml:base="http://3color.noties.org//atom.xml">
-    <title type="text">Ricks Page 3</title>
-    <id>http://3color.noties.org/comics/ricks_03.html</id>
-    <updated>2016-02-18Z</updated>
-    <link href="http://3color.noties.org/comics/ricks_03.html" />
-  </entry>
-  <entry xml:base="http://3color.noties.org//atom.xml">
-    <title type="text">Ricks Page 2</title>
-    <id>http://3color.noties.org/comics/ricks_02.html</id>
-    <updated>2016-02-16Z</updated>
-    <link href="http://3color.noties.org/comics/ricks_02.html" />
+    <link href="http://3color.noties.org/books/dining.html" />
   </entry>
 </feed>

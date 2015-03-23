@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <title>3color Press</title>
+      <link rel="stylesheet" href="/static/css/main-prefixed.css" type="text/css" />
+      <link rel="stylesheet" href="/static/css/fonts.css" type="text/css" />
+      <link rel="stylesheet" href="/pygments.css">
+      <script type="text/javascript">
+      function keyNav(event) {
+        var key = event.keyCode || event.which;
+        if (key == 37) { document.getElementById("back").click();}
+        else if (key == 39) { document.getElementById("next").click();}
+        else { }
+      }
+      </script>
+  </head>
+  <body onkeydown="keyNav(event)">
+    <header id="header" class="flex_head">
+        <div class="flex_logo">
+          <a href="/"><img class="headerimg" src="/static/images/logo.png"/></a>
+        </div>
+        <div class="flex_thumb">
+          
+<p class="thumbnail">Latest Side Comic: Dumbgeons and Dragones</p>
+<a class="thumbnail"href="/books/dumbgeons.html#content"><img class="thumbnail_img" src="/images/skeleton%20with%20abs.png"></a>
+
+        </div>
+    </header>
+    <div id='container'>
+      <nav id="main_menu">
+          <ul class="main-menu-container">
+  <a class="main-menu-item" href="/">Home</a>
+  <a class="main-menu-item" href="/books/">Books</a>
+  <a class="main-menu-item" href="/news/">News</a>
+  
+  <a class="main-menu-item" href="/contact.html"> Contact </a>
+  
+  <a class="main-menu-item" href="/HowTo.html"> How To </a>
+  
+  <a class="main-menu-item" href="/readme.html"> ReadMe </a>
+  
+  <a class="main-menu-item" href="/about.html"> About </a>
+  
+</ul>
+      </nav>
+        <div id="content">
+          
+    <h2 id="page_title">How To</h2>
+
+          
+    <div id="single_page">
+        <p>In order to make it easier I have included some tools to make it easier to set up the environment.
+Currently the application only works in a kind of "manual" mode. That is, if you're going to have to edit some text files and run some command line but it really isn't that hard. It is in a very early version and some things are still broken (for example atom feeds).</p>
+<p>To use my init script all you need is to have python on your computer. I have tested it on windows 10 tech preview and Mac Os 10.10.</p>
+<p>To OsX comes with Python, Windows users will need to install it.</p>
+<hr />
+<h3>For windows users:</h3>
+<p>Fret not, all you have to do is go to python and find the right one, or use this link:
+<a href="" title="https://www.python.org/ftp/python/2.7.9/python-2.7.9.amd64.msi">python.org 2.7.9 amd64 installer</a></p>
+<p>Run the Python Installer:</p>
+<p><img alt="install for all users" src="../images/windowspy1.png" /></p>
+<p>Select Default Path:</p>
+<p><img alt="select default path" src="../images/windowspy2.png" /></p>
+<p>Change Add python.exe to Path from:</p>
+<p><img alt="redx" src="../images/windowspy3.png" /></p>
+<p>To this:</p>
+<h2><img alt="Install local users or add all features" src="../images/windowspy4.png" /></h2>
+<h3>Getting started</h3>
+<h4>Download and Extract</h4>
+<p>Ok now that we've got python for everyone let's start on the fun stuff. Download the project file from <a href="" title="https://github.com/chipperdoodles/3color">github</a> as a zip (if you use git this is too basic for you and you should know what to do). I suggest extracting the zip file to your home directory. On windows this is <code>C:\Users\yourusername\</code> on osX this is <code>/Users/yourusername/</code> on linux or bsds this is usually <code>/home/yourusername/</code>. So you should now have a folder in your home directory that's named something like 3color-0.1.</p>
+<h4>Gettin Nerdy</h4>
+<p>Now we need to get a little nerdy!
+  Open your terminal (osX) or command prompt (windows) up. You should already be in your home directory, this is the default starting place for your terminal to open and why I suggested extracting the folder there. We need to change to the 3color-0.1 folder, we do this by typing <code>cd 3color-0.1</code> and hitting return in terminal.</p>
+<p>Now since this is our first time starting the project we need to run init.py. This python script installs all the dependencies needed to run 3color Press. We do this by typing <code>python init.py</code> and hitting return in our terminal Wait a while for the script to complete then we'll be ready for the next step.</p>
+<p>Once it's finished we're ready to run our press.py script! Try typing <code>python press.py run</code> and hitting enter in terminal, this will run our website locally and live so we can see any changes we make and get an idea on what it looks like. (currently the default code might break because of an atom error, i'm going to comment it out of the master-branch soon so people can toy around with it).</p>
+<p>Oops! where's the content? you'll notice your site is pretty blank. You're installed and ready to use 3color press, but we don't have any content in the instance/content folder. I've included some basic static pages but you'll need to get making your own!</p>
+<h4>Configuration</h4>
+<p>if you took a look at the files you'll notice there's an example.settings.cfg, copy this and rename it settings.cfg and fill out the values you need, it is explained in the file.</p>
+<h4>Making Content</h4>
+<p>Ok, I mentioned doing things manually, this is pretty much making text files in markdown format with correctly filled header info and putting them in the right folder.</p>
+<p>There are 3 different page types by default. These are book pages, news pages, and single_pages. Book pages include auto page navigation according to what their book title and page number are. News pages are organized by published date and can be found in the /news/ route, but also put into a feed if you choose to custom theme them. Single Page pages are pages to hold site information, such as contact, about me, or any custom one off page you may want.</p>
+<p>Default text editors are kind of terrible, I would suggest using something free <a href="" title="https://atom.io/">Atom</a>, <a href="" title="http://brackets.io/">Brackets</a> which are free and powerful or simple options like <a href="" title="http://www.barebones.com/products/textwrangler/download.html">Text Wrangler</a> or <a href="" title="http://notepad-plus-plus.org/">Notepad ++</a>, or some even editors like <a href="" title="http://macromates.com/">sublime text</a>, <a href="" title="http://macromates.com/">textmate</a>, which may cost money and are potentially overkill but are pretty nice. If you're feeling especially nerdy on unix-like systems you can look into the command line tools like <a href="" title="http://www.nano-editor.org/">nano</a>, <a href="http://www.vim.org/">vim</a>, or <a href="" title="https://www.gnu.org/software/emacs/">emacs</a> to edit your files, never having to leave the terminal!</p>
+<p>so now we need to make our files! it is very simple.</p>
+<p>open up our text file and and create a file that looks like this:</p>
+<div class="codehilite"><pre>    ```
+    title: &quot;&quot;
+    published: yyyy-mm-dd
+    page_type:
+    book: &quot;&quot;
+    chapter:
+    page_number:
+    image: &quot;&quot;
+    menu:
+
+    ```
+</pre></div>
+
+
+<ul>
+<li>title is the title of the page, it shows up on the webpage.</li>
+<li>published is the date you post it in yyyy-mm-dd</li>
+<li>page_type is the type of this page. Available choices are: book, news, single_page. note that the files must be saved in the appropriate directory. book in your content/books directory, news in your content/instance directory, single_page in your content/single_page dir.</li>
+<li>book, chapter, and page_number are only needed for page_type: book.</li>
+<li>book is the title of of your comic story or book story. it is used for appropriate pagination.</li>
+<li>chapter and page_number are integer (whole number like 1, 2, 3)</li>
+<li>image is usually just used for book pages and is the name of the image file including extension (.png, .jpg) that you uploaded in your instance/images folder and will be displayed as the page for this image</li>
+<li>menu is a True or False statement. If marked true and entry for this page will be automatically added to the main menu</li>
+</ul>
+<p>book page example (note: For comic pages you don't need anything after the option menu):</p>
+<div class="codehilite"><pre>    ```
+    title: &quot;Ricks Page 3&quot;
+    published: 2016-02-18
+    page_type: book
+    book: &quot;Ensign Ricks&quot;
+    chapter: 2
+    page_number: 3
+    image: &quot;rick_15.png&quot;
+    menu: False
+
+    ```
+</pre></div>
+
+
+<p>news and single_page example (note: for these pages you need a return after menu follwed by content written in markdown, which will be rendered into an html page)</p>
+<div class="codehilite"><pre>    ```
+    title: &quot;Contact&quot;
+    published: 2016-03-01
+    page_type: single_page
+    book:
+    chapter:
+    page_number:
+    image:
+    menu: True
+
+    If you need to reach me you can find me on the [tweeters](&quot;https://twitter.com/chipperdoodles&quot;)
+    ```
+</pre></div>
+
+
+<p>Save the files appropriately and you'll have content! If we try our <code>python press.py run</code> and visit localhost:5000 we'll see our new pages!
+  If you left <code>python press.py run</code> running in terminal then it should auto reload and you should see the new pages</p>
+<h4>Building</h4>
+<p>Time to build! Well this tool isn't meant to run live production sites, instead it's meant to take that live site and build it into a bunch of static html files. We can do this very simply run <code>python press.py build</code>. This builds the folder into whatever you configured it to in the instance/ folder. Default is build. This folder will contain your website! You can now upload this to your web server and you should be good to go.</p>
+<p>Luckily 3color has included some built in tools that allow you to push your website to a remote server. Right now you need to have ssh or sftp access to your remote server. Git is also supported if you have it (check out threecolor/publish.py to see how it pushes with git).</p>
+<h4>Publishing</h4>
+<p>Okay! we built it! all we have to do to publish is <code>python press.py publish</code> and it will push your site according to the method you configure. That's it! Support for normal ftp will be looked into and probably added. If you want to do it yourself you can compress your site into an archive by running <code>python press.py compress</code>. This does the same thing as it would if you set your PUB_METHOD to 'local' and ran <code>python press.py publish</code>.</p>
+<p>to save yourself some time you can run <code>python press.py all</code> and this will run the build command follwed by the publish command.</p>
+<h4>Theming</h4>
+<p>Currently I am working on building a default theme for the website. Right now the css is just demo css to show off some of the containers and regions. If you know a little css, feel free to dig around threecolor/static/css and edit and format. I will be looking into adding theming support so you won't have to worry about breaking things as time progresses. Since this is a very early version things will change. If you feel brave enough you can dip into the threecolor/templates folder and change the jinja themeing around. There's a lot you can do with themeing and if you know html, <a href="" title="http://jinja.pocoo.org/">jinja</a> is not terrible to understand.</p>
+    </div>
+
+
+
+          
+
+        </div>
+    </div>
+    <footer>
+        <p><a href="https://github.com/chipperdoodles/3color">source code for comicr can be found on github</a></p>
+        <p><a href="https://noties.org">the comics on this example site are found on Noties.org</a></p>
+    </footer>
+  </body>
+</html>
