@@ -4,7 +4,7 @@ import os.path as op
 
 from werkzeug.contrib.atom import AtomFeed
 from flask import Flask, render_template, url_for, send_from_directory, send_file
-from flask_flatpages import FlatPages
+from flask_flatpages import FlatPages, pygmented_markdown, pygments_style_defs
 
 from threecolor import app
 
@@ -41,6 +41,10 @@ def images(name):
     else:
         return send_from_directory(path, name)
 
+@app.route('/pygments.css')
+def pygments_css():
+    return pygments_style_defs('friendly'), 200, {'Content-Type': 'text/css'}
+
 @app.route('/')
 def index():
     #take 1 most recent page of published comics
@@ -57,19 +61,19 @@ def books():
 def news():
     return render_template('news.html')
 
-# @app.route('/atom.xml')
-# #atom feed, only works with a patch to werkzeug/contrip/atom.py file will look into more
-# #https://github.com/mitsuhiko/werkzeug/issues/695
-# def atom_feed():
-#     feed = AtomFeed('Feed for '+app.config['SITE_NAME'], feed_url=app.config['DOMAIN']+url_for('atom_feed'), url=app.config['DOMAIN'])
-#     comic_feed = (p for p in pages if p.meta['page_type'] != 'single_page')
-#     for p in comic_feed:
-#         feed.add(p.meta['title'],
-#                 content_type='html',
-#                 url=app.config['DOMAIN']+p.path+'.html',
-#                 updated=p.meta['published'],
-#                 summary=p.body)
-#     return feed.get_response()
+@app.route('/atom.xml')
+#atom feed, only works with a patch to werkzeug/contrip/atom.py file will look into more
+#https://github.com/mitsuhiko/werkzeug/issues/695
+def atom_feed():
+    feed = AtomFeed('Feed for '+app.config['SITE_NAME'], feed_url=app.config['DOMAIN']+url_for('atom_feed'), url=app.config['DOMAIN'])
+    comic_feed = (p for p in pages if p.meta['page_type'] != 'single_page')
+    for p in comic_feed:
+        feed.add(p.meta['title'],
+                content_type='html',
+                url=app.config['DOMAIN']+p.path+'.html',
+                updated=p.meta['published'],
+                summary=p.body)
+    return feed.get_response()
 
 @app.route('/<name>.html')
 def single_page(name):

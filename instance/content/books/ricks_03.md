@@ -1,0 +1,8 @@
+title: "Ricks Page 3"
+published: 2016-02-18
+page_type: book
+book: "Ensign Ricks"
+chapter: 2
+page_number: 3
+image: "rick_15.png"
+menu: False

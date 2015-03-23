@@ -5,6 +5,7 @@
       <title>{{ config.SITE_NAME }}</title>
       <link rel="stylesheet" href="{{ url_for('static', filename='css/main-prefixed.css') }}" type="text/css" />
       <link rel="stylesheet" href="{{ url_for('static', filename='css/fonts.css') }}" type="text/css" />
+      <link rel="stylesheet" href="{{ url_for('pygments_css') }}">
       <script type="text/javascript">
       function keyNav(event) {
         var key = event.keyCode || event.which;
@@ -37,6 +38,8 @@
         </div>
     </div>
     <footer>
+        <p><a href="https://github.com/chipperdoodles/3color">source code for comicr can be found on github</a></p>
+        <p><a href="https://noties.org">the comics on this example site are found on Noties.org</a></p>
     </footer>
   </body>
 </html>

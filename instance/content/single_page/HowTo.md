@@ -1,4 +1,12 @@
-# How To
+title: "How To"
+published: 2016-03-22
+page_type: single_page
+book:
+chapter:
+page_number:
+image:
+menu: True
+
 
   In order to make it easier I have included some tools to make it easier to set up the environment.
 Currently the application only works in a kind of "manual" mode. That is, if you're going to have to edit some text files and run some command line but it really isn't that hard. It is in a very early version and some things are still broken (for example atom feeds).
@@ -15,29 +23,29 @@ To OsX comes with Python, Windows users will need to install it.
 
 Run the Python Installer:
 
-![install for all users](http://3color.noties.org/images/windowspy1.png)
+![install for all users](../images/windowspy1.png)
 
 Select Default Path:
 
-![select default path](http://3color.noties.org/images/windowspy2.png)
+![select default path](../images/windowspy2.png)
 
 Change Add python.exe to Path from:
 
-![redx](http://3color.noties.org/images/windowspy1.png3)
+![redx](../images/windowspy3.png)
 
 To this:
 
-![Install local users or add all features](http://3color.noties.org/images/windowspy4.png)
+![Install local users or add all features](../images/windowspy4.png)
 ---
 
 ### Getting started
-##### Download and Extract
+#### Download and Extract
 
   Ok now that we've got python for everyone let's start on the fun stuff. Download the project file from [github]('https://github.com/chipperdoodles/3color') as a zip (if you use git this is too basic for you and you should know what to do). I suggest extracting the zip file to your home directory. On windows this is `C:\Users\yourusername\` on osX this is `/Users/yourusername/` on linux or bsds this is usually `/home/yourusername/`. So you should now have a folder in your home directory that's named something like 3color-0.1.
 
-#### Gettin' Nerdy  
+#### Gettin Nerdy  
   Now we need to get a little nerdy!
-  Open your terminal (osX) or command prompt(windows) up. You should already be in your home directory, this is the default starting place for your terminal to open and why I suggested extracting the folder there. We need to change to the 3color-0.1 folder, we do this by typing `cd 3color-0.1` and hitting return in terminal.
+  Open your terminal (osX) or command prompt (windows) up. You should already be in your home directory, this is the default starting place for your terminal to open and why I suggested extracting the folder there. We need to change to the 3color-0.1 folder, we do this by typing `cd 3color-0.1` and hitting return in terminal.
 
   Now since this is our first time starting the project we need to run init.py. This python script installs all the dependencies needed to run 3color Press. We do this by typing `python init.py` and hitting return in our terminal Wait a while for the script to complete then we'll be ready for the next step.
 
@@ -79,34 +87,34 @@ To this:
   * image is usually just used for book pages and is the name of the image file including extension (.png, .jpg) that you uploaded in your instance/images folder and will be displayed as the page for this image
   * menu is a True or False statement. If marked true and entry for this page will be automatically added to the main menu
 
-  book page example (note: For comic pages you don't need anything after the option menu. Also as of right now name your files for story shortstoryname_pagenumber, when between 1 and 10 use the convention 01, 02, etc):
+  book page example (note: For comic pages you don't need anything after the option menu):
 
-      ```
-      title: "Ricks Page 3"
-      published: 2016-02-18
-      page_type: book
-      book: "Ensign Ricks"
-      chapter: 2
-      page_number: 3
-      image: "rick_15.png"
-      menu: False
+        ```
+        title: "Ricks Page 3"
+        published: 2016-02-18
+        page_type: book
+        book: "Ensign Ricks"
+        chapter: 2
+        page_number: 3
+        image: "rick_15.png"
+        menu: False
 
-      ```
+        ```
 
   news and single_page example (note: for these pages you need a return after menu follwed by content written in markdown, which will be rendered into an html page)
 
-      ```
-      title: "Contact"
-      published: 2016-03-01
-      page_type: single_page
-      book:
-      chapter:
-      page_number:
-      image:
-      menu: True
+        ```
+        title: "Contact"
+        published: 2016-03-01
+        page_type: single_page
+        book:
+        chapter:
+        page_number:
+        image:
+        menu: True
 
-      If you need to reach me you can find me on the [tweeters]("https://twitter.com/chipperdoodles")
-      ```
+        If you need to reach me you can find me on the [tweeters]("https://twitter.com/chipperdoodles")
+        ```
   Save the files appropriately and you'll have content! If we try our `python press.py run` and visit localhost:5000 we'll see our new pages!
   If you left `python press.py run` running in terminal then it should auto reload and you should see the new pages
 
@@ -121,7 +129,7 @@ To this:
 
   Okay! we built it! all we have to do to publish is `python press.py publish` and it will push your site according to the method you configure. That's it! Support for normal ftp will be looked into and probably added. If you want to do it yourself you can compress your site into an archive by running `python press.py compress`. This does the same thing as it would if you set your PUB_METHOD to 'local' and ran `python press.py publish`.
 
-  to save yourself some time you can run `python press.py all` and this will run the build command followed by the publish command.
+  to save yourself some time you can run `python press.py all` and this will run the build command follwed by the publish command.
 
 #### Theming
 
