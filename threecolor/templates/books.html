@@ -7,9 +7,9 @@
     {% for p in first_page %}
     {% set book = p.book %}
         <ul>
-            <a href="{{ url_for('comic_page', name=p.path.replace('comics/', '')) }}">{{ p.book }}</a>
+            <a href="{{ url_for('comic_page', name=p.path.replace('books/', '')) }}">{{ p.book }}</a>
         {% for p in pages if p.book == book %}
-            <ul><a href="{{ url_for('comic_page', name=p.path.replace('comics/', '')) }}">chapter:{{p.chapter}} page:{{p.page_number}} {{ p.title }}</a></ul>
+            <ul><a href="{{ url_for('comic_page', name=p.path.replace('books/', '')) }}">chapter:{{p.chapter}} page:{{p.page_number}} {{ p.title }}</a></ul>
         {% endfor %}
       </ul>
     {% endfor %}

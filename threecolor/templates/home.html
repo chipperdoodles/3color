@@ -7,7 +7,7 @@
 {% block content %}
   <div id="comic">
       {% for p in front_page %}
-      <a href="{{ url_for('comic_page', _anchor='content', name=p.path.replace('comics/', '')) }}"> <img src="{{ url_for('images', name=p.image) }}"></a>
+      <a href="{{ url_for('comic_page', _anchor='content', name=p.path.replace('books/', '')) }}"> <img src="{{ url_for('images', name=p.image) }}"></a>
       {% endfor %}
   </div>
 {% block lowerbooknav %}
