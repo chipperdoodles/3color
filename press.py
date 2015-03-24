@@ -1,4 +1,3 @@
-
 import sys
 import os
 import platform
@@ -17,9 +16,7 @@ activate_venv()
 import argparse
 
 from threecolor import app, publish
-
 from threecolor.flatpager import chill
-
 from fabric.api import execute
 
 parser = argparse.ArgumentParser(

@@ -1,5 +1,4 @@
 import sys
-import subprocess
 import os
 
 from werkzeug.contrib.atom import AtomFeed
@@ -18,11 +17,10 @@ def page_types():
     #injects variables for book pages and menu pages, menu pages are used to build main menu links
     menu_pages = (p for p in pages if (p['menu']))
     book_page = (p for p in pages if 'book' == p['page_type'] )
-    book_pages = (p for p in pages if 'book' == p['page_type'] )
     news_page = (p for p in pages if 'news' == p['page_type'] )
     thumb_nail = latest_comic(book_page, app.config['THUMB_STORY'], 1)
     book_list = ( )
-    return dict(book_page=book_page, book_pages=book_pages, menu_pages=menu_pages, news_page=news_page, thumb_nail=thumb_nail, pages=pages)
+    return dict(book_page=book_page, menu_pages=menu_pages, news_page=news_page, thumb_nail=thumb_nail, pages=pages)
 
 def total_pages(pages, book):
     #takes a count of pages in the book and returns sum of pages, used for page navigation
@@ -67,9 +65,7 @@ def index():
 def books():
     #finds and lists pages that are chapter: 1 and page_number: 1 in yaml header
     first_page = (p for p in pages if p['book']['chapter'] == 1 and p['book']['page_number'] == 1)
-    book_titles = book_list()
-    first_pages = (p for p in pages if p['book']['chapter'] == 1 and p['book']['page_number'] == 1)
-    return render_template('books.html', first_page=first_page, book_titles=book_titles, first_pages=first_pages)
+    return render_template('books.html', first_page=first_page)
 
 @app.route('/news/')
 def news():
@@ -89,21 +85,21 @@ def atom_feed():
                 summary=p.body)
     return feed.get_response()
 
-@app.route('/<name>')
+@app.route('/<name>.html')
 def single_page(name):
     #route for single pages, usually text pages
     path = '{}/{}'.format(app.config['PAGE_DIR'], name)
     page = pages.get_or_404(path)
     return render_template('page.html', page=page)
 
-@app.route('/news/<name>')
+@app.route('/news/<name>.html')
 def news_page(name):
     #route for single pages, usually text pages
     path = '{}/{}'.format(app.config['NEWS_DIR'], name)
     page = pages.get_or_404(path)
     return render_template('page.html', page=page)
 
-@app.route('/<book>/chapter-<int:chapter>/page-<int:number>/<name>')
+@app.route('/<book>/chapter-<int:chapter>/page-<int:number>/<name>.html')
 def comic_page(book, chapter, number, name):
     #variables after 'p' are used to create pagination links within the book stories.
     #these are only passed into the page.html template and work only on 'comic_page' urls
