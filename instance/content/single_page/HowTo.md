@@ -1,11 +1,10 @@
 title: "How To"
 published: 2016-03-22
+modified: 2016-03-22
 page_type: single_page
-book:
-chapter:
-page_number:
-image:
+book: { 'title': "", 'chapter': '', 'page_number': '', 'image': "" }
 menu: True
+version: 0.1
 
 
   In order to make it easier I have included some tools to make it easier to set up the environment.
@@ -23,22 +22,21 @@ To OsX comes with Python, Windows users will need to install it.
 
 Run the Python Installer:
 
-![install for all users](../images/windowspy1.png)
+![install for all users](/images/windowspy1.png)
 
 Select Default Path:
 
-![select default path](../images/windowspy2.png)
+![select default path](/images/windowspy2.png)
 
 Change Add python.exe to Path from:
 
-![redx](../images/windowspy3.png)
+![redx](/images/windowspy3.png)
 
 To this:
 
-![Install local users or add all features](../images/windowspy4.png)
+![Install local users or add all features](/images/windowspy4.png)
 ---
 
-### Getting started
 #### Download and Extract
 
   Ok now that we've got python for everyone let's start on the fun stuff. Download the project file from [github]('https://github.com/chipperdoodles/3color') as a zip (if you use git this is too basic for you and you should know what to do). I suggest extracting the zip file to your home directory. On windows this is `C:\Users\yourusername\` on osX this is `/Users/yourusername/` on linux or bsds this is usually `/home/yourusername/`. So you should now have a folder in your home directory that's named something like 3color-0.1.
@@ -67,54 +65,48 @@ To this:
 
   open up our text file and and create a file that looks like this:
 
-        ```
+
         title: ""
         published: yyyy-mm-dd
+        modified: yyyy-mm-dd
         page_type:
-        book: ""
-        chapter:
-        page_number:
-        image: ""
+        book: { 'title': "", 'chapter': '' , 'page_number': "", 'image': ''}
         menu:
+        version: 0.1
 
-        ```
+
   * title is the title of the page, it shows up on the webpage.
   * published is the date you post it in yyyy-mm-dd
+  * modified is the date if you want to post changes to the file. Not currently used, in here as a just in case
   * page_type is the type of this page. Available choices are: book, news, single_page. note that the files must be saved in the appropriate directory. book in your content/books directory, news in your content/instance directory, single_page in your content/single_page dir.
-  * book, chapter, and page_number are only needed for page_type: book.
-  * book is the title of of your comic story or book story. it is used for appropriate pagination.
-  * chapter and page_number are integer (whole number like 1, 2, 3)
-  * image is usually just used for book pages and is the name of the image file including extension (.png, .jpg) that you uploaded in your instance/images folder and will be displayed as the page for this image
+  * book: is where you fill out info for your book pages. Title is book title, chapter is chapter number, page_number is the page number and image is the name of your comic image file uploaded in your instance/images folder. (chapter and page_number are integers and image has to include your filename extension such as .png or .jpg)
   * menu is a True or False statement. If marked true and entry for this page will be automatically added to the main menu
+  * version is 0.1 for now and represents the version of 3color the file was built with, hopefully making migration easier if there are bigger changes
 
   book page example (note: For comic pages you don't need anything after the option menu):
 
-        ```
+
         title: "Ricks Page 3"
         published: 2016-02-18
+        modified: 2016-02-18
         page_type: book
-        book: "Ensign Ricks"
-        chapter: 2
-        page_number: 3
-        image: "rick_15.png"
+        book: {'title': "Ensign Ricks" 'chapter': 2 'page_number': 3 'image': "rick_15.png"}
         menu: False
+        version: 0.1
 
-        ```
 
   news and single_page example (note: for these pages you need a return after menu follwed by content written in markdown, which will be rendered into an html page)
 
-        ```
+
         title: "Contact"
         published: 2016-03-01
         page_type: single_page
-        book:
-        chapter:
-        page_number:
-        image:
+        book: {'title': "" 'chapter': '' 'page_number': '' 'image': ""}
         menu: True
+        version: 0.1
 
         If you need to reach me you can find me on the [tweeters]("https://twitter.com/chipperdoodles")
-        ```
+
   Save the files appropriately and you'll have content! If we try our `python press.py run` and visit localhost:5000 we'll see our new pages!
   If you left `python press.py run` running in terminal then it should auto reload and you should see the new pages
 

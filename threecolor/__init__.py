@@ -11,8 +11,9 @@ app.config['FLATPAGES_ROOT'] = os.path.join(app.instance_path, 'content')
 app.config['IMAGE_DIR'] = os.path.join(app.instance_path, 'images')
 app.config['FREEZER_DESTINATION'] = os.path.join(app.instance_path, app.config['BUILD_DIR'])
 
-from flatpager import pages
+from flatpager import pages, freezer
 pages.init_app(app)
+freezer.init_app(app)
 
 import threecolor.flatpager
 import threecolor.publish
