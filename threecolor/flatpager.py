@@ -40,16 +40,16 @@ def book_list():
     return book_titles
 
 @app.route('/images/<name>')
+#static image file delivery
 def images(name):
-
     path = app.config['IMAGE_DIR']
-
     if '..' in name or name.startswith('/'):
         abort(404)
     else:
         return send_from_directory(path, name)
 
 @freezer.register_generator
+#makes sure images in the instance/images folder get built into site
 def images_url_generator():
     path = os.listdir(app.config['IMAGE_DIR'])
     for f in path:

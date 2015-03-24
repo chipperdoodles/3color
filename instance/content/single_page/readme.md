@@ -14,7 +14,7 @@ Each page is built from a markdown file located in the instance/content/ folder.
 
 I am new to programming and I'm kind of brute learning python and flask by just working on this project.
 
-For more in depth information on how to use check [the how to page](3color.noties.org/HowTo.html)
+For more in depth information on how to use check [the how to page](http://3color.noties.org/HowTo.html)
 
 TODO:
 
