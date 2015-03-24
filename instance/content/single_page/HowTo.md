@@ -18,7 +18,7 @@ To OsX comes with Python, Windows users will need to install it.
 ### For windows users:
 
   Fret not, all you have to do is go to python and find the right one, or use this link:
-[python.org 2.7.9 amd64 installer]("https://www.python.org/ftp/python/2.7.9/python-2.7.9.amd64.msi")
+[python.org 2.7.9 amd64 installer](https://www.python.org/ftp/python/2.7.9/python-2.7.9.amd64.msi)
 
 Run the Python Installer:
 
@@ -39,7 +39,7 @@ To this:
 
 #### Download and Extract
 
-  Ok now that we've got python for everyone let's start on the fun stuff. Download the project file from [github]('https://github.com/chipperdoodles/3color') as a zip (if you use git this is too basic for you and you should know what to do). I suggest extracting the zip file to your home directory. On windows this is `C:\Users\yourusername\` on osX this is `/Users/yourusername/` on linux or bsds this is usually `/home/yourusername/`. So you should now have a folder in your home directory that's named something like 3color-0.1.
+  Ok now that we've got python for everyone let's start on the fun stuff. Download the project file from [github](https://github.com/chipperdoodles/3color) as a zip (if you use git this is too basic for you and you should know what to do). I suggest extracting the zip file to your home directory. On windows this is `C:\Users\yourusername\` on osX this is `/Users/yourusername/` on linux or bsds this is usually `/home/yourusername/`. So you should now have a folder in your home directory that's named something like 3color-0.1.
 
 #### Gettin Nerdy  
   Now we need to get a little nerdy!
@@ -59,7 +59,7 @@ To this:
 
   There are 3 different page types by default. These are book pages, news pages, and single_pages. Book pages include auto page navigation according to what their book title and page number are. News pages are organized by published date and can be found in the /news/ route, but also put into a feed if you choose to custom theme them. Single Page pages are pages to hold site information, such as contact, about me, or any custom one off page you may want.
 
-  Default text editors are kind of terrible, I would suggest using something free [Atom]('https://atom.io/'), [Brackets]('http://brackets.io/') which are free and powerful or simple options like [Text Wrangler]('http://www.barebones.com/products/textwrangler/download.html') or [Notepad ++]('http://notepad-plus-plus.org/'), or some even editors like [sublime text]('http://macromates.com/'), [textmate]('http://macromates.com/'), which may cost money and are potentially overkill but are pretty nice. If you're feeling especially nerdy on unix-like systems you can look into the command line tools like [nano]('http://www.nano-editor.org/'), [vim](http://www.vim.org/), or [emacs]('https://www.gnu.org/software/emacs/') to edit your files, never having to leave the terminal!
+  Default text editors are kind of terrible, I would suggest using something free [Atom](https://atom.io/), [Brackets](http://brackets.io/) which are free and powerful or simple options like [Text Wrangler](http://www.barebones.com/products/textwrangler/download.html) or [Notepad ++](http://notepad-plus-plus.org/), or some even editors like [sublime text](http://macromates.com/), [textmate](http://macromates.com/), which may cost money and are potentially overkill but are pretty nice. If you're feeling especially nerdy on unix-like systems you can look into the command line tools like [nano](http://www.nano-editor.org/), [vim](http://www.vim.org/), or [emacs](https://www.gnu.org/software/emacs/) to edit your files, never having to leave the terminal!
 
   so now we need to make our files! it is very simple.
 
@@ -105,7 +105,7 @@ To this:
         menu: True
         version: 0.1
 
-        If you need to reach me you can find me on the [tweeters]("https://twitter.com/chipperdoodles")
+        If you need to reach me you can find me on the [tweeters](https://twitter.com/chipperdoodles)
 
   Save the files appropriately and you'll have content! If we try our `python press.py run` and visit localhost:5000 we'll see our new pages!
   If you left `python press.py run` running in terminal then it should auto reload and you should see the new pages
@@ -125,4 +125,4 @@ To this:
 
 #### Theming
 
-  Currently I am working on building a default theme for the website. Right now the css is just demo css to show off some of the containers and regions. If you know a little css, feel free to dig around threecolor/static/css and edit and format. I will be looking into adding theming support so you won't have to worry about breaking things as time progresses. Since this is a very early version things will change. If you feel brave enough you can dip into the threecolor/templates folder and change the jinja themeing around. There's a lot you can do with themeing and if you know html, [jinja]('http://jinja.pocoo.org/') is not terrible to understand.
+  Currently I am working on building a default theme for the website. Right now the css is just demo css to show off some of the containers and regions. If you know a little css, feel free to dig around threecolor/static/css and edit and format. I will be looking into adding theming support so you won't have to worry about breaking things as time progresses. Since this is a very early version things will change. If you feel brave enough you can dip into the threecolor/templates folder and change the jinja themeing around. There's a lot you can do with themeing and if you know html, [jinja](http://jinja.pocoo.org/) is not terrible to understand.

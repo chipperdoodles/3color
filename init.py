@@ -7,7 +7,7 @@ import subprocess
 system = platform.system()
 
 def install_depends():
-    subprocess.call(['pip', 'install', 'Flask', 'Flask-FlatPages', 'Pygments', 'Frozen-Flask', 'Fabric' ])
+    subprocess.call(['pip', 'install', 'Flask', 'Flask-FlatPages', 'Frozen-Flask', 'Fabric' ])
 
 def install_fabric():
     subprocess.call(['pip', 'install', 'Fabric'])
