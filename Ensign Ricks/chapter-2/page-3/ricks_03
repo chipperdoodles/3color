@@ -5,7 +5,6 @@
       <title>3color Press</title>
       <link rel="stylesheet" href="/static/css/main-prefixed.css" type="text/css" />
       <link rel="stylesheet" href="/static/css/fonts.css" type="text/css" />
-      <link rel="stylesheet" href="/pygments.css">
       <script type="text/javascript">
       function keyNav(event) {
         var key = event.keyCode || event.which;
@@ -23,7 +22,7 @@
         <div class="flex_thumb">
           
 <p class="thumbnail">Latest Side Comic: Dumbgeons and Dragones</p>
-<a class="thumbnail"href="/books/dumbgeons.html#content"><img class="thumbnail_img" src="/images/skeleton%20with%20abs.png"></a>
+<a class="thumbnail"href="/side%20comic/chapter-1/page-2/dumbgeons#content"><img class="thumbnail_img" src="/images/skeleton%20with%20abs.png"></a>
 
         </div>
     </header>
@@ -34,27 +33,46 @@
   <a class="main-menu-item" href="/books/">Books</a>
   <a class="main-menu-item" href="/news/">News</a>
   
-  <a class="main-menu-item" href="/contact.html"> Contact </a>
+  <a class="main-menu-item" href="/contact"> Contact </a>
   
-  <a class="main-menu-item" href="/HowTo.html"> How To </a>
+  <a class="main-menu-item" href="/HowTo"> How To </a>
   
-  <a class="main-menu-item" href="/readme.html"> ReadMe </a>
+  <a class="main-menu-item" href="/readme"> ReadMe </a>
   
-  <a class="main-menu-item" href="/about.html"> About </a>
+  <a class="main-menu-item" href="/about"> About </a>
   
 </ul>
       </nav>
         <div id="content">
           
-    <h2 id="page_title">Contact</h2>
+  <h2 id="page_title">Ricks Page 3</h2>
 
           
-    <div id="single_page">
-        <p>If you need to reach me you can find me on the <a href="" title="https://twitter.com/chipperdoodles">tweeters</a></p>
-<p>or if you really want you can email me at <a href="" title="mknobel@noties.org">mknobel@noties.org</a></p>
-<p>else you can keep track of the project on the github page!</p>
-    </div>
+<div id="comic">
+    <img src="/images/rick_15.png">
+</div>
 
+  <div id="book_nav">
+    <div class="book-nav-container">
+      
+      <div class="first book-nav-item">
+        <a href="/Ensign%20Ricks/chapter-1/page-1/ricks_01#content"> first</a>
+      </div>
+      
+      
+      <div class="back book-nav-item">
+        <a id="back" href="/Ensign%20Ricks/chapter-1/page-2/ricks_02#content"> back</a>
+      </div>
+      
+
+      
+      
+      
+
+      
+      
+  </div>
+</div>
 
 
           

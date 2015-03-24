@@ -5,7 +5,6 @@
       <title>3color Press</title>
       <link rel="stylesheet" href="/static/css/main-prefixed.css" type="text/css" />
       <link rel="stylesheet" href="/static/css/fonts.css" type="text/css" />
-      <link rel="stylesheet" href="/pygments.css">
       <script type="text/javascript">
       function keyNav(event) {
         var key = event.keyCode || event.which;
@@ -23,7 +22,7 @@
         <div class="flex_thumb">
           
 <p class="thumbnail">Latest Side Comic: Dumbgeons and Dragones</p>
-<a class="thumbnail"href="/books/dumbgeons.html#content"><img class="thumbnail_img" src="/images/skeleton%20with%20abs.png"></a>
+<a class="thumbnail"href="/side%20comic/chapter-1/page-2/dumbgeons#content"><img class="thumbnail_img" src="/images/skeleton%20with%20abs.png"></a>
 
         </div>
     </header>
@@ -34,48 +33,43 @@
   <a class="main-menu-item" href="/books/">Books</a>
   <a class="main-menu-item" href="/news/">News</a>
   
-  <a class="main-menu-item" href="/contact.html"> Contact </a>
+  <a class="main-menu-item" href="/contact"> Contact </a>
   
-  <a class="main-menu-item" href="/HowTo.html"> How To </a>
+  <a class="main-menu-item" href="/HowTo"> How To </a>
   
-  <a class="main-menu-item" href="/readme.html"> ReadMe </a>
+  <a class="main-menu-item" href="/readme"> ReadMe </a>
   
-  <a class="main-menu-item" href="/about.html"> About </a>
+  <a class="main-menu-item" href="/about"> About </a>
   
 </ul>
       </nav>
         <div id="content">
           
-  <h2 id="page_title">Ricks Page 2</h2>
+  <h2 id="page_title">Dumbgeons and Dragones</h2>
 
           
 <div id="comic">
-    <img src="/images/Ricks2.png">
+    <img src="/images/skeleton%20with%20abs.png">
 </div>
 
   <div id="book_nav">
     <div class="book-nav-container">
       
       <div class="first book-nav-item">
-        <a href="/books/ricks_01.html#content"> first</a>
+        <a href="/side%20comic/chapter-1/page-1/dining#content"> first</a>
       </div>
       
       
       <div class="back book-nav-item">
-        <a id="back" href="/books/ricks_01.html#content"> back</a>
+        <a id="back" href="/side%20comic/chapter-1/page-1/dining#content"> back</a>
       </div>
       
 
       
-      <div class="next book-nav-item">
-        <a id="next" href="/books/ricks_03.html#content"> next</a>
-      </div>
+      
       
 
       
-      <div class="latest book-nav-item">
-        <a href="/books/ricks_03.html#content"> latest</a>
-      </div>
       
   </div>
 </div>
