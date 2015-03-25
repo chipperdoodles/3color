@@ -101,7 +101,7 @@ def news_page(name):
     page = pages.get_or_404(path)
     return render_template('page.html', page=page)
 
-@app.route('/<book>/chapter-<int:chapter>/page-<int:number>/<name>.html')
+@app.route('/<book>/c<int:chapter>/p<int:number>/<name>.html')
 def comic_page(book, chapter, number, name):
     #variables after 'p' are used to create pagination links within the book stories.
     #these are only passed into the page.html template and work only on 'comic_page' urls
