@@ -63,7 +63,7 @@ open up our text file and and create a file that looks like this:
       published: yyyy-mm-dd
       modified: yyyy-mm-dd
       page_type:
-      book: { 'title': "", 'chapter': '' , 'page_number': "", 'image': ''}
+      book: { 'title': "", 'chapter': '' , 'page_number': '', 'image': ""}
       menu:
       version: 0.1
 
@@ -83,7 +83,7 @@ book page example (note: For comic pages you don't need anything after the optio
       published: 2016-02-18
       modified: 2016-02-18
       page_type: book
-      book: {'title': "Ensign Ricks" 'chapter': 2 'page_number': 3 'image': "rick_15.png"}
+      book: { 'title': "Ensign Ricks", 'chapter': 2, 'page_number': 3, 'image': "rick_15.png" }
       menu: False
       version: 0.1
 
@@ -94,7 +94,7 @@ news and single_page example (note: for these pages you need a return after menu
       title: "Contact"
       published: 2016-03-01
       page_type: single_page
-      book: {'title': "" 'chapter': '' 'page_number': '' 'image': ""}
+      book: { 'title': "", 'chapter': '', 'page_number': '', 'image': "" }
       menu: True
       version: 0.1
 
