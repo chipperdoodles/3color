@@ -35,8 +35,9 @@ def latest_comic(pages, book, limit=None):
     return l_comic[:limit]
 
 def book_list():
+    # returns a list of the book titles in book type
     first_page = (p for p in pages if p['book']['chapter'] == 1 and p['book']['page_number'] == 1)
-    book_titles = ( p['book']['title'] for p in first_page )
+    book_titles = [ p['book']['title'] for p in first_page ]
     return book_titles
 
 @app.route('/images/<name>')
@@ -69,6 +70,7 @@ def books():
 
 @app.route('/news/')
 def news():
+    # renders news template
     return render_template('news.html')
 
 @app.route('/atom.xml')
@@ -119,4 +121,5 @@ def comic_page(book, chapter, number, name):
         next_page=next_page, t_pages=t_pages, last_page=last_page, first_page=first_page)
 
 def chill():
+    #function to build the site into static files
     freezer.freeze()

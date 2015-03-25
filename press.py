@@ -19,6 +19,7 @@ from threecolor import app, publish
 from threecolor.flatpager import chill
 from fabric.api import execute
 
+#argument parser for main script
 parser = argparse.ArgumentParser(
     prog='3color Press',
     usage='%(prog)s [all | build | compress | publish | run]',

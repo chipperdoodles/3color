@@ -7,6 +7,7 @@ from fabric.contrib.project import rsync_project
 from fabric.contrib.files import exists
 from shutil import make_archive
 
+#configure user and hostmname for remote server
 env.user = app.config['USER_NAME']
 env.hosts = app.config['REMOTE_SERVER']
 
@@ -34,6 +35,11 @@ def rsync():
     rsync_project(remote, local, delete=True)
 
 def git_deploy():
+    """
+    simply changes the directory to your build directory and calls
+    git commits to add all files, commit all changes with commit message updated
+    and then push your commit, then change back to your project directory
+    """
     project = os.getcwd()
     local = os.path.join(app.instance_path, app.config['FREEZER_DESTINATION'])
     os.chdir(local)
