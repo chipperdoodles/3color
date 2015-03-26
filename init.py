@@ -32,5 +32,6 @@ def system_install():
         install_depends()
 
 if __name__ == "__main__":
+    install_venv()
     create_venv()
     system_install()
