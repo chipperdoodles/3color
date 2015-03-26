@@ -4,7 +4,7 @@
 {% endblock title %}
 {% block content %}
 <div id="comic">
-    <img src="{{ url_for('images', name=p.image) }}">
+    <img src="{{ url_for('images', name=p.book.image) }}">
 </div>
 {% block lowerbooknav %}
   {% include '_book_nav.html' %}

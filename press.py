@@ -1,4 +1,3 @@
-
 import sys
 import os
 import platform
@@ -16,13 +15,11 @@ activate_venv()
 
 import argparse
 
-from threecolor import app
-from threecolor import publish
+from threecolor import app, publish
+from threecolor.flatpager import chill
 from fabric.api import execute
-from flask_frozen import Freezer
 
-freezer = Freezer(app)
-
+#argument parser for main script
 parser = argparse.ArgumentParser(
     prog='3color Press',
     usage='%(prog)s [all | build | compress | publish | run]',
@@ -59,13 +56,13 @@ args = parser.parse_args()
 
 if args.options == 'all':
     print ("building")
-    freezer.freeze()
+    chill()
     print ("publishing")
     execute(publish.publish)
 
 elif args.options == 'build':
     print ("building")
-    freezer.freeze()
+    chill()
 
 elif args.options == 'compress':
     print ("compressing")

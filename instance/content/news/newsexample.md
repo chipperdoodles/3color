@@ -1,13 +1,12 @@
 title: "News Page Example"
 published: 2015-03-22
+modified: 2015-03-22
 page_type: news
-book:
-chapter:
-page_number:
-image:
+book: { title: "", chapter: '', page_number: '', image: "" }
 menu: False
+version: 0.1
 
-This is an example news page. In recent history the puppies have been noted as quite dastardly. Not sure whether to trust them or not the geese people definitely wanted a piece of the action. 
+This is an example news page. In recent history the puppies have been noted as quite dastardly. Not sure whether to trust them or not the geese people definitely wanted a piece of the action.
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ut ex sed felis sollicitudin laoreet. Nam erat nulla, vestibulum quis metus in, volutpat mattis tellus. Vivamus tempus facilisis efficitur. In auctor arcu lorem, vitae fermentum eros hendrerit vitae. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut efficitur sem fringilla ante blandit posuere. Phasellus metus metus, luctus non ultricies at, viverra nec libero. Pellentesque ante arcu, porttitor a tincidunt in, vulputate at odio. Curabitur ornare nulla ut ullamcorper ultrices. Vestibulum tempus augue vitae nunc hendrerit tristique.
 
