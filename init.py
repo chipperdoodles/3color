@@ -6,19 +6,20 @@ import subprocess
 
 system = platform.system()
 
+# installs app dependencies with pip
 def install_depends():
-    subprocess.call(['pip', 'install', 'Flask', 'Flask-FlatPages', 'Pygments', 'Frozen-Flask', 'Fabric' ])
+    subprocess.call(['pip', 'install', 'Flask', 'Flask-FlatPages', 'Frozen-Flask', 'Fabric' ])
 
-def install_fabric():
-    subprocess.call(['pip', 'install', 'Fabric'])
-
+# installs virtual environment to global python python packages
 def install_venv():
     subprocess.call(['pip', 'install', 'virtualenv'])
 
+# creates a folder named venv in project directory and installs a virtual environment into it
 def create_venv():
     path = os.path.join(os.getcwd(), 'venv')
     subprocess.call(['virtualenv', path])
 
+# main installs all dependencies to the created virtual enviromment according to operating system
 def system_install():
     if system == 'Windows':
         path = os.path.join(os.getcwd(), 'venv\Scripts\activate_this.py')
@@ -31,5 +32,6 @@ def system_install():
         install_depends()
 
 if __name__ == "__main__":
+    install_venv()
     create_venv()
     system_install()
