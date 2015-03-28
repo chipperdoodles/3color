@@ -27,7 +27,7 @@ def system_install():
         subprocess.call(['easy_install', "http://www.voidspace.org.uk/downloads/pycrypto26/pycrypto-2.6.win-amd64-py2.7.exe'])
         install_depends()
     else:
-        path = os.path.join(os.getcwd(), 'venv/bin/activate_this.py')
+        path = os.path.join(os.getcwd(), 'venv', 'bin', 'activate_this.py')
         execfile(path, dict(__file__=path))
         install_depends()
 

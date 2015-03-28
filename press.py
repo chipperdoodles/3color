@@ -8,7 +8,7 @@ def activate_venv():
         path = os.path.join(os.getcwd(), 'venv', 'Scripts', 'activate_this.py')
         execfile(path, dict(__file__=path))
     else:
-        path = os.path.join(os.getcwd(), 'venv/bin/activate_this.py')
+        path = os.path.join(os.getcwd(), 'venv', 'bin', 'activate_this.py')
         execfile(path, dict(__file__=path))
 
 activate_venv()
