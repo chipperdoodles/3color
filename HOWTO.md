@@ -45,7 +45,7 @@ Once it's finished we're ready to run our press.py script! Try typing `python pr
 Oops! where's the content? you'll notice your site is pretty blank. You're installed and ready to use 3color press, but we don't have any content in the instance/content folder. I've included some basic static pages but you'll need to get making your own!
 
 ####Configuration
-if you took a look at the files you'll notice there's an example.settings.cfg, copy this and rename it settings.cfg and fill out the values you need, it is explained in the file.
+if you took a look at the files you'll notice there's a settings.cfg, open it up in a text editor and fill out the values you need, it is explained in the file. If you make any changes to the settings file while your the local server is running (see end of making content `python press.py run` )
 
 #### Making Content
 Ok, I mentioned doing things manually, this is pretty much making text files in markdown format with correctly filled header info and putting them in the right folder.
@@ -70,9 +70,13 @@ open up our text file and and create a file that looks like this:
 
 * title is the title of the page, it shows up on the webpage.
 * published is the date you post it in yyyy-mm-dd
-* modified is the date if you want to post changes to the file. Not currently used, in here as a just in case
+* modified is the date if you want to post changes to the file. Not currently used, in here as a just in case, fill in the value of the published date
 * page_type is the type of this page. Available choices are: book, news, single_page. note that the files must be saved in the appropriate directory. book in your content/books directory, news in your content/instance directory, single_page in your content/single_page dir.
-* book: is where you fill out info for your book pages. Title is book title, chapter is chapter number, page_number is the page number and image is the name of your comic image file uploaded in your instance/images folder. (chapter and page_number are integers and image has to include your filename extension such as .png or .jpg)
+* book: is where you fill out info for your book pages.
+    * Title is the name of your book or comic
+    * chapter number is the chapter number as a whole number (1,2,3, etc..)
+    * page_number is the page number as a whole number. As of now page numbers do not reset for chapters. So if you have five pages in the first chapter, the first page of chapter 2 will be page 6.
+    * image is the name of your comic image file uploaded in your instance/images folder. It must include the file extension. (.jpg, .png, etc)
 * menu is a True or False statement. If marked true and entry for this page will be automatically added to the main menu
 * version is 0.1 for now and represents the version of 3color the file was built with, hopefully making migration easier if there are bigger changes
 

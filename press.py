@@ -5,10 +5,10 @@ import platform
 #activate the virtual environment set up by init.py
 def activate_venv():
     if platform.system() == 'Windows':
-        path = os.path.join(os.getcwd(), 'venv\Scripts\activate_this.py')
+        path = os.path.join(os.getcwd(), 'venv', 'Scripts', 'activate_this.py')
         execfile(path, dict(__file__=path))
     else:
-        path = os.path.join(os.getcwd(), 'venv/bin/activate_this.py')
+        path = os.path.join(os.getcwd(), 'venv', 'bin', 'activate_this.py')
         execfile(path, dict(__file__=path))
 
 activate_venv()
