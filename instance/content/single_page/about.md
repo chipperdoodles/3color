@@ -1,8 +1,8 @@
-title: "About"
+title: About
 published: 2015-02-17
 modified: 2015-02-17
 page_type: single_page
-book: { 'title': "", 'chapter': '', 'page_number': '', 'image': "" }
+book: { 'title': , 'chapter': , 'page_number': , 'image': }
 menu: True
 version: 0.1
 

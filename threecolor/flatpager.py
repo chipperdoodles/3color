@@ -11,7 +11,6 @@ from threecolor import app
 pages = FlatPages()
 freezer = Freezer()
 
-
 @app.context_processor
 def page_types():
     #injects variables for book pages and menu pages, menu pages are used to build main menu links
