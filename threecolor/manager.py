@@ -4,6 +4,7 @@ import platform
 import click
 
 from .application import create_site
+from .models import page_header
 from .tools import publish, pagecreator
 from .site import coolviews
 
@@ -64,5 +65,4 @@ def newpage(batch):
     if batch:
         click.echo('batch')
     else:
-        thing=pagecreator.page_creator({shortname='ricks', pagenumber=1})
-        thing.print_page
+        print page_header(shortname='ricks', pagenumber=1).test

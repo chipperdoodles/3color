@@ -44,11 +44,13 @@ class page_creator(page_header):
         pub = '{:%Y-%m-%d}'.format(date.today())
         mod = '{:%Y-%m-%d}'.format(date.today())
 
-    def write_page():
-            name = shortname+'_'+str(number)+'.md'
+    def write_page(self):
+            name = self.shortname+'_'+str(self.pagenumber)+'.md'
             with open(name,"ab") as f:
                 yaml.dump(self.header(), f)
 
-    def print_page():
-            name = shortname+'_'+str(pagenumber)+'.md'
-            print name
+    def print_page(self):
+
+            name = self.shortname+'_'+str(self.pagenumber)+'.md'
+            stuff = yaml.dump(self.header)
+            return stuff

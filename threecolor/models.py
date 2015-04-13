@@ -5,26 +5,28 @@ class page_header(object):
 
     def __init__(self, **kwargs):
 
-        shortname = self.shortname
-        longname = self.longname
-        pagetype = self.pagetype
-        pageamount = self.pageamount
-        pagetitle = self.pagetitle
-        pagenumber = self.pagenumber
-        pub = self.published
-        mod = self.modified
-        image = self.image
-        menu = self.menu
+        self.longname = 'longname'
+        self.pagetype = 'pagetype'
+        self.pageamount = 'pageamount'
+        self.pagetitle = 'pagetitle'
+        self.pagenumber = 'pagenumber'
+        self.published = 'pub'
+        self.modified = 'mod'
+        self.image = 'image'
+        self.menu = 'menu'
 
-    def header():
+        for 
+
+    def header(self):
 
         header = dict(
-            title = pagetitle,
-            published = pub,
-            modified = mod,
-            page_type = pagetype,
-            book = {'title': longname, 'chapter': chapter, 'page_number': pagenumber, 'image': image},
-            menu = menu,
+            title = self.pagetitle,
+            published = self.pub,
+            modified = self.mod,
+            page_type = self.pagetype,
+            book = {'title': self.longname, 'chapter': self.chapter,
+                    'page_number': self.pagenumber, 'image': self.image},
+            menu = self.menu,
             version = __version__ )
 
         return header
