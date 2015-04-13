@@ -1,0 +1,40 @@
+url<div id="book_nav">
+    <div class="book-nav-container">
+      {% for p in first_page %}
+      <div class="first book-nav-item">
+        <a href="{{ url_for('.comic_page', _anchor='content', book=p.book.title, chapter=p.book.chapter, number=p.book.page_number, name=p.path.replace(config.BOOK_DIR+'/', '')) }}"> first</a>
+      </div>
+      {% else %}
+      {% endfor %}
+      {% for p in previous_page if current_book==p.book.title %}
+      <div class="back book-nav-item">
+        <a id="back" href="{{ url_for('.comic_page', _anchor='content', book=p.book.title, chapter=p.book.chapter, number=p.book.page_number, name=p.path.replace(config.BOOK_DIR+'/', '')) }}"> back</a>
+      </div>
+      {% else %}
+      {% for p in front_page %}
+      <div class="back book-nav-item">
+        <a id="back" href="{{ url_for('.comic_page', _anchor='content', book=p.book.title, chapter=p.book.chapter, number=p.book.page_number, name=p.path.replace(config.BOOK_DIR+'/', '')) }}"> back</a>
+      </div>
+      {% endfor %}
+      {% endfor %}
+
+      {% for p in next_page if current_book==p.book.title %}
+      <div class="next book-nav-item">
+        <a id="next" href="{{ url_for('.comic_page', _anchor='content', book=p.book.title, chapter=p.book.chapter, number=p.book.page_number, name=p.path.replace(config.BOOK_DIR+'/', '')) }}"> next</a>
+      </div>
+      {% else %}
+      {% for p in front_page %}
+      <div class="next first book-nav-item">
+        <a id="next" href="{{ url_for('.comic_page', _anchor='content', book=p.book.title, chapter=p.book.chapter, number=p.book.page_number, name=p.path.replace(config.BOOK_DIR+'/', '')) }}"> next</a>
+      </div>
+      {% endfor %}
+      {% endfor %}
+
+      {% for p in last_page if current_book==p.book.title %}
+      <div class="latest book-nav-item">
+        <a href="{{ url_for('.comic_page', _anchor='content', book=p.book.title, chapter=p.book.chapter, number=p.book.page_number, name=p.path.replace(config.BOOK_DIR+'/', '')) }}"> latest</a>
+      </div>
+      {% else %}
+      {% endfor %}
+  </div>
+</div>

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}
+<h2 id="page_title"> List of pages by book</h2>
+{% endblock title %}
+{% block content %}
+<div id="book_page">
+  {% for p in first_page %}
+  {% set book_title = p.book.title %}
+      <ul>
+          <a href="{{ url_for('.comic_page', _anchor='content', book=p.book.title, chapter=p.book.chapter, number=p.book.page_number, name=p.path.replace(config.BOOK_DIR+'/', '')) }}">{{ p.book.title }}</a>
+      {% for p in pages|sort(attribute='book.page_number') if p.book.title == book_title %}
+          <ul><a href="{{ url_for('.comic_page', _anchor='content', book=p.book.title, chapter=p.book.chapter, number=p.book.page_number, name=p.path.replace(config.BOOK_DIR+'/', '')) }}">chapter:{{ p.book.chapter }} page:{{ p.book.page_number }} {{ p.title }}</a></ul>
+      {% endfor %}
+    </ul>
+  {% endfor %}
+</div>
+{% endblock content %}
+{% block content_footer %}
+{% endblock content_footer %}

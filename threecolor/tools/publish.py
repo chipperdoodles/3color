@@ -1,11 +1,13 @@
 import os
 import subprocess
 
-from threecolor import app
+from ..application import create_site
 from fabric.api import *
 from fabric.contrib.project import rsync_project
 from fabric.contrib.files import exists
 from shutil import make_archive
+
+app = create_site()
 
 #configure user and hostmname for remote server
 env.user = app.config['USER_NAME']

@@ -1,0 +1,4 @@
+{% for p in thumb_nail %}
+<p class="thumbnail">Latest Side Comic: {{p.title}}</p>
+<a class="thumbnail"href="{{ url_for('.comic_page', _anchor='content', book=p.book.title, chapter=p.book.chapter, number=p.book.page_number, name=p.path.replace(config.BOOK_DIR+'/', '')) }}"><img class="thumbnail_img" src="{{ url_for('.images', name=p.book.image) }}"></a>
+{% endfor %}

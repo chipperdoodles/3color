@@ -1,10 +1,10 @@
-<!doctype html>
+<!doctype html5>
 <html>
   <head>
       <meta charset="utf-8">
       <title>{{ config.SITE_NAME }}</title>
-      <link rel="stylesheet" href="{{ url_for('static', filename='css/main-prefixed.css') }}" type="text/css" />
-      <link rel="stylesheet" href="{{ url_for('static', filename='css/fonts.css') }}" type="text/css" />
+      <link rel="stylesheet" href="{{ url_for('.static', filename='css/main-prefixed.css') }}" type="text/css" />
+      <link rel="stylesheet" href="{{ url_for('.static', filename='css/fonts.css') }}" type="text/css" />
       <script type="text/javascript">
       function keyNav(event) {
         var key = event.keyCode || event.which;
@@ -17,7 +17,7 @@
   <body onkeydown="keyNav(event)">
     <header id="header" class="flex_head">
         <div class="flex_logo">
-          <a href="{{ url_for('index') }}"><img class="headerimg" src="{{ url_for('static', filename='images/logo.png') }}"/></a>
+          <a href="{{ url_for('.index') }}"><img class="headerimg" src="{{ url_for('.static', filename='images/logo.png') }}"/></a>
         </div>
         <div class="flex_thumb">
           {% include '_latest.html' %}

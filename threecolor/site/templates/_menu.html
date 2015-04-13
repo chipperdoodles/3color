@@ -1,0 +1,8 @@
+<ul class="main-menu-container">
+  <a class="main-menu-item" href="{{ url_for('.index') }}">Home</a>
+  <a class="main-menu-item" href="{{ url_for('.books') }}">Books</a>
+  <a class="main-menu-item" href="{{ url_for('.news') }}">News</a>
+  {% for p in menu_pages %}
+  <a class="main-menu-item" href="{{ url_for('.single_page', name=p.path.replace(config.PAGE_DIR+'/', ''))}}"> {{p.title}} </a>
+  {% endfor %}
+</ul>
