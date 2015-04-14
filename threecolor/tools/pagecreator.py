@@ -2,15 +2,17 @@ import os
 import yaml
 
 from datetime import date
-from ..models import page_header
+from ..models import pageHeader
 
-def pages_creator():
+class pagesCreator(pageHeader):
 
-    shortname = str(raw_input("Shortbook name, one word: "))
-    longname = raw_input("Long name for book, the book's title: ")
-    pagetype = raw_input("Page type of pages to be made. These are book, news, or single: ")
-    page_amount = range(1, input("amount of pages to create (in digits): ")+1)
+    def __init__(self, **kwargs):
+
+    page_amount = range(1, input+1)
     index = 0
+    pub = '{:%Y-%m-%d}'.format(date.today())
+    mod = '{:%Y-%m-%d}'.format(date.today())
+
 
     def page_header(numb):
 
@@ -37,20 +39,10 @@ def pages_creator():
 
     return write_page()
 
-class page_creator(page_header):
+class pageCreator(pageHeader):
 
     def __init__(self, **kwargs):
 
-        pub = '{:%Y-%m-%d}'.format(date.today())
-        mod = '{:%Y-%m-%d}'.format(date.today())
-
-    def write_page(self):
-            name = self.shortname+'_'+str(self.pagenumber)+'.md'
-            with open(name,"ab") as f:
-                yaml.dump(self.header(), f)
-
-    def print_page(self):
-
-            name = self.shortname+'_'+str(self.pagenumber)+'.md'
-            stuff = yaml.dump(self.header)
-            return stuff
+        self.__dict__.update(kwargs)
+        self.pub = '{:%Y-%m-%d}'.format(date.today())
+        self.mod = '{:%Y-%m-%d}'.format(date.today())

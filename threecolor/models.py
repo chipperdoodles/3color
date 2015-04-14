@@ -1,22 +1,25 @@
 import os
 import sys
+import yaml
+from . import __version__
+from application import page_dir
 
-class page_header(object):
+class pageHeader(object):
 
     def __init__(self, **kwargs):
 
-        self.longname = 'longname'
-        self.pagetype = 'pagetype'
-        self.pageamount = 'pageamount'
-        self.pagetitle = 'pagetitle'
-        self.pagenumber = 'pagenumber'
-        self.published = 'pub'
-        self.modified = 'mod'
-        self.image = 'image'
-        self.menu = 'menu'
+        # self.longname = kwargs['longname']
+        # self.pagetype = kwargs['pagetype']
+        # self.pageamount = kwargs['pageamount']
+        # self.pagetitle = kwargs['pagetitle']
+        # self.pagenumber = kwargs['pagenumber']
+        # self.published = kwargs['pub']
+        # self.modified = kwargs['mod']
+        # self.image = kwargs['image']
+        # self.menu = kwargs['menu']
+        self.__dict__.update(kwargs)
 
-        for 
-
+    @property
     def header(self):
 
         header = dict(
@@ -30,3 +33,15 @@ class page_header(object):
             version = __version__ )
 
         return header
+
+    def write_page(self, path):
+            name = os.path.join(path, self.shortname+'_'+str(self.pagenumber)+'.md')
+            with open(name,"ab") as f:
+                yaml.dump(self.header, f)
+
+    # def write_pages(self, path,x):
+
+    def dump(self, path):
+        name = os.path.join(path, self.shortname+'_'+str(self.pagenumber)+'.md')
+        info = yaml.dump(self.header)
+        return name+info

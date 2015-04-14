@@ -5,6 +5,10 @@ from flask import Flask
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 instfolder = os.path.join(APP_ROOT, 'instance')
 
+def page_dir(dirname):
+    ptype_dir = os.path.join(instfolder, 'content', dirname)
+    return ptype_dir
+
 def create_site():
     #create flask app instance
     app = Flask('threecolor',instance_path=instfolder ,instance_relative_config=True)

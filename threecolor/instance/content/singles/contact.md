@@ -1,7 +1,7 @@
 title: Contact
 published: 2016-03-01
 modified: 2016-03-01
-page_type: single_page
+page_type: single
 book: { 'title': , 'chapter': , 'page_number': , 'image': }
 menu: True
 version: 0.1

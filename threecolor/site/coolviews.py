@@ -22,7 +22,7 @@ def page_types():
     book_page = (p for p in pages if 'book' == p['page_type'])
     news_page = (p for p in pages if 'news' == p['page_type'])
     thumb_nail = latest_comic(book_page, current_app.config['THUMB_STORY'], 1)
-    book_list = ( )
+    book_list = ( p['page_type'] for p['page_type'] in pages)
     return dict(book_page=book_page, menu_pages=menu_pages, news_page=news_page, thumb_nail=thumb_nail, pages=pages)
 
 def total_pages(pages, book):
