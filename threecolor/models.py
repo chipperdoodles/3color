@@ -39,9 +39,7 @@ class pageHeader(object):
             with open(name,"ab") as f:
                 yaml.dump(self.header, f)
 
-    # def write_pages(self, path,x):
-
-    def dump(self, path):
-        name = os.path.join(path, self.shortname+'_'+str(self.pagenumber)+'.md')
+    def dump(self):
+        name = os.path.join(self.path, self.shortname+'_'+str(self.pagenumber)+'.md')
         info = yaml.dump(self.header)
-        return name+info
+        return name+'\n'+info

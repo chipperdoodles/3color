@@ -3,41 +3,40 @@ import yaml
 
 from datetime import date
 from ..models import pageHeader
+from .. import __version__
 
 class pagesCreator(pageHeader):
 
     def __init__(self, **kwargs):
 
-    page_amount = range(1, input+1)
-    index = 0
-    pub = '{:%Y-%m-%d}'.format(date.today())
-    mod = '{:%Y-%m-%d}'.format(date.today())
-
-
-    def page_header(numb):
-
+        self.__dict__.update(kwargs)
+        self.page_amount = range(1, page_amount+1)
+        index = 0
         pub = '{:%Y-%m-%d}'.format(date.today())
         mod = '{:%Y-%m-%d}'.format(date.today())
 
+    @property
+    def header(self, numb):
+
         header = dict(
-            title = '',
+            title = None,
             published = pub,
             modified = mod,
             page_type = pagetype,
-            book = {'title': longname, 'chapter': '', 'page_number': numb, 'image': ''},
+            book = {'title': longname, 'chapter': None, 'page_number': numb, 'image': None},
             menu = False,
-            version = 0.1 )
+            version = __version__ )
 
         return header
 
-    def write_page():
-        for x in page_amount:
-            name = shortname+'_'+str(index+x)+'.md'
+    def write_page(self):
+        for x in self.page_amount:
+            name = os.path.join(self.path, self.shortname+'_'+str(index+x)+'.md')
             number = index+x
             with open(name,"ab") as f:
-                yaml.dump(page_header(number), f)
+                yaml.dump(self.header(number), f)
 
-    return write_page()
+        return write_page()
 
 class pageCreator(pageHeader):
 

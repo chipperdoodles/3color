@@ -10,10 +10,10 @@ setup(
         'Flask',
         'Flask-FlatPages',
         'Frozen-Flask',
-        'Fabric'  
+        'Fabric'
     ],
     entry_points='''
         [console_scripts]
-        press=threecolor.manager:cli
+        3color=threecolor.manager:cli
         ''',
 )
