@@ -1,7 +1,9 @@
 import os
 import sys
 import yaml
+
 from . import __version__
+from datetime import date
 from application import page_dir
 
 class pageHeader(object):
@@ -43,3 +45,41 @@ class pageHeader(object):
         name = os.path.join(self.path, self.shortname+'_'+str(self.pagenumber)+'.md')
         info = yaml.dump(self.header)
         return name+'\n'+info
+
+class pagesCreator(pageHeader):
+
+    def __init__(self, **kwargs):
+
+        self.__dict__.update(kwargs)
+        self.index = 0
+        self.pub = '{:%Y-%m-%d}'.format(date.today())
+        self.mod = '{:%Y-%m-%d}'.format(date.today())
+
+    def header(self, n):
+
+        header = dict(
+            title = '',
+            published = self.pub,
+            modified = self.mod,
+            page_type = self.pagetype,
+            book = {'title': self.longname, 'chapter': '', 'page_number': n, 'image': ''},
+            menu = False,
+            version = __version__ )
+
+        return header
+
+    def write_page(self):
+
+        for x in range(1, self.page_amount+1):
+            name = os.path.join(self.path, self.shortname+'_'+str(self.index+x)+'.md')
+            number = self.index+x
+            with open(name,"ab") as f:
+                yaml.dump(self.header(number), f)
+
+class pageCreator(pageHeader):
+
+    def __init__(self, **kwargs):
+
+        self.__dict__.update(kwargs)
+        self.pub = '{:%Y-%m-%d}'.format(date.today())
+        self.mod = '{:%Y-%m-%d}'.format(date.today())

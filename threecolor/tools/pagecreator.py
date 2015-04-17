@@ -1,47 +1,55 @@
 import os
-import yaml
+import click
 
-from datetime import date
-from ..models import pageHeader
-from .. import __version__
+from ..models import pagesCreator, pageCreator
+from ..application import page_dir
 
-class pagesCreator(pageHeader):
+@cli.command()
+@click.option('--batch', is_flag=True, help='For making more than one new page')
+@click.option('--pagetype', prompt='Page type to be created', type=click.Choice(['book', 'news', 'single']))
+def newpage(batch, pagetype):
+    """Creates a new page, prompting you for information"""
+    path = page_dir(pagetype)
 
-    def __init__(self, **kwargs):
+    if batch:
+        pamount = click.prompt('Amount of new pages to make', type=int)
 
-        self.__dict__.update(kwargs)
-        self.page_amount = range(1, page_amount+1)
-        index = 0
-        pub = '{:%Y-%m-%d}'.format(date.today())
-        mod = '{:%Y-%m-%d}'.format(date.today())
+        lname = click.prompt('The title of the Book', default=None)
+        sname = click.prompt('The shortname of your book (used for filenames)', default='')
+        ptype = pagetype
 
-    @property
-    def header(self, numb):
+        data = dict(
+                longname = lname,
+                shortname = sname,
+                pagetype = ptype,
+                path = path,
+                page_amount = pamount
+        )
 
-        header = dict(
-            title = None,
-            published = pub,
-            modified = mod,
-            page_type = pagetype,
-            book = {'title': longname, 'chapter': None, 'page_number': numb, 'image': None},
-            menu = False,
-            version = __version__ )
+        thing = pagecreator.pagesCreator(**data)
+        thing.write_page()
 
-        return header
+    else:
+        lname = click.prompt('The title of the Book', default='')
+        sname = click.prompt('The shortname of your book (used for filenames)', default='')
+        ptype = pagetype
+        ptitle = click.prompt('The title of the page', default=None)
+        pnumber = click.prompt('The number of the page', type=int, default=None)
+        chptr = click.prompt('The chapter number', type=int, default=None)
+        img = click.prompt('The name of the image file of your comic page', default=sname+'_'+str(pnumber)+'.png')
+        menu = click.prompt('True or False if you want to show up in main menu', type=bool, default=False)
 
-    def write_page(self):
-        for x in self.page_amount:
-            name = os.path.join(self.path, self.shortname+'_'+str(index+x)+'.md')
-            number = index+x
-            with open(name,"ab") as f:
-                yaml.dump(self.header(number), f)
+        data = dict(
+                longname = lname,
+                shortname = sname,
+                pagetype = ptype,
+                pagetitle = ptitle,
+                pagenumber = pnumber,
+                chapter = chptr,
+                image = img,
+                menu = menu,
+                path = path
+        )
 
-        return write_page()
-
-class pageCreator(pageHeader):
-
-    def __init__(self, **kwargs):
-
-        self.__dict__.update(kwargs)
-        self.pub = '{:%Y-%m-%d}'.format(date.today())
-        self.mod = '{:%Y-%m-%d}'.format(date.today())
+        thing = pagecreator.pageCreator(**data)
+        click.echo(thing.dump())

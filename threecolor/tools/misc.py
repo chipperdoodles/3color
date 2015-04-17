@@ -13,4 +13,4 @@ def open_browser():
         try:
             subprocess.call(['xdg-open', instfolder])
         except OSError:
-            print('Operating system doesn\'t have lazy file browser opener)
+            print('Operating system doesn\'t have lazy file browser opener')
