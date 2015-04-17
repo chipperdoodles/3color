@@ -3,7 +3,7 @@ import subprocess
 
 from setuptools import setup, find_packages
 
-su =     setup(
+su =    setup(
         name='threecolor',
         version='0.2',
         author='Martin Knobel',

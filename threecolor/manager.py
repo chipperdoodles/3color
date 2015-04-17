@@ -6,6 +6,7 @@ from .application import create_site
 from .tools import publish, misc
 from .models import pagesCreator, pageCreator
 from .site import coolviews
+from application import page_dir
 
 from fabric.api import execute
 
@@ -80,7 +81,7 @@ def open():
 
 @cli.command()
 @click.option('--batch', is_flag=True, help='For making more than one new page')
-@click.option('--pagetype', prompt='Page type to be created', type=click.Choice(['book', 'news', 'single']))
+@click.option('--pagetype', prompt='Page type to be created', type=click.Choice(['book', 'news', 'single']), , default='book')
 def newpage(batch, pagetype):
     """Creates a new page, prompting you for information"""
     path = page_dir(pagetype)
@@ -88,7 +89,7 @@ def newpage(batch, pagetype):
     if batch:
         pamount = click.prompt('Amount of new pages to make', type=int)
 
-        lname = click.prompt('The title of the Book', default=None)
+        lname = click.prompt('The title of the Book', default='')
         sname = click.prompt('The shortname of your book (used for filenames)', default='')
         ptype = pagetype
 
@@ -100,16 +101,16 @@ def newpage(batch, pagetype):
                 page_amount = pamount
         )
 
-        thing = pagecreator.pagesCreator(**data)
+        thing = pagesCreator(**data)
         thing.write_page()
 
     else:
         lname = click.prompt('The title of the Book', default='')
         sname = click.prompt('The shortname of your book (used for filenames)', default='')
         ptype = pagetype
-        ptitle = click.prompt('The title of the page', default=None)
-        pnumber = click.prompt('The number of the page', type=int, default=None)
-        chptr = click.prompt('The chapter number', type=int, default=None)
+        ptitle = click.prompt('The title of the page', default='')
+        pnumber = click.prompt('The number of the page', type=int)
+        chptr = click.prompt('The chapter number', type=int)
         img = click.prompt('The name of the image file of your comic page', default=sname+'_'+str(pnumber)+'.png')
         menu = click.prompt('True or False if you want to show up in main menu', type=bool, default=False)
 
@@ -125,5 +126,5 @@ def newpage(batch, pagetype):
                 path = path
         )
 
-        thing = pagecreator.pageCreator(**data)
-        click.echo(thing.dump())
+        thing = pageCreator(**data)
+        click.echo(thing.write_page())

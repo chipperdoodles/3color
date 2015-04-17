@@ -36,10 +36,10 @@ class pageHeader(object):
 
         return header
 
-    def write_page(self, path):
-            name = os.path.join(path, self.shortname+'_'+str(self.pagenumber)+'.md')
-            with open(name,"ab") as f:
-                yaml.dump(self.header, f)
+    def write_page(self):
+        name = os.path.join(self.path, self.shortname+'_'+str(self.pagenumber)+'.md')
+        with open(name,"ab") as f:
+            yaml.dump(self.header, f)
 
     def dump(self):
         name = os.path.join(self.path, self.shortname+'_'+str(self.pagenumber)+'.md')
