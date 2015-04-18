@@ -1,9 +1,6 @@
-import sys  # FIXME: unused import
 import os
 
-from werkzeug.contrib.atom import AtomFeed  # FIXME: unused import
-from flask import abort, current_app, Blueprint, render_template, url_for,\
-    send_from_directory, send_file  # FIXME: unused imports url_for, send_file
+from flask import abort, current_app, Blueprint, render_template, send_from_directory
 from flask_flatpages import FlatPages
 from flask_frozen import Freezer
 

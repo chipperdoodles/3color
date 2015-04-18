@@ -1,10 +1,8 @@
 import os
-import sys  # FIXME: unused import
 import yaml
 
 from . import __version__
 from datetime import date
-from .application import page_dir  # FIXME: unused import
 
 
 class PageHeader(object):

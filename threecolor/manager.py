@@ -1,5 +1,3 @@
-import sys  # FIXME: unused import
-import os  # FIXME: unused import
 import click
 
 from .application import create_site, page_dir
@@ -91,7 +89,7 @@ def open():
 @click.option('--pagetype', prompt='Page type to be created', type=click.Choice(['book', 'news', 'single']))
 def newpage(batch, pagetype):
     """Creates a new page, prompting you for information"""
-    path = page_dir(pagetype)  # TODO: unresolved reference: page_dir
+    path = page_dir(pagetype)
 
     if batch:
         pamount = click.prompt('Amount of new pages to make', type=int)
@@ -108,7 +106,7 @@ def newpage(batch, pagetype):
                 page_amount=pamount
         )
 
-        thing = PagesCreator(**data)  # TODO: unresolved reference: pagecreator
+        thing = PagesCreator(**data)
         thing.write_page()
 
     else:
@@ -133,5 +131,5 @@ def newpage(batch, pagetype):
                 path=path
         )
 
-        thing = PageCreator(**data)  # TODO: unresolved reference: pagecreator
+        thing = PageCreator(**data)
         click.echo(thing.dump())

@@ -1,4 +1,3 @@
-import os  # FIXME: unused import
 import click
 
 from ..models import PagesCreator, PageCreator

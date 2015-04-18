@@ -1,4 +1,3 @@
-import sys  # FIXME: unused import
 import subprocess
 
 from ..configs import sysinfo

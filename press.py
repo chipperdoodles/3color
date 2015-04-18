@@ -1,4 +1,3 @@
-import sys  # FIXME: usued import
 import os
 import platform
 
