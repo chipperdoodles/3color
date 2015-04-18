@@ -18,7 +18,7 @@ setup(
     author='Martin Knobel',
     author_email='mknobel@noties.org',
     url='3color.noties.org',
-    description='A Flask based static site generartor for comics',
+    description='A Flask based static site generator for comics',
     long_description=long_description,
     packages=find_packages(),
     include_package_data=True,

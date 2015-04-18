@@ -10,6 +10,7 @@ from fabric.contrib.files import exists
 
 from shutil import make_archive
 
+# TODO: fix breaking if no instance
 app = create_site()
 
 # configure user and hostname for remote server

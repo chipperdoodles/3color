@@ -2,7 +2,7 @@ import click
 import subprocess
 
 from .application import create_site, page_dir, instfolder
-from .tools import publish, misc
+from .tools import publish, misc, homefolder
 from .models import PagesCreator, PageCreator
 from .site import coolviews
 
@@ -75,15 +75,15 @@ def publish():
 @cli.command()
 def run():
     """Run website locally in debug mode"""
-    click.echo('running live server at localhost:5000')
     app = create_site()
+    click.launch('http://localhost:5000/')
     app.run()
 
 
 @cli.command(name='open')
 def open_file():  # FIXME: shadows builtin open()
     """open your project folder"""
-    misc.open_browser()
+    click.launch(instfolder)
 
 
 @cli.command()
@@ -144,3 +144,8 @@ def atom():
         subprocess.call(['atom', instfolder])
     except OSError:
         print("The atom editor command line tool not installed")
+
+#
+# @cli.command(name='setup')
+# def make_instance():
+#     homefolder.make_home()
