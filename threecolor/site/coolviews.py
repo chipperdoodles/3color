@@ -23,8 +23,13 @@ def page_types():
     news_page = (p for p in pages if 'news' == p['page_type'])
     thumb_nail = latest_comic(book_page, current_app.config['THUMB_STORY'], 1)
     book_list = (p['page_type'] for p in pages)  # FIXME: unused
-    # TODO: dict literal
-    return dict(book_page=book_page, menu_pages=menu_pages, news_page=news_page, thumb_nail=thumb_nail, pages=pages)
+    return {
+        "book_page": book_page,
+        "menu_pages": menu_pages,
+        "news_page": news_page, 
+        "thumb_nail": thumb_nail,
+        "pages": pages
+    }
 
 
 def total_pages(pages, book):

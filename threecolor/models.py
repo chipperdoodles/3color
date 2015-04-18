@@ -23,17 +23,20 @@ class PageHeader(object):
     @property
     def header(self):
 
-        header = dict(  # TODO: make dict literal
-            title=self.pagetitle,
-            published=self.pub,
-            modified=self.mod,
-            page_type=self.pagetype,
-            book={'title': self.longname, 'chapter': self.chapter, 'page_number': self.pagenumber, 'image': self.image},
-            menu=self.menu,
-            version=__version__
-            )
-
-        return header
+        return {
+            "title": self.pagetitle,
+            "published": self.pub,
+            "modified": self.mod,
+            "page_type": self.pagetype,
+            "book": {
+                'title': self.longname, 
+                'chapter': self.chapter, 
+                'page_number': self.pagenumber, 
+                'image': self.image
+            },
+            "menu": self.menu,
+            "version": __version__
+        }
 
     def write_page(self, path):
             name = os.path.join(path, self.shortname+'_'+str(self.pagenumber)+'.md')
@@ -58,16 +61,15 @@ class PagesCreator(PageHeader):
 
     def header(self, n):
 
-        header = dict(  # TODO: make dict literal
-            title='',
-            published=self.pub,
-            modified=self.mod,
-            page_type=self.pagetype,
-            book={'title': self.longname, 'chapter': '', 'page_number': n, 'image': ''},
-            menu=False,
-            version=__version__)
-
-        return header
+        return {
+            "title": '',
+            "published": self.pub,
+            "modified": self.mod,
+            "page_type": self.pagetype,
+            "book": {'title': self.longname, 'chapter': '', 'page_number': n, 'image': ''},
+            "menu": False,
+            "version": __version__
+        }
 
     def write_page(self):
 
