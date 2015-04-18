@@ -3,6 +3,12 @@ import subprocess
 
 from setuptools import setup, find_packages
 
+if platform.system() == 'Windows':
+
+    subprocess.call(
+        ['easy_install', "http://www.voidspace.org.uk/downloads/pycrypto26/pycrypto-2.6.win-amd64-py2.7.exe"]
+    )
+
 setup(
     name='threecolor',
     version='0.2',
@@ -24,9 +30,3 @@ setup(
         3color=threecolor.manager:cli
         ''',
 )
-
-if platform.system() == 'Windows':
-
-    subprocess.call(
-        ['easy_install', "http://www.voidspace.org.uk/downloads/pycrypto26/pycrypto-2.6.win-amd64-py2.7.exe"]
-    )

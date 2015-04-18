@@ -29,21 +29,23 @@ class PageHeader(object):
             "modified": self.mod,
             "page_type": self.pagetype,
             "book": {
-                'title': self.longname, 
-                'chapter': self.chapter, 
-                'page_number': self.pagenumber, 
+                'title': self.longname,
+                'chapter': self.chapter,
+                'page_number': self.pagenumber,
                 'image': self.image
             },
             "menu": self.menu,
             "version": __version__
         }
 
-    def write_page(self, path):
-            name = os.path.join(path, self.shortname+'_'+str(self.pagenumber)+'.md')
-            with open(name, "ab") as f:
-                yaml.dump(self.header, f)
+    def write_page(self):
+        """ Writes the dict from header funtion into a file. This is our page metadata information"""
+        name = os.path.join(self.path, self.shortname+'_'+str(self.pagenumber)+'.md')
+        with open(name, "ab") as f:
+            yaml.dump(self.header, f)
 
     def dump(self):
+        """test function"""
         name = os.path.join(self.path, self.shortname+'_'+str(self.pagenumber)+'.md')
         info = yaml.dump(self.header)
         return name+'\n'+info
@@ -70,6 +72,7 @@ class PagesCreator(PageHeader):
         }
 
     def write_page(self):
+        """ Writes the dict from header funtion into a file. This is our page metadata information"""
 
         for x in range(1, self.page_amount+1):
             name = os.path.join(self.path, self.shortname+'_'+str(self.index+x)+'.md')

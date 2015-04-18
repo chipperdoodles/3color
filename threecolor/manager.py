@@ -1,6 +1,7 @@
 import click
+import subprocess
 
-from .application import create_site, page_dir
+from .application import create_site, page_dir, instfolder
 from .tools import publish, misc
 from .models import PagesCreator, PageCreator
 from .site import coolviews
@@ -38,8 +39,8 @@ def cli():
     pass
 
 
-@cli.command()
-def all():  # FIXME: shadows builtin all()
+@cli.command(name='all')
+def build_push():  # FIXME: shadows builtin all()
     """ Builds your website into Static files and pushes
 
     is the same as running press build and then press publish
@@ -79,8 +80,8 @@ def run():
     app.run()
 
 
-@cli.command()
-def open():  # FIXME: shadows builtin open()
+@cli.command(name='open')
+def open_file():  # FIXME: shadows builtin open()
     """open your project folder"""
     misc.open_browser()
 
@@ -132,5 +133,14 @@ def newpage(batch, pagetype):
             "path": path
         }
 
-        thing =PageCreator(**data)
-        click.echo(thing.write_page())
+        thing = PageCreator(**data)
+        thing.write_page()
+
+
+@cli.command()
+def atom():
+    """Calls the atom Command line tool to open """
+    try:
+        subprocess.call(['atom', instfolder])
+    except OSError:
+        print("The atom editor command line tool not installed")
