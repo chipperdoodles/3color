@@ -7,10 +7,14 @@ import platform
 def activate_venv():
     if platform.system() == 'Windows':
         path = os.path.join(os.getcwd(), 'venv', 'Scripts', 'activate_this.py')
-        execfile(path, dict(__file__=path))  # FIXME: not python3 friendly
+        with open(path) as f:
+            code = compile(f.read(), path, 'exec')
+            exec(code, globals(), locals())
     else:
         path = os.path.join(os.getcwd(), 'venv', 'bin', 'activate_this.py')
-        execfile(path, dict(__file__=path))  # FIXME: not python3 friendly
+        with open(path) as f:
+            code = compile(f.read(), path, 'exec')
+            exec(code, globals(), locals())
 
 activate_venv()
 
