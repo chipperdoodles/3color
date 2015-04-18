@@ -5,15 +5,17 @@ from flask import Flask
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 instfolder = os.path.join(APP_ROOT, 'instance')
 
+
 def page_dir(dirname):
     ptype_dir = os.path.join(instfolder, 'content', dirname)
     return ptype_dir
 
-def create_site():
-    #create flask app instance
-    app = Flask('threecolor',instance_path=instfolder ,instance_relative_config=True)
 
-    #configure flask app from default settings, then overide with settings.cfg
+def create_site():
+    # create flask app instance
+    app = Flask('threecolor', instance_path=instfolder, instance_relative_config=True)
+
+    # configure flask app from default settings, then overide with settings.cfg
     app.config.from_object('threecolor.configs.default_settings')
     app.config.from_pyfile('settings.cfg')
 
@@ -33,6 +35,7 @@ def create_site():
     freezer.init_app(app)
 
     return app
+
 
 def create_admin():
     pass

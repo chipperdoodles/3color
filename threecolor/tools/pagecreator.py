@@ -1,8 +1,10 @@
-import os
+import os  # FIXME: unused import
 import click
 
-from ..models import pagesCreator, pageCreator
+from ..models import PagesCreator, PageCreator
 from ..application import page_dir
+from ..manager import cli
+
 
 @cli.command()
 @click.option('--batch', is_flag=True, help='For making more than one new page')
@@ -18,7 +20,7 @@ def newpage(batch, pagetype):
         sname = click.prompt('The shortname of your book (used for filenames)', default='')
         ptype = pagetype
 
-        data = dict(
+        data = dict(  # TODO: make a dict literal
                 longname = lname,
                 shortname = sname,
                 pagetype = ptype,
@@ -26,7 +28,7 @@ def newpage(batch, pagetype):
                 page_amount = pamount
         )
 
-        thing = pagecreator.pagesCreator(**data)
+        thing = PagesCreator(**data)
         thing.write_page()
 
     else:
@@ -39,17 +41,17 @@ def newpage(batch, pagetype):
         img = click.prompt('The name of the image file of your comic page', default=sname+'_'+str(pnumber)+'.png')
         menu = click.prompt('True or False if you want to show up in main menu', type=bool, default=False)
 
-        data = dict(
-                longname = lname,
-                shortname = sname,
-                pagetype = ptype,
-                pagetitle = ptitle,
-                pagenumber = pnumber,
-                chapter = chptr,
-                image = img,
-                menu = menu,
-                path = path
+        data = dict(  # TODO: Make a dict literal
+                longname=lname,
+                shortname=sname,
+                pagetype=ptype,
+                pagetitle=ptitle,
+                pagenumber=pnumber,
+                chapter=chptr,
+                image=img,
+                menu=menu,
+                path=path
         )
 
-        thing = pagecreator.pageCreator(**data)
+        thing = PageCreator(**data)
         click.echo(thing.dump())

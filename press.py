@@ -1,30 +1,31 @@
-import sys
+import sys  # FIXME: usued import
 import os
 import platform
 
-#activate the virtual environment set up by init.py
+
+# activate the virtual environment set up by init.py
 def activate_venv():
     if platform.system() == 'Windows':
         path = os.path.join(os.getcwd(), 'venv', 'Scripts', 'activate_this.py')
-        execfile(path, dict(__file__=path))
+        execfile(path, dict(__file__=path))  # FIXME: not python3 friendly
     else:
         path = os.path.join(os.getcwd(), 'venv', 'bin', 'activate_this.py')
-        execfile(path, dict(__file__=path))
+        execfile(path, dict(__file__=path))  # FIXME: not python3 friendly
 
 activate_venv()
 
 import argparse
 
-from threecolor import app, publish
-from threecolor.flatpager import chill
+from threecolor import app, publish  # FIXME: These don't exist?
+from threecolor.flatpager import chill  # FIXME: This doesn't exist?
 from fabric.api import execute
 
-#argument parser for main script
+# argument parser for main script
 parser = argparse.ArgumentParser(
     prog='3color Press',
     usage='%(prog)s [all | build | compress | publish | run]',
     formatter_class=argparse.RawTextHelpFormatter,
-    description= ("""
+    description=("""
                     3color Press
         -------------------------------------
 
@@ -49,31 +50,31 @@ parser = argparse.ArgumentParser(
     """))
 
 
-parser.add_argument("options", choices = ['all', 'build', 'compress', 'publish', 'run'],
+parser.add_argument("options", choices=['all', 'build', 'compress', 'publish', 'run'],
                     help="type all, build, compress, publish, or run")
 
 args = parser.parse_args()
 
 if args.options == 'all':
-    print ("building")
+    print("building")
     chill()
-    print ("publishing")
+    print("publishing")
     execute(publish.publish)
 
 elif args.options == 'build':
-    print ("building")
+    print("building")
     chill()
 
 elif args.options == 'compress':
-    print ("compressing")
+    print("compressing")
     execute(publish.archive)
 
 elif args.options == 'publish':
-    print ("publishing")
+    print("publishing")
     execute(publish.publish)
 
 elif args.options == 'run':
     app.run()
 
 else:
-    parser.print_help
+    parser.print_help()

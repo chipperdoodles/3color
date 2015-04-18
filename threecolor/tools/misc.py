@@ -1,8 +1,9 @@
-import sys
+import sys  # FIXME: unused import
 import subprocess
 
 from ..configs import sysinfo
 from ..application import instfolder
+from os import startfile  # FIXME: not python3 friendly
 
 def open_browser():
     if sysinfo.system=='Windows':
