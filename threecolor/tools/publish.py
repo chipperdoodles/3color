@@ -2,9 +2,12 @@ import os
 import subprocess
 
 from ..application import create_site
+
+# TODO: make fabric optional
 from fabric.api import *
 from fabric.contrib.project import rsync_project
 from fabric.contrib.files import exists
+
 from shutil import make_archive
 
 app = create_site()

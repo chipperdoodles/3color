@@ -22,6 +22,8 @@ import argparse
 from threecolor.tools import publish
 from threecolor.application import create_site
 from threecolor.site.coolviews import chill
+
+# TODO: make fabric optional
 from fabric.api import execute
 
 # argument parser for main script

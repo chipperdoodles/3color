@@ -5,6 +5,7 @@ from .tools import publish, misc
 from .models import PagesCreator, PageCreator
 from .site import coolviews
 
+# TODO: make fabric optional
 from fabric.api import execute
 
 
