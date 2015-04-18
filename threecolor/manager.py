@@ -38,7 +38,7 @@ def cli():
 
 
 @cli.command()
-def all():  # TODO: name shadows all() builtin function
+def all():  # FIXME: shadows builtin all()
     """ Builds your website into Static files and pushes
 
     is the same as running press build and then press publish
@@ -79,7 +79,7 @@ def run():
 
 
 @cli.command()
-def open():
+def open():  # FIXME: shadows builtin open()
     """open your project folder"""
     misc.open_browser()
 

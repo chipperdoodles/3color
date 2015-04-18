@@ -19,8 +19,9 @@ activate_venv()
 
 import argparse
 
-from threecolor import app, publish  # FIXME: These don't exist?
-from threecolor.flatpager import chill  # FIXME: This doesn't exist?
+from threecolor.tools import publish
+from threecolor.application import create_site
+from threecolor.site.coolviews import chill
 from fabric.api import execute
 
 # argument parser for main script
@@ -77,6 +78,7 @@ elif args.options == 'publish':
     execute(publish.publish)
 
 elif args.options == 'run':
+    app = create_site()
     app.run()
 
 else:
