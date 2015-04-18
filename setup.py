@@ -3,6 +3,9 @@ import subprocess
 
 from setuptools import setup, find_packages
 
+with open('README.txt') as file:
+    long_description = file.read()
+
 if platform.system() == 'Windows':
 
     subprocess.call(
@@ -11,11 +14,12 @@ if platform.system() == 'Windows':
 
 setup(
     name='threecolor',
-    version='0.2',
+    version='0.2.0',
     author='Martin Knobel',
     author_email='mknobel@noties.org',
     url='3color.noties.org',
     description='A Flask based static site generartor for comics',
+    long_description=long_description,
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
@@ -29,4 +33,10 @@ setup(
         [console_scripts]
         3color=threecolor.manager:cli
         ''',
+    classifiers=[
+        'Environment :: Console',
+        'Environment :: Web Environment',
+        'Intended Audience :: End Users/Desktop',
+        'Topic :: Web',
+    ]
 )
