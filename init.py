@@ -7,8 +7,9 @@ import subprocess
 system = platform.system()
 
 # TODO: is this file superceded by setup.py?
-# TODO: if this file is not superceded by setup.py, note that
-# TODO:     pip install calls below will not work when called from system python instance (requires sudo)
+# if this file is not superceded by setup.py, note that the
+# pip install calls below will not work when called from
+# system python instance (requires sudo)
 
 
 # installs app dependencies with pip
