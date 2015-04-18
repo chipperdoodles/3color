@@ -20,14 +20,15 @@ def page_types():
     # injects variables for book pages and menu pages, menu pages are used to build main menu links
     menu_pages = (p for p in pages if (p['menu']))
     book_page = (p for p in pages if 'book' == p['page_type'])
-    news_page = (p for p in pages if 'news' == p['page_type'])
+    news_page = (p for p in pages if 'news' == p['page_type'])  # FIXME: uses same name as route function below
     thumb_nail = latest_comic(book_page, current_app.config['THUMB_STORY'], 1)
-    book_list = (p['page_type'] for p in pages)  # FIXME: unused
+    book_list = (p['page_type'] for p in pages)  # FIXME: uses same name as book_list function below
     return {
         "book_page": book_page,
         "menu_pages": menu_pages,
         "news_page": news_page, 
         "thumb_nail": thumb_nail,
+        "book_list": book_list,
         "pages": pages
     }
 
