@@ -52,9 +52,7 @@ class PageHeader(object):
 class PagesCreator(PageHeader):
 
     def __init__(self, **kwargs):
-        # TODO: super().__init__(**kwargs)
-
-        self.__dict__.update(kwargs)
+        super(PagesCreator, self).__init__(**kwargs)
         self.index = 0
         self.pub = '{:%Y-%m-%d}'.format(date.today())
         self.mod = '{:%Y-%m-%d}'.format(date.today())
@@ -83,8 +81,6 @@ class PagesCreator(PageHeader):
 class PageCreator(PageHeader):
 
     def __init__(self, **kwargs):
-        # TODO: super().__init__(**kwargs)
-
-        self.__dict__.update(kwargs)
+        super(PageCreator, self).__init__(**kwargs)
         self.pub = '{:%Y-%m-%d}'.format(date.today())
         self.mod = '{:%Y-%m-%d}'.format(date.today())
