@@ -1,8 +1,8 @@
 DEBUG = True
 FLATPAGES_AUTO_RELOAD = DEBUG
 FLATPAGES_EXTENSION = '.md'
-FLATPAGES_ROOT =  'content'
-FREEZER_DESTINATION_IGNORE = ['.git*','.gitignore','CNAME']
+FLATPAGES_ROOT = 'content'
+FREEZER_DESTINATION_IGNORE = ['.git*', '.gitignore', 'CNAME']
 FEEZER_RELATIVE_URLS = True
 SITE_NAME = '3color Press Site'
 BUILD_DIR = 'build'

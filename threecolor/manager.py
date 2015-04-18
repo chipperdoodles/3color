@@ -1,14 +1,13 @@
-import sys
-import os
 import click
 
-from .application import create_site
+from .application import create_site, page_dir
 from .tools import publish, misc
-from .models import pagesCreator, pageCreator
+from .models import PagesCreator, PageCreator
 from .site import coolviews
-from application import page_dir
 
+# TODO: make fabric optional
 from fabric.api import execute
+
 
 @click.group()
 def cli():
@@ -38,8 +37,9 @@ def cli():
     """
     pass
 
+
 @cli.command()
-def all():
+def all():  # FIXME: shadows builtin all()
     """ Builds your website into Static files and pushes
 
     is the same as running press build and then press publish
@@ -49,11 +49,13 @@ def all():
     click.echo('publishing')
     execute(publish.publish)
 
+
 @cli.command()
 def build():
     """Builds website into static files"""
     click.echo('building')
     coolviews.chill()
+
 
 @cli.command()
 def compress():
@@ -61,11 +63,13 @@ def compress():
     click.echo('compressing')
     execute(publish.archive)
 
+
 @cli.command()
 def publish():
     """publish your site according to your configuration"""
     click.echo('publishing')
     execute(publish.publish)
+
 
 @cli.command()
 def run():
@@ -74,14 +78,16 @@ def run():
     app = create_site()
     app.run()
 
+
 @cli.command()
-def open():
+def open():  # FIXME: shadows builtin open()
     """open your project folder"""
     misc.open_browser()
 
+
 @cli.command()
 @click.option('--batch', is_flag=True, help='For making more than one new page')
-@click.option('--pagetype', prompt='Page type to be created', type=click.Choice(['book', 'news', 'single']), , default='book')
+@click.option('--pagetype', prompt='Page type to be created', type=click.Choice(['book', 'news', 'single']), default='book')
 def newpage(batch, pagetype):
     """Creates a new page, prompting you for information"""
     path = page_dir(pagetype)
@@ -94,14 +100,14 @@ def newpage(batch, pagetype):
         ptype = pagetype
 
         data = dict(
-                longname = lname,
-                shortname = sname,
-                pagetype = ptype,
-                path = path,
-                page_amount = pamount
+                longname=lname,
+                shortname=sname,
+                pagetype=ptype,
+                path=path,
+                page_amount=pamount
         )
 
-        thing = pagesCreator(**data)
+        thing = PagesCreator(**data)
         thing.write_page()
 
     else:
@@ -114,17 +120,17 @@ def newpage(batch, pagetype):
         img = click.prompt('The name of the image file of your comic page', default=sname+'_'+str(pnumber)+'.png')
         menu = click.prompt('True or False if you want to show up in main menu', type=bool, default=False)
 
-        data = dict(
-                longname = lname,
-                shortname = sname,
-                pagetype = ptype,
-                pagetitle = ptitle,
-                pagenumber = pnumber,
-                chapter = chptr,
-                image = img,
-                menu = menu,
-                path = path
-        )
+        data = {
+            "longname": lname,
+            "shortname": sname,
+            "pagetype": ptype,
+            "pagetitle": ptitle,
+            "pagenumber": pnumber,
+            "chapter": chptr,
+            "image": img,
+            "menu": menu,
+            "path": path
+        }
 
-        thing = pageCreator(**data)
+        thing =PageCreator(**data)
         click.echo(thing.write_page())

@@ -2,16 +2,20 @@ import os
 import subprocess
 
 from ..application import create_site
+
+# TODO: make fabric optional
 from fabric.api import *
 from fabric.contrib.project import rsync_project
 from fabric.contrib.files import exists
+
 from shutil import make_archive
 
 app = create_site()
 
-#configure user and hostmname for remote server
+# configure user and hostname for remote server
 env.user = app.config['USER_NAME']
 env.hosts = app.config['REMOTE_SERVER']
+
 
 def archive():
     """
@@ -19,12 +23,14 @@ def archive():
     """
     make_archive('threecolorSite', 'gztar', app.config['FREEZER_DESTINATION'])
 
+
 def uptime():
     """
     runs the uptime command on remote server
     currently here just to test functionality
     """
     run("uptime")
+
 
 def rsync():
     """
@@ -35,6 +41,7 @@ def rsync():
     local = os.path.join(os.getcwd(), app.config['FREEZER_DESTINATION']+'/')
     remote = app.config['REMOTE_SERVER']
     rsync_project(remote, local, delete=True)
+
 
 def git_deploy():
     """
@@ -49,6 +56,7 @@ def git_deploy():
     subprocess.call(['git', 'commit', '-a', '-m', 'updated'])
     subprocess.call(['git', 'push'])
     os.chdir(project)
+
 
 def upload():
     """
@@ -73,6 +81,7 @@ def upload():
 
     os.remove('threecolorSite.tar.gz')
 
+
 def publish():
     if app.config['PUB_METHOD'] == 'sftp':
         upload()
@@ -83,4 +92,4 @@ def publish():
     elif app.config['PUB_METHOD'] == 'local':
         archive()
     else:
-        print "You did not configure your publish method"
+        print("You did not configure your publish method")
