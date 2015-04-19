@@ -12,8 +12,8 @@ cfg = config.make_usr_cfg()
 
 site = Blueprint('site', __name__,
                  url_prefix='',
-                 template_folder = cfg['TEMPLATES'],
-                 static_folder = cfg['STATIC'],
+                 template_folder=cfg['TEMPLATES'],
+                 static_folder=cfg['STATIC'],
                  static_url_path='/static/site'
                  )
 

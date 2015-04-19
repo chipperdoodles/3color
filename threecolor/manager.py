@@ -8,6 +8,9 @@ from .tools import publish, misc
 from .models import PagesCreator, PageCreator
 from .site import coolviews
 
+up = click.UNPROCESSED
+
+
 @click.group()
 def cli():
     """ 3color Press command line tool
@@ -96,6 +99,7 @@ def push_site(pubmethod):
     else:
         publish.publish()
 
+
 # FIXME launches browser windows
 @cli.command()
 def run():
@@ -113,7 +117,8 @@ def open_file():
 
 @cli.command()
 @click.option('--batch', is_flag=True, help='For making more than one new page')
-@click.option('--pagetype', prompt='Page type to be created', type=click.Choice(['book', 'news', 'single']), default='book')
+@click.option('--pagetype', prompt='Page type to be created',
+              type=click.Choice(['book', 'news', 'single']), default='book')
 # TODO: Create pagetype specific forms
 def newpage(batch, pagetype):
     """Create a new page"""
@@ -122,8 +127,9 @@ def newpage(batch, pagetype):
     if batch:
         pamount = click.prompt('Amount of new pages to make', type=int)
 
-        lname = click.prompt('The title of the Book', default='')
-        sname = click.prompt('The shortname of your book (used for filenames)', default='')
+        lname = click.prompt('The title of the Book', default='', type=up)
+        sname = click.prompt('The shortname of your book (used for filenames)',
+                             default='', type=up)
         ptype = pagetype
 
         data = dict(
@@ -138,14 +144,18 @@ def newpage(batch, pagetype):
         thing.write_page()
 
     else:
-        lname = click.prompt('The title of the Book', default='')
-        sname = click.prompt('The shortname of your book (used for filenames)', default='')
+        lname = click.prompt('The title of the Book', default='', type=up)
+        sname = click.prompt('The shortname of your book (used for filenames)',
+                             default='', type=up)
         ptype = pagetype
-        ptitle = click.prompt('The title of the page', default='{:%Y-%m-%d}'.format(date.today()))
+        ptitle = click.prompt('The title of the page',
+                              default='{:%Y-%m-%d}'.format(date.today()))
         pnumber = click.prompt('The number of the page', type=int)
         chptr = click.prompt('The chapter number', type=int)
-        img = click.prompt('The name of the image file of your comic page', default=sname+'_'+str(pnumber)+'.png')
-        menu = click.prompt('True or False if you want to show up in main menu', type=bool, default=False)
+        img = click.prompt('The name of the image file of your comic page',
+                           default=sname+'_'+str(pnumber)+'.png', type=up)
+        menu = click.prompt('True or False for link in main menu',
+                            type=bool, default=False)
 
         data = {
             "longname": lname,

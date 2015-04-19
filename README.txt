@@ -37,7 +37,7 @@ Installation
 
 Currently the package is only available from this repository but soon it will be available with
 
-pip install threecolor
+pip install 3color-Press
 
 Contribute
 ----------
@@ -54,4 +54,3 @@ If you're having problems or have some questions, feel free to check out the git
 
 License
 --------
-The project is currently still deciding on a license

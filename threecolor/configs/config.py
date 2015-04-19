@@ -23,6 +23,7 @@ def cfg_check(file):
     else:
         return False
 
+
 def make_usr_cfg():
     if os.path.exists(instfolder):
 
@@ -33,7 +34,7 @@ def make_usr_cfg():
         usr_cfg = config.Config(instfolder)
         usr_cfg.from_object(default_settings)
 
-        if cfgcheck == True:
+        if cfgcheck is True:
             usr_cfg.from_pyfile(cfgfile)
 
         # configure some path based values

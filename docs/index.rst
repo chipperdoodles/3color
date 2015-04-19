@@ -11,8 +11,12 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-  intro
   about
+  intro
+
+  license
+  
+.. autodoc::
 
 Indices and tables
 ==================

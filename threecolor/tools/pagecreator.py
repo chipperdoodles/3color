@@ -4,6 +4,8 @@ from ..models import PagesCreator, PageCreator
 from ..application import page_dir
 from ..manager import cli
 
+# TODO currently file is not used
+
 
 @cli.command()
 @click.option('--batch', is_flag=True, help='For making more than one new page')

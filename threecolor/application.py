@@ -4,14 +4,15 @@ from flask import Flask
 from .tools import misc
 from .configs import config
 
+# set application root path
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 instfolder = config.instfolder
-
 THEME_DIR = config.THEME_DIR
 
+
 def create_site():
-    # create flask app instance
+    """App factory to create website"""
     if os.path.exists(instfolder):
 
         app = Flask('threecolor', instance_path=instfolder, instance_relative_config=True)
@@ -42,5 +43,7 @@ def create_site():
 
         return app
 
+
 def create_admin():
+    """Place holder for eventual admin site interface"""
     pass

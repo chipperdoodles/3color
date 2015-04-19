@@ -22,6 +22,7 @@ env.hosts = cfg['REMOTE_SERVER']
 pub_method = cfg['PUB_METHOD']
 build_dir = cfg['FREEZER_DESTINATION']
 
+
 def archive():
     """
     Makes a local tar.gz file
@@ -39,6 +40,7 @@ def rsync():
     remote = '3colorsite/'
     rsync_project(remote, local, delete=True)
 
+
 # TODO test functionality
 def git_deploy():
     """
@@ -54,12 +56,13 @@ def git_deploy():
     subprocess.call(['git', 'push'])
     os.chdir(project)
 
+
 # TODO: make nicer, add non-fabric plain FTP support
 def sftp():
     """
     archives then uploads site via fabric sftp and then unarchives on server.
-    The remote folder for your site will be threecolor and contents will be deleted if
-    the directory exists remotely therefore ensuring to remove any site changes before the upload
+    The remote folder for your site will be 3colorsite and contents will be deleted
+    if the directory exists remotely therefore ensuring to remove changes before the upload
     """
     make_archive(os.path.join(instfolder, '3colorSite'), 'gztar', build_dir)
     tarfile = os.path.join(instfolder, '3colorSite.tar.gz')
@@ -81,6 +84,7 @@ def sftp():
 
 
 def publish(pubmethod=pub_method):
+    """Main function to pubish site"""
     if pubmethod == 'sftp':
         execute(sftp)
 

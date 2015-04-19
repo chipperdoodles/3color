@@ -6,6 +6,10 @@ from datetime import date
 
 
 class PageHeader(object):
+    """
+    Class that handles page header data. The page header is a yaml header
+    at the beginnning of the markdown file that will be turned into an page.
+    """
 
     def __init__(self, **kwargs):
 
@@ -22,7 +26,9 @@ class PageHeader(object):
 
     @property
     def header(self):
-
+        """
+        Make a dict from kwargs
+        """
         return {
             "title": self.pagetitle,
             "published": self.pub,
@@ -47,11 +53,13 @@ class PageHeader(object):
     def dump(self):
         """test function"""
         name = os.path.join(self.path, self.shortname+'_'+str(self.pagenumber)+'.md')
-        info = yaml.dump(self.header)
+        info = yaml.safe_dump(self.header)
         return name+'\n'+info
 
 
 class PagesCreator(PageHeader):
+
+    """Subclass of PageHeader for making batch yaml headers and markdown files"""
 
     def __init__(self, **kwargs):
         super(PagesCreator, self).__init__(**kwargs)
@@ -78,7 +86,7 @@ class PagesCreator(PageHeader):
             name = os.path.join(self.path, self.shortname+'_'+str(self.index+x)+'.md')
             number = self.index+x
             with open(name, "ab") as f:
-                yaml.dump(self.header(number), f)
+                yaml.safe_dump(self.header(number), f)
 
 
 class PageCreator(PageHeader):
