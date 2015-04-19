@@ -23,7 +23,7 @@ def make_usr_cfg():
         usr_cfg['STATIC'] = os.path.join(THEME_DIR, usr_cfg['ACTIVE_THEME'], 'static')
         usr_cfg['FLATPAGES_ROOT'] = os.path.join(instfolder, 'content')
 
-        if usr_cfg['ACTIVE_THEME'] != '' and os.path.exists(os.path.join(THEME_DIR, usr_cfg['ACTIVE_THEME'])):
+        if os.path.exists(os.path.join(THEME_DIR, usr_cfg['ACTIVE_THEME'])):
             usr_cfg['IMAGE_DIR'] = os.path.join(instfolder, 'images')
             usr_cfg['FREEZER_DESTINATION'] = os.path.join(instfolder, usr_cfg['BUILD_DIR'])
         else:
