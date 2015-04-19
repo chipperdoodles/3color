@@ -31,17 +31,7 @@ def create_site():
         app.config['FREEZER_DESTINATION'] = os.path.join(app.instance_path, app.config['BUILD_DIR'])
 
         from .site.coolviews import site, pages, freezer
-
-        if app.config['ACTIVE_THEME'] == 'default':
-            app.register_blueprint(site)
-
-        else:
-            app.register_blueprint(site,
-                    template_folder = os.path.join(THEME_DIR, app.config['ACTIVE_THEME'], 'templates'),
-                    static_folder = os.path.join(THEME_DIR, app.config['ACTIVE_THEME'], 'static'),
-                    static_url_path='theme/static/',
-            )
-
+        app.register_blueprint(site)
         pages.init_app(app)
         freezer.init_app(app)
 
@@ -58,7 +48,8 @@ def create_site():
         # pages.init_app(app)
         # freezer.init_app(app)
         misc.make_home(APP_ROOT)
-    return app
+
+        return app
 
 def create_admin():
     pass

@@ -2,6 +2,7 @@ import os
 import subprocess
 
 from ..application import create_site
+from ..configs import config
 
 # TODO: make fabric optional
 from fabric.api import *
@@ -10,27 +11,20 @@ from fabric.contrib.files import exists
 
 from shutil import make_archive
 
-# TODO: fix breaking if no instance
-app = create_site()
+instfolder = config.instfolder
+
+cfg = config.make_usr_cfg()
 
 # configure user and hostname for remote server
-env.user = app.config['USER_NAME']
-env.hosts = app.config['REMOTE_SERVER']
+env.user = cfg['USER_NAME']
+env.hosts = cfg['REMOTE_SERVER']
 
 
 def archive():
     """
     Makes a local tar.gz file
     """
-    make_archive('threecolorSite', 'gztar', app.config['FREEZER_DESTINATION'])
-
-
-def uptime():
-    """
-    runs the uptime command on remote server
-    currently here just to test functionality
-    """
-    run("uptime")
+    make_archive(os.path.join(instfolder, '3colorSite'), 'gztar', cfg['FREEZER_DESTINATION'])
 
 
 def rsync():
@@ -39,8 +33,8 @@ def rsync():
     this has the delete option which will delete any remote files that are
     not in your local build folder
     """
-    local = os.path.join(os.getcwd(), app.config['FREEZER_DESTINATION']+'/')
-    remote = app.config['REMOTE_SERVER']
+    local = os.path.join(instfolder, cfg['FREEZER_DESTINATION']+'/')
+    remote = cfg['REMOTE_SERVER']
     rsync_project(remote, local, delete=True)
 
 
@@ -51,21 +45,21 @@ def git_deploy():
     and then push your commit, then change back to your project directory
     """
     project = os.getcwd()
-    local = os.path.join(app.instance_path, app.config['FREEZER_DESTINATION'])
+    local = os.path.join(instfolder, cfg['FREEZER_DESTINATION'])
     os.chdir(local)
     subprocess.call(['git', 'add', '-A'])
     subprocess.call(['git', 'commit', '-a', '-m', 'updated'])
     subprocess.call(['git', 'push'])
     os.chdir(project)
 
-
+# FIXME: broken due to restructuring
 def upload():
     """
     archives then uploads site via fabric sftp and then unarchives on server.
     The remote folder for your site will be threecolor and contents will be deleted if
     the directory exists remotely therefore ensuring to remove any site changes before the upload
     """
-    make_archive('threecolorSite', 'gztar', app.config['FREEZER_DESTINATION'])
+    make_archive(os.path.join(instfolder, '3colorSite'), 'gztar', cfg['FREEZER_DESTINATION'])
 
     if exists('~/threecolor'):
         run('rm -rf ~/threecolor/*')
@@ -84,13 +78,17 @@ def upload():
 
 
 def publish():
-    if app.config['PUB_METHOD'] == 'sftp':
+    if cfg['PUB_METHOD'] == 'sftp':
         upload()
-    elif app.config['PUB_METHOD'] == 'rsync':
+
+    elif cfg['PUB_METHOD'] == 'rsync':
         rsync()
-    elif app.config['PUB_METHOD'] == 'git':
+
+    elif cfg['PUB_METHOD'] == 'git':
         git_deploy()
-    elif app.config['PUB_METHOD'] == 'local':
+
+    elif cfg['PUB_METHOD'] == 'local':
         archive()
+
     else:
         print("You did not configure your publish method")

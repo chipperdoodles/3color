@@ -40,7 +40,7 @@ def cli():
 
 
 @cli.command(name='all')
-def build_push():  # FIXME: shadows builtin all()
+def build_push():
     """ Builds your website into Static files and pushes
 
     is the same as running press build and then press publish
@@ -72,16 +72,17 @@ def publish():
     execute(publish.publish)
 
 
+# FIXME launches browser windows
 @cli.command()
 def run():
     """Run website locally in debug mode"""
-    app = create_site()
     click.launch('http://localhost:5000/')
+    app = create_site()
     app.run()
 
 
 @cli.command(name='open')
-def open_file():  # FIXME: shadows builtin open()
+def open_file():
     """open your project folder"""
     click.launch(instfolder)
 

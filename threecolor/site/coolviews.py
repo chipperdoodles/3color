@@ -1,16 +1,19 @@
 import os
 
+from ..configs import config
+
 from flask import abort, current_app, Blueprint, render_template, send_from_directory
 from flask_flatpages import FlatPages
 from flask_frozen import Freezer
 
 freezer = Freezer()
 pages = FlatPages()
+cfg = config.make_usr_cfg()
 
 site = Blueprint('site', __name__,
                  url_prefix='',
-                 template_folder='templates',
-                 static_folder='static',
+                 template_folder = cfg['TEMPLATES'],
+                 static_folder = cfg['STATIC'],
                  static_url_path='/static/site'
                  )
 
@@ -26,7 +29,7 @@ def page_types():
     return {
         "book_page": book_page,
         "menu_pages": menu_pages,
-        "news_page": news_page, 
+        "news_page": news_page,
         "thumb_nail": thumb_nail,
         "book_list": book_list,
         "pages": pages
