@@ -167,10 +167,13 @@ def newpage(batch, pagetype):
 def atom():
     """ Open project folder with atom editor"""
     try:
-        subprocess.check_call(["atom", instfolder])
+        if misc.system == 'Windows':
+            subprocess.check_call(["atom", instfolder], shell=True)
+        else:
+            subprocess.check_call(["atom", instfolder])
+
     except OSError as e:
-        print(e)
-        subprocess.check_output(["atom", instfolder])
+        print(os.strerror(e))
         print("The atom editor command line tool not installed")
 
 

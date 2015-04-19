@@ -1,8 +1,9 @@
 import os
 import subprocess
 import shutil
+import platform
 
-from ..configs import sysinfo, config
+from ..configs import config
 
 instfolder = config.instfolder
 
@@ -10,14 +11,16 @@ inst_dir_list = ['content', 'images', 'themes']
 
 content_dir_list = ['book', 'news', 'single']
 
+system = platform.system()
+
 def page_dir(dirname):
     ptype_dir = os.path.join(instfolder, 'content', dirname)
     return ptype_dir
 
 def open_browser():
-    if sysinfo.system == 'Windows':
+    if system == 'Windows':
         os.startfile(instfolder['open'])
-    elif sysinfo.system == 'Darwin':
+    elif system == 'Darwin':
         subprocess.call(["open", instfolder])
     else:
         try:
