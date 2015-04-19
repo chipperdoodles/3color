@@ -68,7 +68,7 @@ def build_push():
     app = create_site()
     coolviews.chill()
     click.echo('publishing with default pub method')
-    execute(publish.publish)
+    publish.publish
 
 
 @cli.command()
@@ -170,6 +170,7 @@ def atom():
         subprocess.check_call(["atom", instfolder])
     except OSError as e:
         print(e)
+        subprocess.check_output(["atom", instfolder])
         print("The atom editor command line tool not installed")
 
 

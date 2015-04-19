@@ -5,6 +5,12 @@ import subprocess
 from setuptools import setup, find_packages
 
 instfolder = os.path.join(os.path.expanduser("~"), '3color-Press')
+contfolder = os.path.join(instfolder, 'content')
+imgfolder = os.path.join(instfolder, 'images')
+themefolder = os.path.join(instfolder, 'themes')
+bookfolder = os.path.join(contfolder, 'book')
+newsfolder = os.path.join(contfolder, 'news')
+singlefolder = os.path.join(contfolder, 'single')
 
 with open('README.txt') as file:
     long_description = file.read()
@@ -28,12 +34,12 @@ setup(
     include_package_data=True,
     data_files=[
         (instfolder, ['threecolor/configs/example.settings.cfg']),
-        (instfolder+'/'+'content', []),
-        (instfolder+'/'+'content'+'/'+'book', []),
-        (instfolder+'/'+'content'+'/'+'news', []),
-        (instfolder+'/'+'content'+'/'+'single', []),
-        (instfolder+'/'+'images', []),
-        (instfolder+'/'+'themes', []),
+        (imgfolder, []),
+        (themefolder, []),
+        (contfolder, []),
+        (bookfolder, []),
+        (newsfolder, []),
+        (singlefolder, []),
     ],
     install_requires=[
         'Click',
