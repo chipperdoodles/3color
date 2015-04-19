@@ -4,7 +4,7 @@ import subprocess
 
 from setuptools import setup, find_packages
 
-instfolder = os.path.join(os.path.expanduser("~"), '3color Press')
+instfolder = os.path.join(os.path.expanduser("~"), '3color-Press')
 
 with open('README.txt') as file:
     long_description = file.read()

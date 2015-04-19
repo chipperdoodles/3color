@@ -10,6 +10,9 @@ inst_dir_list = ['content', 'images', 'themes']
 
 content_dir_list = ['book', 'news', 'single']
 
+def page_dir(dirname):
+    ptype_dir = os.path.join(instfolder, 'content', dirname)
+    return ptype_dir
 
 def open_browser():
     if sysinfo.system == 'Windows':

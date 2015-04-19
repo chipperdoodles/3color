@@ -6,6 +6,7 @@ from ..configs import config
 
 # TODO: make fabric optional
 from fabric.api import *
+from fabric.api import execute
 from fabric.contrib.project import rsync_project
 from fabric.contrib.files import exists
 
@@ -18,13 +19,14 @@ cfg = config.make_usr_cfg()
 # configure user and hostname for remote server
 env.user = cfg['USER_NAME']
 env.hosts = cfg['REMOTE_SERVER']
-
+pub_method = cfg['PUB_METHOD']
+build_dir = cfg['FREEZER_DESTINATION']
 
 def archive():
     """
     Makes a local tar.gz file
     """
-    make_archive(os.path.join(instfolder, '3colorSite'), 'gztar', cfg['FREEZER_DESTINATION'])
+    make_archive(os.path.join(instfolder, '3colorSite'), 'gztar', build_dir)
 
 
 def rsync():
@@ -33,11 +35,11 @@ def rsync():
     this has the delete option which will delete any remote files that are
     not in your local build folder
     """
-    local = os.path.join(instfolder, cfg['FREEZER_DESTINATION']+'/')
-    remote = cfg['REMOTE_SERVER']
+    local = os.path.join(instfolder, build_dir+'/')
+    remote = '3colorsite/'
     rsync_project(remote, local, delete=True)
 
-
+# TODO test functionality
 def git_deploy():
     """
     simply changes the directory to your build directory and calls
@@ -45,49 +47,50 @@ def git_deploy():
     and then push your commit, then change back to your project directory
     """
     project = os.getcwd()
-    local = os.path.join(instfolder, cfg['FREEZER_DESTINATION'])
+    local = os.path.join(instfolder, build_dir)
     os.chdir(local)
     subprocess.call(['git', 'add', '-A'])
     subprocess.call(['git', 'commit', '-a', '-m', 'updated'])
     subprocess.call(['git', 'push'])
     os.chdir(project)
 
-# FIXME: broken due to restructuring
-def upload():
+# TODO: make nicer, add non-fabric plain FTP support
+def sftp():
     """
     archives then uploads site via fabric sftp and then unarchives on server.
     The remote folder for your site will be threecolor and contents will be deleted if
     the directory exists remotely therefore ensuring to remove any site changes before the upload
     """
-    make_archive(os.path.join(instfolder, '3colorSite'), 'gztar', cfg['FREEZER_DESTINATION'])
+    make_archive(os.path.join(instfolder, '3colorSite'), 'gztar', build_dir)
+    tarfile = os.path.join(instfolder, '3colorSite.tar.gz')
 
-    if exists('~/threecolor'):
-        run('rm -rf ~/threecolor/*')
-        put('threecolorSite.tar.gz', '~/threecolor/threecolor.tar.gz')
-        with cd('~/threecolor/'):
-            run('tar xzf threecolor.tar.gz')
-            run('rm -rf threecolor.tar.gz')
+    if exists('~/3colorSite'):
+        run('rm -rf ~/3colorSite/*')
+        put(tarfile, '~/3colorSite/3colorSite.tar.gz')
+        with cd('~/3colorSite/'):
+            run('tar xzf 3colorSite.tar.gz')
+            run('rm -rf 3colorSite.tar.gz')
     else:
-        run('mkdir ~/threecolor')
-        put('threecolorSite.tar.gz', '~/threecolor/threecolor.tar.gz')
-        with cd('~/threecolor/'):
-            run('tar xzf threecolor.tar.gz')
-            run('rm -rf threecolor.tar.gz')
+        run('mkdir ~/3colorSite')
+        put(tarfile, '~/3colorSite/3colorSite.tar.gz')
+        with cd('~/3colorSite/'):
+            run('tar xzf 3colorSite.tar.gz')
+            run('rm -rf 3colorSite.tar.gz')
 
-    os.remove('threecolorSite.tar.gz')
+    os.remove(tarfile)
 
 
-def publish():
-    if cfg['PUB_METHOD'] == 'sftp':
-        upload()
+def publish(pubmethod=pub_method):
+    if pubmethod == 'sftp':
+        execute(sftp)
 
-    elif cfg['PUB_METHOD'] == 'rsync':
-        rsync()
+    elif pubmethod == 'rsync':
+        execute(rsync)
 
-    elif cfg['PUB_METHOD'] == 'git':
+    elif pubmethod == 'git':
         git_deploy()
 
-    elif cfg['PUB_METHOD'] == 'local':
+    elif pubmethod == 'local':
         archive()
 
     else:

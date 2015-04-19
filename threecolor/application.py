@@ -10,11 +10,6 @@ instfolder = config.instfolder
 
 THEME_DIR = config.THEME_DIR
 
-def page_dir(dirname):
-    ptype_dir = os.path.join(instfolder, 'content', dirname)
-    return ptype_dir
-
-
 def create_site():
     # create flask app instance
     if os.path.exists(instfolder):
