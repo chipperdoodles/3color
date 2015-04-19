@@ -2,7 +2,7 @@ import click
 import subprocess
 
 from .application import create_site, page_dir, instfolder
-from .tools import publish, misc, homefolder
+from .tools import publish, misc
 from .models import PagesCreator, PageCreator
 from .site import coolviews
 
@@ -19,21 +19,24 @@ def cli():
 
     Options:
 
-    build - Builds your website into static files located in your configured build directory.
-    The default build directory is instance/build
+        build - Builds your website into static files located in your configured build directory.
+                The default build directory is instance/build
 
-    compress - Archives your build directory into a tar.gz file
+        compress - Archives your build directory into a tar.gz file
 
-    publish - Pushes your website to your remote server depending on your configuration
+        publish - Pushes your website to your remote server depending on your configuration
 
-    all - Builds and then Publishes your website. This is the same as running '3color build'
-    and then '3color publish'
+        all - Builds and then Publishes your website. This is the same as running '3color build'
+              and then '3color publish'
 
-    open - Opens the project folder in your file browser
+        open - Opens the project folder in your file browser (this is the 3color Press folder in your home directory)
 
-    newpage - creates a new page based on your given inputs. Accepts the option --batch.
-    If you declare --batch then it will ask for page amount and create files with empty templates as neccesary.
-    example usage: '3color newpage --batch' or '3color newpage'
+        atom - If you have the Atom Editor installed, this will call on atom to open your project folder in atom
+
+        newpage - creates a new page based on your given inputs. Accepts the option --batch.
+                  If you declare --batch then it will ask for page amount and create files with empty templates as neccesary.
+                  example usage: '3color newpage --batch' or '3color newpage'
+        setup - If you don't have a 3color Press folder in your home folder, this will create it and copy over the default settings file
 
     """
     pass
@@ -146,7 +149,8 @@ def atom():
     except OSError:
         print("The atom editor command line tool not installed")
 
-#
-# @cli.command(name='setup')
-# def make_instance():
-#     homefolder.make_home()
+
+@cli.command(name='setup')
+def make_instance():
+    """Create your Project folder and copy over default config file"""
+    misc.make_home()

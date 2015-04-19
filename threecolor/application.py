@@ -1,7 +1,7 @@
 import os
 
 from flask import Flask
-from .tools import homefolder, misc
+from .tools import misc
 from .configs import config
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -38,15 +38,11 @@ def create_site():
         return app
 
     else:
-        app = Flask('threecolor')
+        # app = Flask('threecolor')
+        #
+        # # configure flask app from default settings, then overide with settings.cfg
+        # app.config.from_object('threecolor.configs.default_settings')
 
-        # configure flask app from default settings, then overide with settings.cfg
-        app.config.from_object('threecolor.configs.default_settings')
-
-        # from .site.coolviews import site, pages, freezer
-        # app.register_blueprint(site)
-        # pages.init_app(app)
-        # freezer.init_app(app)
         misc.make_home(APP_ROOT)
 
         return app
