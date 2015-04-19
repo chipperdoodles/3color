@@ -59,7 +59,6 @@ setup(
         'Framework :: Flask',
         'License :: OSI Approved :: BSD License',
         'Intended Audience :: End Users/Desktop',
-        'Topic :: Web',
         'Development Status :: 3 - Alpha',
         'Natural Language :: English',
         'Programming Language :: Python :: 2.7',

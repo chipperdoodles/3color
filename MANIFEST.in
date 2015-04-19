@@ -2,3 +2,4 @@ recursive-include threecolor/site/templates *
 recursive-include threecolor/site/static *
 recursive-include threecolor/admin/templates *
 recursive-include threecolor/admin/static *
+include threecolor/configs/example.settings.cfg
