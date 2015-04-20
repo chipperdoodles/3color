@@ -4,13 +4,19 @@ import subprocess
 
 from setuptools import setup, find_packages
 
+#foldercreation
 instfolder = os.path.join(os.path.expanduser("~"), '3color-Press')
-contfolder = os.path.join(instfolder, 'content')
-imgfolder = os.path.join(instfolder, 'images')
-themefolder = os.path.join(instfolder, 'themes')
-bookfolder = os.path.join(contfolder, 'book')
-newsfolder = os.path.join(contfolder, 'news')
-singlefolder = os.path.join(contfolder, 'single')
+
+folders = ['content','images','themes']
+contfolders = ['book', 'news', 'single']
+
+# TODO: add checks for
+if os.path.exists(instfolder) is False:
+    os.mkdir(instfolder)
+    for folder in folders:
+        os.mkdir(os.path.join(instfolder, folder))
+    for folder in contfolders:
+        os.mkdir(os.path.join(instfolder, 'content', folder))
 
 with open('README.txt') as file:
     long_description = file.read()
@@ -23,7 +29,7 @@ if platform.system() == 'Windows':
 
 setup(
     name='3color-Press',
-    version='0.2.0',
+    version='0.2.1',
     author='Martin Knobel',
     author_email='mknobel@noties.org',
     license='BSD',
@@ -34,12 +40,6 @@ setup(
     include_package_data=True,
     data_files=[
         (instfolder, ['threecolor/configs/example.settings.cfg']),
-        (imgfolder, []),
-        (themefolder, []),
-        (contfolder, []),
-        (bookfolder, []),
-        (newsfolder, []),
-        (singlefolder, []),
     ],
     install_requires=[
         'Click',
