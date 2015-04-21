@@ -11,15 +11,15 @@ information to properly organize and create your page
 
 The Page Header
 ^^^^^^^^^^^^^^^
-  The :term:`page header` will look something like this: ::
+The :term:`page header` will look something like this: ::
 
-    title:
-    published: yyyy-mm-dd
-    modified: yyyy-mm-dd
-    page_type:
-    book: { 'title': , 'chapter': , 'page_number': , 'image': }
-    menu:
-    version: 0.2.1
+  title:
+  published: yyyy-mm-dd
+  modified: yyyy-mm-dd
+  page_type:
+  book: { 'title': , 'chapter': , 'page_number': , 'image': }
+  menu:
+  version: 0.2.1
 
 .. note::
     if using the autogenerate tool all items will be alphabetically sorted and not in the
@@ -91,7 +91,7 @@ This helps avoid arduously re-writing the header line everytime you make a new p
 If you just made a file of the page type 'book', the only step you'd have to do is
 to make sure to copy over your comic image file to your images folder. (:file:`3color-Press/images`)
 
-If you just made a file of the types news or single then you have to now add the :term:`page body`.
+If you just made a file of the types news or single then you have to now add the :term:`page body` .
 If using atom as your editor you can run ``3color atom`` to open up your project folder with atom.
 Just browse to content/pagetype directory of the file you made in the atom tree/file browser
 (the thing on the left hand side of the atom editor) find your file, select it and start

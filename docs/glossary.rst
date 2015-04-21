@@ -1,19 +1,20 @@
-.. glossary::
+Glossary
+=================
 
-.. beginner's glossary
+.. glossary::
 
    directory
       This word is used interchangeably with folder your home directory and home
-      folder are the same place
+      folder are the same thing.
 
    home folder
       This is the default folder for your user on your computer.
-      OsX - :file:`/Users/username/`
-      Windows - :file:`C:Users/username/`
-      Unix and Linux - :file:`/home/username`
+      OsX - :file:`/Users/username/`,
+      Windows - :file:`C:Users/username/`,
+      Unix and Linux - :file:`/home/username`,
 
-      on OsX and Unix/Unix-Like systems it can also be represented by ``~``
-      such as /Users/username is = ~
+      On OsX and Unix/Unix-Like systems it can also be represented by ``~``
+      such as seing ``/Users/username`` is the same as ``~``
 
    terminal
       When used this is refering to the program used to work in the command line
@@ -23,9 +24,6 @@
    superuser
       refers to a user with admin privelages. On Unix if you run a command prefixed
       with sudo it runs the command as a super user.
-
-
-.. threecolor terms
 
    project folder
       :file:`~/3color-Press` and folders within that holds all your custom content
@@ -47,22 +45,14 @@
    page type
       the type of page on your website to be made. Co-responds with the folders in
       :term:`content folder`. As of now page types are book, news, and single.
-        news pages are for news posts and updates
-        book pages are for storyline/comic pages
-        single pages are for custom one off pages such as "about me" or "characters"
+      news pages are for news posts and updates
+      book pages are for storyline/comic pages
+      single pages are for custom one off pages such as "about me" or "characters"
 
    page header
-      This is the information in the top of a :term:`page file`
+      This is the information in the top of a :term:`page file` see :doc:`Users/pages`
 
-       title: ""
-       published: yyyy-mm-dd
-       modified: yyyy-mm-dd
-       page_type:
-       book: { 'title': "", 'chapter': '' , 'page_number': '', 'image': ""}
-       menu:
-       version: 0.1
-
-    page body
-       The page body is the part of a :term:`page file` that starts an empty space
-       after the :term:`page header`. The content of that page can now be written
-       in the markdown syntax or even html. 
+   page body
+      The page body is the part of a :term:`page file` that starts an empty space
+      after the :term:`page header`. The content of that page can now be written
+      in the markdown syntax or even html.

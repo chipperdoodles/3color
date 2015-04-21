@@ -10,7 +10,7 @@ Installation
 ------------
 see  :doc:`new_users/install` for in depth help
 
-if you have python and pip installed on your computer::
+If you have python and pip installed on your computer::
 
   $ pip install 3color-Press
 
@@ -26,9 +26,9 @@ for the command line tool into your system path.
 
 Usage
 -------
-see :doc:`commands`
+see :doc:`Users/commands` for more about the 3color tool
 
-The command line tool :program:`3color` allows for some quick access for
+The command line tool 3color allows for some quick access for
 managing, building, pushing, testing your site, as well as bootstrapping new page creation.
 
 ``3color run``
@@ -38,10 +38,12 @@ default browser to it. (if it doesn't load just refresh and currently the browse
 
 Configure
 ---------
-see :doc:`Users/setup`
+see :doc:`Users/setup` for more info
 
 Edit the settings.cfg file in your :term:`project folder`
 
 Make pages
 ----------
-see :doc:`Users/pages`
+see :doc:`Users/pages` for more info
+
+Simply write

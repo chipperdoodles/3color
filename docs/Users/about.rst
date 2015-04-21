@@ -5,7 +5,7 @@ Why blogs? What about comics!?!
 
 
 What the heck is it?
--------------------
+--------------------
 
 Simple version: easily build and maintain your comic site on your computer, then
 just as easily upload the changes to your host webserver.

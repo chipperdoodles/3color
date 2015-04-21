@@ -39,6 +39,14 @@ The package is available in pypi::
 
 see :doc:`install`
 
+For developer minded peoples:
+-----------------------------
+
+This packages uses:
+
+* Flask, Flask-FlatPages, Frozen-Flask for site building.
+* Fabric for ssh interactions
+* Click for the command line tool
 
 Contribute
 ----------
@@ -55,6 +63,7 @@ Support
 If you're having problems or have some questions,
 feel free to check out the github page: https://github.com/chipperdoodles/3color
 
+Documantation can be found at: https://pythonhosted.org/3color-Press/
 
 License
 --------

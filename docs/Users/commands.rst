@@ -1,5 +1,5 @@
 Command Line Tool
-================
+=================
 
 3color-Press provides a command line tool for managing your site.
 After install you can simply type 3color --help to see if it's installed and accessible

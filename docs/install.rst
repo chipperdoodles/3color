@@ -35,4 +35,4 @@ You will either have to
   2. If you do option 2 the 3color command won't be available on default. To fix this you can
      run sudo ln -s ~/Library/Python/2.7/site-packages/bin/3color /usr/bin/3color
 
-  3. will put up links to virtual env later
+  3. .. todo: information on virtualenv

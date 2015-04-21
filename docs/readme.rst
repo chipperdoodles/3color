@@ -8,7 +8,7 @@ I am new to programming and I'm kind of brute learning python and flask with thi
 The project is under heavy development and features are being added as we work on them,
 however a very functional core set of features is included
 
-For more in depth information on how to use check the doc pages You can see a demo
+For more in depth information on how to use check the doc pages. You can see a demo
 site generated with version 0.1 of this tool at http://3color.noties.org
 
 Features
@@ -40,6 +40,16 @@ the package is available in pypi ::
 see :doc:`install`
 
 
+For developer minded peoples:
+-----------------------------
+
+This packages uses:
+
+* Flask, Flask-FlatPages, Frozen-Flask for site building.
+* Fabric for ssh interactions
+* Click for the command line tool
+
+
 Contribute
 ----------
 
@@ -54,6 +64,8 @@ Support
 
 If you're having problems or have some questions,
 feel free to check out the github page: https://github.com/chipperdoodles/3color
+
+Documentation can found at: https://pythonhosted.org/3color-Press/
 
 
 License

@@ -12,27 +12,27 @@ accessible for everyone.
 
 If You're a user that is new to nerdy things like python and the command line, go
 ahead and check out the New Users section. If you are already familiar with the workings of python
-you can glance over the quickstart and dig deeper if you wish. Feedback is always welcome too.
+you can glance over the :doc:`quickstart` and dig deeper if you wish. Feedback is always welcome too.
 
-Table of contents:
+For an idea of how to use you can check out :doc:`Users/index`
+
+Overview of Contents:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
 
    readme
 
    quickstart
-
+   Users/index
    install
    new_users/index
-   Users/index
-   theming/index
+   themeing/index
    readme
    license
-
    glossary
-   api/index
+   api/modules
 
 
 Indices and tables
