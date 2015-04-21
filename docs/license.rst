@@ -1,5 +1,5 @@
 License
-#######
+=======
 
 3color Press is licensed under a BSD license which can be seen below
 

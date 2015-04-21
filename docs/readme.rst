@@ -1,5 +1,5 @@
-About
-======
+The Readme file!
+================
 
 3color Press is a flask based application intended to streamline making your own comic based website.
 It is a static website generator that takes markdown formatted text files and turns them into new pages.
@@ -33,7 +33,7 @@ In Progress Features
 Installation
 -------------
 
-The package is available in pypi::
+the package is available in pypi ::
 
   $ pip install 3color-Press
 

@@ -7,8 +7,10 @@ from datetime import date
 
 class PageHeader(object):
     """
-    Class that handles page header data. The page header is a yaml header
-    at the beginnning of the markdown file that will be turned into an page.
+
+        Class that handles page header data. The page header is a yaml header
+    at the beginnning of the markdown file that will be turned into a page.
+
     """
 
     def __init__(self, **kwargs):
@@ -68,6 +70,10 @@ class PagesCreator(PageHeader):
         self.mod = '{:%Y-%m-%d}'.format(date.today())
 
     def header(self, n):
+
+        """
+        Overrides PageHeader's header funtion to one needed for batch creation
+        """
 
         return {
             "title": '',

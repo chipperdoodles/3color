@@ -52,7 +52,7 @@ source_encoding = 'utf-8-sig'
 master_doc = 'index'
 
 # General information about the project.
-project = u'3color Press'
+project = u'3color-Press'
 copyright = u'2015, Martin Knobel'
 author = u'Martin Knobel'
 
@@ -114,12 +114,15 @@ todo_include_todos = True
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'alabaster'
+#html_theme = 'sphinx_rtd_theme'
+html_theme = 'classic'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
-#html_theme_options = {}
+html_theme_options = {
+        'stickysidebar': 'true'
+        }
 
 # Add any paths that contain custom themes here, relative to this directory.
 #html_theme_path = []
@@ -272,7 +275,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  (master_doc, '3colorPress', u'3color Press Documentation',
+  (master_doc, '3colorPress', u'3color-Press Documentation',
    author, '3colorPress', 'One line description of project.',
    'Miscellaneous'),
 ]
