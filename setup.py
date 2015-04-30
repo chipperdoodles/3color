@@ -10,9 +10,17 @@ instfolder = os.path.join(os.path.expanduser("~"), '3color-Press')
 folders = ['content','images','themes']
 contfolders = ['book', 'news', 'single']
 
-# TODO: add checks for
+# TODO: add checks for themes, content,
+# check to see the project folder ~/3color-Press exists
+# if it doesn't, create project folder and subfolders
 if os.path.exists(instfolder) is False:
     os.mkdir(instfolder)
+    for folder in folders:
+        os.mkdir(os.path.join(instfolder, folder))
+    for folder in contfolders:
+        os.mkdir(os.path.join(instfolder, 'content', folder))
+# check to see if subfolders exist,if not then create them
+elif os.path.exists(os.path.join(instfolder, 'content')) and os.path.exists(os.path.join(instfolder, 'images')) and os.path.exists(os.path.join(instfolder, 'themes')) is False:
     for folder in folders:
         os.mkdir(os.path.join(instfolder, folder))
     for folder in contfolders:
@@ -29,7 +37,7 @@ if platform.system() == 'Windows':
 
 setup(
     name='3color-Press',
-    version='0.2.1',
+    version='0.2.2',
     author='Martin Knobel',
     author_email='mknobel@noties.org',
     license='BSD',

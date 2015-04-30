@@ -45,7 +45,7 @@ def total_pages(pages, book):
 
 def latest_comic(pages, book, limit=None):
     # for sorting published pages that are books in the main story by latest
-    l_comic = (p for p in pages if ((p['page_type'] == 'book') and p['book']['title'] == book))
+    l_comic = (p for p in pages if p['book']['title'] == book and p['page_type'] == 'book')
     l_comic = sorted(l_comic, reverse=True, key=lambda p: p.meta['published'])
     return l_comic[:limit]
 

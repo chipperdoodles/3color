@@ -1,9 +1,9 @@
-<!doctype html5>
+<!doctype html>
 <html>
   <head>
       <meta charset="utf-8">
       <title>{{ config.SITE_NAME }}</title>
-      <link rel="stylesheet" href="{{ url_for('.static', filename='css/main-prefixed.css') }}" type="text/css" />
+      <link rel="stylesheet" href="{{ url_for('.static', filename='css/main.css') }}" type="text/css" />
       <link rel="stylesheet" href="{{ url_for('.static', filename='css/fonts.css') }}" type="text/css" />
       <script type="text/javascript">
       function keyNav(event) {
@@ -13,16 +13,30 @@
         else { }
       }
       </script>
+        {% include '_styles.html' %}
   </head>
   <body onkeydown="keyNav(event)">
+    {% if config.DISPLAY_HEADER %}
+    <div>
+    {% if config.DISPLAY_SITENAME %}
+    <a href="{{ url_for('.index') }}" id="page_title"> {{ config.SITE_NAME }}</a>
+    {% endif %}
+    </div>
     <header id="header" class="flex_head">
+      <div class="flex_head">
+      {% if config.DISPLAY_LOGO %}
         <div class="flex_logo">
           <a href="{{ url_for('.index') }}"><img class="headerimg" src="{{ url_for('.static', filename='images/logo.png') }}"/></a>
         </div>
+      {% endif %}
+      {% if config.DISPLAY_LATEST %}
         <div class="flex_thumb">
           {% include '_latest.html' %}
         </div>
+      {% endif %}
+    </div>
     </header>
+    {% endif %}
     <div id='container'>
       <nav id="main_menu">
           {% include '_menu.html' %}
@@ -37,8 +51,6 @@
         </div>
     </div>
     <footer>
-        <p><a href="https://github.com/chipperdoodles/3color">source code for comicr can be found on github</a></p>
-        <p><a href="https://noties.org">the comics on this example site are found on Noties.org</a></p>
     </footer>
   </body>
 </html>

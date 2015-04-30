@@ -1,0 +1,54 @@
+<style type="text/css">
+body { background-color: {{ config.BODY_COLOR }};}
+
+header { background-color: {{ config.HEADER_COLOR }};}
+
+footer { background-color: {{ config.FOOTER_COLOR }};}
+
+/* header flexboxy styles. Includes logo and thumbnail */
+#header {}
+.flex_head {}
+.flex_logo {}
+.flex_thumb {}
+.headerimg { border: 5px dashed #757575; border-radius: 10px;}
+.thumbnail {}
+.thumbnail_img { border: 5px groove #fff; border-radius: 10px;}
+/*main container. maybe more useful when using @media queries*/
+
+#container { background-color: rgba(100,100,100,,0.1);}
+
+/*main menu wrapper and boxes*/
+#main_menu { background-color: {{ config.MAIN_MENU_COLOR }};}
+
+.main-menu-container{}
+
+.main-menu-item {}
+
+/* content wrapper, includes everything till the footer*/
+#content { background-color: {{ config.CONTENT_COLOR }};}
+
+/* wrapper and img defs for comic pages*/
+#comic { background-color: {{ config.COMIC_COLOR }};}
+
+/* wrapper and boxes for comic pagination*/
+#book_nav {}
+
+.book-nav-container {}
+
+.book-nav-item {}
+
+/* style for indiviual and special pages*/
+#single_page { background-color: SINGLE_CONTENT_COLOR;}
+
+#book_page { background-color: BOOK_PAGE_COLOR;}
+
+/* styles for the news feed, NOT for the individual news page
+those are sytled by #single_page*/
+#news_blurb {}
+
+.news_blurb{ border: 5px dashed #757575; border-radius: 10px;}
+
+.news_blurb.odd { background-color: {{ config.NEWSBLURB_ODD_COLOR }};}
+
+.news_blurb.even { background-color: {{ config.NEWSBLURB_EVEN_COLOR }} ;}
+</style>

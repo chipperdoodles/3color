@@ -19,6 +19,7 @@ def create_site():
 
         # configure flask app from default settings, then overide with settings.cfg
         app.config.from_object('threecolor.configs.default_settings')
+        app.config.from_object('threecolor.configs.default_template_settings')
         app.config.from_pyfile('settings.cfg')
 
         # configure paths and folders according to instance path
