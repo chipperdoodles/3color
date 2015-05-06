@@ -2,7 +2,7 @@ import os
 import yaml
 
 from . import __version__
-from datetime import date
+from datetime import datetime, date
 
 
 class PageHeader(object):
@@ -48,7 +48,11 @@ class PageHeader(object):
 
     def write_page(self):
         """ Writes the dict from header funtion into a file. This is our page metadata information"""
-        name = os.path.join(self.path, self.shortname+'_'+str(self.pagenumber)+'.md')
+        if self.pagenumber:
+            name = os.path.join(self.path, self.shortname+'_'+str(self.pagenumber)+'.md')
+        else:
+            name = os.path.join(self.path, self.shortname+'_'+str(date.today())+'.md')
+            
         with open(name, "ab") as f:
             yaml.dump(self.header, f)
 
@@ -66,8 +70,8 @@ class PagesCreator(PageHeader):
     def __init__(self, **kwargs):
         super(PagesCreator, self).__init__(**kwargs)
         self.index = 0
-        self.pub = '{:%Y-%m-%d}'.format(date.today())
-        self.mod = '{:%Y-%m-%d}'.format(date.today())
+        self.pub = date.today().isoformat()
+        self.mod = date.today().isoformat()
 
     def header(self, n):
 
@@ -99,5 +103,5 @@ class PageCreator(PageHeader):
 
     def __init__(self, **kwargs):
         super(PageCreator, self).__init__(**kwargs)
-        self.pub = '{:%Y-%m-%d}'.format(date.today())
-        self.mod = '{:%Y-%m-%d}'.format(date.today())
+        self.pub = date.today().isoformat()
+        self.mod = date.today().isoformat()

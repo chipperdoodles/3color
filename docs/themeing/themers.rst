@@ -3,12 +3,17 @@ Theming for 3color Press
 
 3color Press is being designed with theming in mind, that being said it's still
 a work in progess. It uses flask/jinja two templating language and is pretty easy
-to get into. This Doc is a placeholder for much more info to come.
-
+to get into.
 
 The current version of 3color Press allows you to override the default theme by
 providing your own theme in the project folder/themes folder and setting your configuration
 to use it.
+
+You can use the default theme as a base with the ``3color newtheme`` command.
+this will create a new theme of your name choice in your themes folder. It also
+copies over the theme_settings.cfg file which can be used to change basic things
+such as background colors.
+(new as of 0.2.2)
 
 
 Theme folder layout

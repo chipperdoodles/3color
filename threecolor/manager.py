@@ -119,58 +119,10 @@ def open_file():
 @click.option('--batch', is_flag=True, help='For making more than one new page')
 @click.option('--pagetype', prompt='Page type to be created',
               type=click.Choice(['book', 'news', 'single']), default='book')
-# TODO: Create pagetype specific forms
 def newpage(batch, pagetype):
     """Create a new page"""
     path = misc.page_dir(pagetype)
-
-    if batch:
-        pamount = click.prompt('Amount of new pages to make', type=int)
-
-        lname = click.prompt('The title of the Book', default='', type=up)
-        sname = click.prompt('The shortname of your book (used for filenames)',
-                             default='', type=up)
-        ptype = pagetype
-
-        data = dict(
-                longname=lname,
-                shortname=sname,
-                pagetype=ptype,
-                path=path,
-                page_amount=pamount
-        )
-
-        thing = PagesCreator(**data)
-        thing.write_page()
-
-    else:
-        lname = click.prompt('The title of the Book', default='', type=up)
-        sname = click.prompt('The shortname of your book (used for filenames)',
-                             default='', type=up)
-        ptype = pagetype
-        ptitle = click.prompt('The title of the page',
-                              default='{:%Y-%m-%d}'.format(date.today()))
-        pnumber = click.prompt('The number of the page', type=int)
-        chptr = click.prompt('The chapter number', type=int)
-        img = click.prompt('The name of the image file of your comic page',
-                           default=sname+'_'+str(pnumber)+'.png', type=up)
-        menu = click.prompt('True or False for link in main menu',
-                            type=bool, default=False)
-
-        data = {
-            "longname": lname,
-            "shortname": sname,
-            "pagetype": ptype,
-            "pagetitle": ptitle,
-            "pagenumber": pnumber,
-            "chapter": chptr,
-            "image": img,
-            "menu": menu,
-            "path": path
-        }
-
-        thing = PageCreator(**data)
-        thing.write_page()
+    pagecreator.new_page(batch, pagetype, path)
 
 
 @cli.command()
@@ -185,6 +137,14 @@ def atom():
     except OSError as e:
         print(os.strerror(e))
         print("The atom editor command line tool not installed")
+
+
+@cli.command()
+@click.option('--foldername', prompt='name of theme to be made',
+               default='ThemeName')
+def newtheme(foldername):
+    """cli call to create a new theme"""
+    misc.new_theme(foldername)
 
 
 # @cli.command(name='setup')

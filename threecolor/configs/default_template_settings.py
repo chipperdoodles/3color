@@ -6,6 +6,9 @@ DISPLAY_HEADER = True
 DISPLAY_LATEST = True
 DISPLAY_THUMB = True
 #comic page
+COMIC_TITLE = True
+#the book navigation, choices are lower or uppper, currently cannot have both
+COMIC_NAV = 'lower'
 #background colors
 BODY_COLOR = 'pink'
 HEADER_COLOR = 'rgba(100,100,100, 0.1)'

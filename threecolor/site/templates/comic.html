@@ -1,14 +1,23 @@
 {% extends "base.html" %}
 {% block title %}
+{% if config.COMIC_TITLE %}
   <h2 id="page_title">{{p.title}}</h2>
+{% endif %}
 {% endblock title %}
 {% block content %}
+  {% if config.COMIC_NAV is sameas 'upper' %}
+    {% block upper %}
+      {% include '_book_nav.html' %}
+    {% endblock upper %}
+  {% endif %}
 <div id="comic">
     <img src="{{ url_for('.images', name=p.book.image) }}">
 </div>
-{% block lowerbooknav %}
-  {% include '_book_nav.html' %}
-{% endblock lowerbooknav %}
+  {% if config.COMIC_NAV is sameas 'lower' %}
+    {% block lower %}
+      {% include '_book_nav.html' %}
+    {% endblock lower %}
+  {% endif %}
 {% endblock  content%}
 {% block content_footer %}
 {% endblock content_footer %}

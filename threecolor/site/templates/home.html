@@ -10,9 +10,9 @@
       <a href="{{ url_for('.comic_page', _anchor='content', book=p.book.title, chapter=p.book.chapter, number=p.book.page_number, name=p.path.replace(config.BOOK_DIR+'/', '')) }}"> <img src="{{ url_for('.images', name=p.book.image) }}"></a>
       {% endfor %}
   </div>
-{% block lowerbooknav %}
+{% block lower %}
 {% include '_book_nav.html' %}
-{% endblock lowerbooknav %}
+{% endblock lower %}
 {% endblock content %}
 {% block content_footer %}
 <h2 id="page_title"> Recent Updates</h2>

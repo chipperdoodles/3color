@@ -74,8 +74,8 @@ footer {
 
 
 #main_menu a{
-    font-size: 1.5em;
-    text-align: center;
+  font-size: 1.5em;
+  text-align: center;
 }
 
 #content {}
@@ -90,7 +90,7 @@ footer {
 #book_nav .first, .back, .next, .latest {}
 
 #book_nav, #page_title, .book_nav .first, .back, .next, .latest {
-    text-align: center;
+  text-align: center;
 }
 
 #single_page {}

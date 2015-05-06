@@ -40,6 +40,7 @@ footer {
 }
 
 .flex_logo {
+  margin: 15px;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
       -ms-flex-positive: 1;
@@ -73,6 +74,7 @@ footer {
 }
 
 .flex_thumb {
+  margin: 15px;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
       -ms-flex-positive: 1;
@@ -363,6 +365,7 @@ those are sytled by #single_page*/
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 15px;
 }
 
 .news_blurb{

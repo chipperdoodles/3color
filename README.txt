@@ -24,10 +24,11 @@ In Progress Features
 
  * custom themeing support
  * toggle-able theme elements
- * improvement on handling in site menus
- * admin interface
+ * base site building improvement
+ * page editing
  * better error checking
- * much more?!
+ * admin gui interface
+ * import from drupal/sql tool
 
 
 Installation
@@ -36,8 +37,6 @@ Installation
 The package is available in pypi::
 
   $ pip install 3color-Press
-
-see :doc:`install`
 
 For developer minded peoples:
 -----------------------------
@@ -63,11 +62,11 @@ Support
 If you're having problems or have some questions,
 feel free to check out the github page: https://github.com/chipperdoodles/3color
 
-Documantation can be found at: https://pythonhosted.org/3color-Press/
+Documentation can be found at: https://pythonhosted.org/3color-Press/
+
+The package can be found on pypi at: https://pypi.python.org/pypi/3color-Press/0.2.1
 
 License
 --------
 
 3color-Press is (c) Martin Knobel and contributors and is licensed under a BSD license
-
-see :doc:`license`

@@ -2,11 +2,10 @@ List of ideas to implement and code to work on
 
 * Ongoing cleaning up of code, and fixing grammatical and spelling issues
 * Theming variables and configuration, add custom variables for themes
-  such as toggleble html elements and ability to customize colors
-* add working atom feed
+  such as toggle-able html elements and ability to customize colors
+* add working atom feed (to do this we must add full datetime instead of date)
 * Improve command line tools newpage creation on a per page type basis
 * add uploading via plain ftp support
 * change menu key in header to dict with name and index key
   (allowing for custom menus and ordering by index)
 * add images and maybe gifs to docs
-* theme bootstrap command

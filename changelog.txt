@@ -1,0 +1,11 @@
+version 0.2.2
+
+Added
+=====
+* change log
+* theme_settings configuration file
+* newtheme bootstrap command
+
+Changed
+=======
+* 3color newpage command to leave certain items as nonetype if not pagetype book

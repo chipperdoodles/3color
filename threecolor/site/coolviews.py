@@ -102,8 +102,8 @@ def news():
     return render_template('news.html')
 
 # @site.route('/atom.xml')
-# atom feed, only works with a patch to werkzeug/contrip/atom.py file will look into more
-# https://github.com/mitsuhiko/werkzeug/issues/695
+# # atom feed, only works with a patch to werkzeug/contrip/atom.py file will look into more
+# # https://github.com/mitsuhiko/werkzeug/issues/695
 # def atom_feed():
 #     feed = AtomFeed('Feed for '+current_app.config['SITE_NAME'],
 #                     feed_url=current_app.config['DOMAIN']+url_for('.atom_feed'),
