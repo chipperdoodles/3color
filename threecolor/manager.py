@@ -4,7 +4,7 @@ import subprocess
 from datetime import date
 
 from .application import create_site, instfolder
-from .tools import publish, misc
+from .tools import publish, misc, pagecreator
 from .models import PagesCreator, PageCreator
 from .site import coolviews
 

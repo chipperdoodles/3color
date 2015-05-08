@@ -1,14 +1,24 @@
 import os
+import syss
 import platform
 import subprocess
-
 from setuptools import setup, find_packages
 
-#foldercreation
-instfolder = os.path.join(os.path.expanduser("~"), '3color-Press')
+if platform.system() == 'Windows':
+    if sys.maxsize > 2**32:
+        subprocess.call(
+            ['easy_install', "http://www.voidspace.org.uk/downloads/pycrypto26/pycrypto-2.6.1.win-amd64-py2.7.exe"]
+        )
 
+    elif sys.maxsize < 2**32:
+        subprocess.call(
+            ['easy_install', "http://www.voidspace.org.uk/downloads/pycrypto26/pycrypto-2.6.win32-py2.7.exe"]
+        )
+
+
+# foldercreation
+instfolder = os.path.join(os.path.expanduser("~"), '3color-Press')
 folders = ['content','images','themes']
-contfolders = ['book', 'news', 'single']
 
 # TODO: add checks for themes, content,
 # check to see the project folder ~/3color-Press exists
@@ -28,12 +38,6 @@ elif os.path.exists(os.path.join(instfolder, 'content')) and os.path.exists(os.p
 
 with open('README.txt') as file:
     long_description = file.read()
-
-if platform.system() == 'Windows':
-
-    subprocess.call(
-        ['easy_install', "http://www.voidspace.org.uk/downloads/pycrypto26/pycrypto-2.6.win-amd64-py2.7.exe"]
-    )
 
 setup(
     name='3color-Press',

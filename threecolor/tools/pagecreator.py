@@ -3,12 +3,12 @@ import click
 from datetime import date
 
 from ..models import PagesCreator, PageCreator
-from ..manager import cli
 from . import misc
+
+up = click.UNPROCESSED
 
 # TODO: Create pagetype specific forms
 def new_page(batch, pagetype, path):
-
 
     if batch:
         pamount = click.prompt('Amount of new pages to make', type=int)

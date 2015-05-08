@@ -18,12 +18,13 @@ def create_site():
 
         app = Flask('threecolor', instance_path=instfolder, instance_relative_config=True)
 
-        #configure app with default config files
+        # configure app with default config files
         app.config.from_object('threecolor.configs.default_settings')
         app.config.from_object('threecolor.configs.default_template_settings')
 
-        #overide default settings with user settings
-        app.config.from_pyfile('settings.cfg')
+        if os.path.exists(os.path.join(instfolder, 'settings.cfg')):
+            # overide default settings with user settings
+            app.config.from_pyfile('settings.cfg')
 
         if app.config['ACTIVE_THEME'] is not 'default':
             app.config.from_pyfile(os.path.join(THEME_DIR, app.config['ACTIVE_THEME'], 'theme_settings.cfg'))
