@@ -1,5 +1,5 @@
 import os
-import syss
+import sys
 import platform
 import subprocess
 from setuptools import setup, find_packages
