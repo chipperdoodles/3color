@@ -1,5 +1,6 @@
 import click
 import subprocess
+import werkzeug
 
 from datetime import date
 
@@ -104,10 +105,10 @@ def push_site(pubmethod):
 @cli.command()
 def run():
     """Run website locally in debug mode"""
-    click.launch('http://localhost:5000/')
+    click.launch('http://localhost:5001/')
+    click.echo('press control+c to stop server')
     app = create_site()
-    app.run()
-
+    app.run(debug=True, port=5001)
 
 @cli.command(name='open')
 def open_file():
@@ -115,7 +116,7 @@ def open_file():
     click.launch(instfolder)
 
 
-@cli.command()
+@cli.command(name='new page')
 @click.option('--batch', is_flag=True, help='For making more than one new page')
 @click.option('--pagetype', prompt='Page type to be created',
               type=click.Choice(['book', 'news', 'single']), default='book')
