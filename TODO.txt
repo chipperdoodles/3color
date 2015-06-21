@@ -1,5 +1,8 @@
 List of ideas to implement and code to work on
 
+* multiple site management
+* gallery pagetype/imagetype
+* make menuname key into a list
 * Ongoing cleaning up of code, and fixing grammatical and spelling issues
 * Theming variables and configuration, add custom variables for themes
   such as toggle-able html elements and ability to customize colors

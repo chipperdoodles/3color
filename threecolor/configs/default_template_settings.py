@@ -1,15 +1,15 @@
-#display elements
-#global
+# display elements
+# global
 DISPLAY_LOGO = True
 DISPLAY_SITENAME = True
 DISPLAY_HEADER = True
 DISPLAY_LATEST = True
 DISPLAY_THUMB = True
-#comic page
+# comic page
 COMIC_TITLE = True
-#the book navigation, choices are lower or uppper, currently cannot have both
+# the book navigation, choices are lower or uppper, currently cannot have both
 COMIC_NAV = 'lower'
-#background colors
+# background colors
 BODY_COLOR = 'pink'
 HEADER_COLOR = 'rgba(100,100,100, 0.1)'
 FOOTER_COLOR = 'rgba(0,0,0, 0.1)'

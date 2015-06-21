@@ -1,7 +1,6 @@
 import os
 import subprocess
 
-from ..application import create_site
 from ..configs import config
 
 # TODO: make fabric optional

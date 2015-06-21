@@ -1,9 +1,8 @@
-import sys
 from cx_Freeze import setup, Executable
 import platform
 
 # Dependencies are automatically detected, but it might need fine tuning.
-build_exe_options = {"packages": ["threecolor"] }
+build_exe_options = {"packages": ["threecolor"]}
 
 # GUI applications require a different base on Windows (the default is for a
 # console application).
@@ -23,8 +22,8 @@ WinCon = Executable(
         appendScriptToExe=True,
         base=base)
 
-setup(  name = "threecolor",
-        version = "0.1",
-        description = "derp",
-        options = {"build_exe": build_exe_options},
-        executables = [Executable("threecolor/manager.py", base=base)])
+setup(name="threecolor",
+      version="0.1",
+      description="derp",
+      options={"build_exe": build_exe_options},
+      executables=[Executable("threecolor/cli.py", base=base)])

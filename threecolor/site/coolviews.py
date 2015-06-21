@@ -2,9 +2,12 @@ import os
 
 from ..configs import config
 
-from flask import abort, current_app, Blueprint, render_template, send_from_directory
+from flask import abort, current_app, Blueprint, render_template, send_from_directory, url_for
 from flask_flatpages import FlatPages
 from flask_frozen import Freezer
+
+from werkzeug.contrib.atom import AtomFeed
+
 
 freezer = Freezer()
 pages = FlatPages()
@@ -20,16 +23,22 @@ site = Blueprint('site', __name__,
 
 @site.context_processor
 def page_types():
-    # injects variables for book pages and menu pages, menu pages are used to build main menu links
-    menu_pages = (p for p in pages if (p['menu']))
-    book_page = (p for p in pages if 'book' == p['page_type'])
-    news_page = (p for p in pages if 'news' == p['page_type'])  # FIXME: uses same name as route function below
-    thumb_nail = latest_comic(book_page, current_app.config['THUMB_STORY'], 1)
-    book_list = (p['page_type'] for p in pages)  # FIXME: uses same name as book_list function below
+
+    """
+    injects variables for book pages and main-menu
+
+    """
+
+    main_menu = (p for p in pages if 'main-menu' in p['menu']['menuname'])
+    book_pages = (p for p in pages if 'book' == p['page_type'])
+    news_pages = (p for p in pages if 'news' == p['page_type'])
+    thumb_nail = latest_comic(book_pages, current_app.config['THUMB_STORY'], 1)
+    # FIXME: uses same name as book_list function below
+    # book_list = (p['page_type'] for p in pages)
     return {
-        "book_page": book_page,
-        "menu_pages": menu_pages,
-        "news_page": news_page,
+        "book_page": book_pages,
+        "main_menu": main_menu,
+        "news_page": news_pages,
         "thumb_nail": thumb_nail,
         "book_list": book_list,
         "pages": pages
@@ -65,9 +74,15 @@ def book_list():
 
 
 @site.route('/images/<name>')
-# static image file delivery
 def images(name):
+
+    """
+    static image file delivery.
+    This serves image files from the project fodler
+    """
+
     path = current_app.config['IMAGE_DIR']
+
     if '..' in name or name.startswith('/'):
         abort(404)
     else:
@@ -75,53 +90,79 @@ def images(name):
 
 
 @freezer.register_generator
-# makes sure images in the instance/images folder get built into site
 def images_url_generator():
+
+    """
+    For flask_frozen to make sure images in the instance/images folder
+    get built into the static html output.
+    """
+
     path = os.listdir(current_app.config['IMAGE_DIR'])
+
     for f in path:
         yield '/images/'+f
 
 
 @site.route('/')
 def index():
-    # take 1 most recent page of published comics
+
+    """
+    Renders a template for the home page that displays the most recent
+    published comic in the main story line.
+    """
     front_page = latest_comic(pages, current_app.config['MAIN_STORY'], 1)
     return render_template('home.html', front_page=front_page)
 
 
 @site.route('/books/')
 def books():
-    # finds and lists pages that are chapter: 1 and page_number: 1 in yaml header
+
+    """
+    Finds and lists pages that are chapter: 1 and page_number: 1 in yaml header
+    """
+
     first_page = (p for p in pages if p['book']['chapter'] == 1 and p['book']['page_number'] == 1)
     return render_template('books.html', first_page=first_page)
 
 
 @site.route('/news/')
 def news():
-    # renders news template
+
+    """
+    Renders the news template, this page is a feed of news posts.
+    """
+
     return render_template('news.html')
 
-# @site.route('/atom.xml')
-# # atom feed, only works with a patch to werkzeug/contrip/atom.py file will look into more
-# # https://github.com/mitsuhiko/werkzeug/issues/695
-# def atom_feed():
-#     feed = AtomFeed('Feed for '+current_app.config['SITE_NAME'],
-#                     feed_url=current_app.config['DOMAIN']+url_for('.atom_feed'),
-#                     url=current_app.config['DOMAIN'])
-#     # comic_feed = (p for p in pages if p.meta['page_type'] != 'single_page')
-#     comic_feed = page_feed(pages, 10)
-#     for p in comic_feed:
-#         feed.add(p.meta['title'],
-#                 content_type='html',
-#                 url=current_app.config['DOMAIN']+p.path+'.html',
-#                 updated=p.meta['published'],
-#                 summary=p.body)
-#     return feed.get_response()
+
+@site.route('/atom.xml')
+def atom_feed():
+
+    """
+    Uses the werkzeug contrib.atom module to generate atom feed
+    """
+
+    feed = AtomFeed('Feed for '+current_app.config['SITE_NAME'],
+                    feed_url=current_app.config['DOMAIN']+url_for('.atom_feed'),
+                    url=current_app.config['DOMAIN'])
+    # comic_feed = (p for p in pages if p.meta['page_type'] != 'single_page')
+    comic_feed = page_feed(pages, 10)
+    for p in comic_feed:
+        feed.add(p.meta['title'],
+                 content_type='html',
+                 url=current_app.config['DOMAIN']+p.path+'.html',
+                 published=p.meta['published'],
+                 updated=p.meta['modified'],
+                 summary=p.body)
+    return feed.get_response()
 
 
 @site.route('/<name>.html')
 def single_page(name):
-    # route for custom single pages, usually text pages such as about me or f.a.q's
+
+    """
+    Route for custom pages, usually text pages such as about me or f.a.q's
+    """
     path = '{}/{}'.format(current_app.config['PAGE_DIR'], name)
     page = pages.get_or_404(path)
     return render_template('page.html', page=page)
@@ -129,7 +170,9 @@ def single_page(name):
 
 @site.route('/news/<name>.html')
 def news_page(name):
-    # route for single pages, usually text pages
+    """
+    route for news post pages
+    """
     path = '{}/{}'.format(current_app.config['NEWS_DIR'], name)
     page = pages.get_or_404(path)
     return render_template('page.html', page=page)
@@ -137,8 +180,11 @@ def news_page(name):
 
 @site.route('/<book>/c<int:chapter>/p<int:number>/<name>.html')
 def comic_page(book, chapter, number, name):
-    # variables after 'p' are used to create pagination links within the book stories.
-    # these are only passed into the page.html template and work only on 'comic_page' urls
+    """
+    variables after 'p' are used to create pagination links within book stories.
+    These are only passed into the page.html template and only work on
+    'comic_page' urls
+    """
     path = '{}/{}'.format(current_app.config['BOOK_DIR'], name)
     p = pages.get_or_404(path)
     t_pages = total_pages(pages, p['book']['title'])

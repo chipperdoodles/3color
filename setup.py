@@ -18,7 +18,8 @@ if platform.system() == 'Windows':
 
 # foldercreation
 instfolder = os.path.join(os.path.expanduser("~"), '3color-Press')
-folders = ['content','images','themes']
+folders = ['content', 'images', 'themes']
+contfolders = ['book', 'news', 'single']
 
 # TODO: add checks for themes, content,
 # check to see the project folder ~/3color-Press exists
@@ -39,6 +40,7 @@ elif os.path.exists(os.path.join(instfolder, 'content')) and os.path.exists(os.p
 with open('README.txt') as file:
     long_description = file.read()
 
+# FIXME: the example file folder isn't copied over on install
 setup(
     name='3color-Press',
     version='0.2.2',
@@ -50,9 +52,6 @@ setup(
     long_description=long_description,
     packages=find_packages(),
     include_package_data=True,
-    data_files=[
-        (instfolder, ['threecolor/configs/example.settings.cfg']),
-    ],
     install_requires=[
         'Click',
         'Flask > 0.8',
@@ -62,7 +61,7 @@ setup(
     ],
     entry_points='''
         [console_scripts]
-        3color=threecolor.manager:cli
+        3color=threecolor.cli:cli
         ''',
 
     classifiers=[

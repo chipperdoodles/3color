@@ -3,11 +3,10 @@ import click
 from datetime import date
 
 from ..models import PagesCreator, PageCreator
-from . import misc
 
 up = click.UNPROCESSED
 
-# TODO: Create pagetype specific forms
+
 def new_page(batch, pagetype, path):
 
     if batch:
@@ -29,20 +28,19 @@ def new_page(batch, pagetype, path):
         thing = PagesCreator(**data)
         thing.write_page()
 
-
     elif pagetype == 'book':
         lname = click.prompt('The title of the Book', default='', type=up)
         sname = click.prompt('The shortname of your book (used for filenames)',
                              default='', type=up)
         ptype = pagetype
-        ptitle = click.prompt('The title of the page',
-                              default=date.today())
         pnumber = click.prompt('The number of the page', type=int)
+        ptitle = click.prompt('The title of the page',
+                              default=lname+' '+'Page: '+str(pnumber))
         chptr = click.prompt('The chapter number', type=int)
         img = click.prompt('The name of the image file of your comic page',
                            default=sname+'_'+str(pnumber)+'.png', type=up)
-        menu = click.prompt('True or False for link in main menu',
-                            type=bool, default=False)
+        menu = click.prompt('Name of the menu this page belongs to',
+                            type=up, default='main-menu')
 
         data = {
             "longname": lname,
@@ -52,22 +50,25 @@ def new_page(batch, pagetype, path):
             "pagenumber": pnumber,
             "chapter": chptr,
             "image": img,
-            "menu": menu,
+            "menuname": menu,
+            "menuindex": pnumber,
             "path": path
         }
 
         thing = PageCreator(**data)
         thing.write_page()
 
-
     else:
         ptype = pagetype
         sname = click.prompt('The shortname used for filenames, example: news',
-                              default='news', type=up)
+                             default='news', type=up)
         ptitle = click.prompt('The title of the page',
-                              default=date.today())
-        menu = click.prompt('True or False for link in main menu',
-                            type=bool, default=False)
+                              type=up,
+                              default=sname+" "+str(date.today()))
+        menu = click.prompt('Name of the menu this page belongs to',
+                            type=up, default='main-menu')
+        index = click.prompt('Weight of item, used for the order of the menu',
+                             type=int, default='')
 
         data = {
             "longname": None,
@@ -77,9 +78,16 @@ def new_page(batch, pagetype, path):
             "pagenumber": None,
             "chapter": None,
             "image": None,
-            "menu": menu,
+            "menuname": menu,
+            "menuindex": index,
             "path": path
         }
+
+        edit = click.prompt('would you like to edit the page now? (yes|no)',
+                            type=bool, default='yes')
+
+        if edit:
+            print("opening file to edit")
 
         thing = PageCreator(**data)
         thing.write_page()

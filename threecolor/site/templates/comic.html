@@ -13,6 +13,9 @@
 <div id="comic">
     <img src="{{ url_for('.images', name=p.book.image) }}">
 </div>
+<div id="comment">
+    {{ p.body }}
+</div>
   {% if config.COMIC_NAV is sameas 'lower' %}
     {% block lower %}
       {% include '_book_nav.html' %}

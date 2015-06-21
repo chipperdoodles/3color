@@ -1,7 +1,6 @@
 import os
 
 from flask import Flask
-from .tools import misc
 from .configs import config
 
 # set application root path
@@ -16,7 +15,10 @@ def create_site():
 
     if os.path.exists(instfolder):
 
-        app = Flask('threecolor', instance_path=instfolder, instance_relative_config=True)
+        app = Flask('threecolor',
+                    instance_path=instfolder,
+                    instance_relative_config=True
+                    )
 
         # configure app with default config files
         app.config.from_object('threecolor.configs.default_settings')
@@ -27,12 +29,17 @@ def create_site():
             app.config.from_pyfile('settings.cfg')
 
         if app.config['ACTIVE_THEME'] is not 'default':
-            app.config.from_pyfile(os.path.join(THEME_DIR, app.config['ACTIVE_THEME'], 'theme_settings.cfg'))
+            app.config.from_pyfile(os.path.join(THEME_DIR,
+                                   app.config['ACTIVE_THEME'],
+                                   'theme_settings.cfg')
+                                   )
 
         # configure paths and folders according to instance path
         app.config['FLATPAGES_ROOT'] = os.path.join(app.instance_path, 'content')
         app.config['IMAGE_DIR'] = os.path.join(app.instance_path, 'images')
-        app.config['FREEZER_DESTINATION'] = os.path.join(app.instance_path, app.config['BUILD_DIR'])
+        app.config['FREEZER_DESTINATION'] = os.path.join(app.instance_path,
+                                                         app.config['BUILD_DIR']
+                                                         )
 
         from .site.coolviews import site, pages, freezer
         app.register_blueprint(site)
@@ -42,14 +49,8 @@ def create_site():
         return app
 
     else:
-        # app = Flask('threecolor')
-        #
-        # # configure flask app from default settings, then overide with settings.cfg
-        # app.config.from_object('threecolor.configs.default_settings')
-
-        misc.make_home(APP_ROOT)
-
-        return app
+        """a project folder is needed to run"""
+        print("no project folder found ")
 
 
 def create_admin():

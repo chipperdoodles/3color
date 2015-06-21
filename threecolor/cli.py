@@ -1,12 +1,8 @@
 import click
 import subprocess
-import werkzeug
-
-from datetime import date
 
 from .application import create_site, instfolder
 from .tools import publish, misc, pagecreator
-from .models import PagesCreator, PageCreator
 from .site import coolviews
 
 up = click.UNPROCESSED
@@ -47,7 +43,7 @@ def cli():
 
     \b
     atom       If you have the Atom Editor installed,
-               this will call on atom to open your project folder in atom
+               this will call on atom to open your project folder
 
     \b
     newpage    Creates a new page (.md file) based on your inputs.
@@ -56,10 +52,13 @@ def cli():
                 \b
                   example: 3color newpage --batch
     \b
+    newtheme   Creates a theme of your name choice in the project folder/themes folder
+               and copies over the default theme files and to help quick start themeing.
+    \b
     run        Runs your website locally on port 5000 and opens http://localhost:5000
                in your default web browser. Use this command in order to see
                what your website will look like before you build it. Useful for
-               Theme building. press contrl+c to halt the live server.
+               Theme building. Press contrl+c to halt the live server.
 
     """
     pass
@@ -105,10 +104,11 @@ def push_site(pubmethod):
 @cli.command()
 def run():
     """Run website locally in debug mode"""
-    click.launch('http://localhost:5001/')
     click.echo('press control+c to stop server')
+    click.launch('http://localhost:5001/')
     app = create_site()
     app.run(debug=True, port=5001)
+
 
 @cli.command(name='open')
 def open_file():
@@ -116,7 +116,7 @@ def open_file():
     click.launch(instfolder)
 
 
-@cli.command(name='new page')
+@cli.command(name='newpage')
 @click.option('--batch', is_flag=True, help='For making more than one new page')
 @click.option('--pagetype', prompt='Page type to be created',
               type=click.Choice(['book', 'news', 'single']), default='book')
@@ -128,7 +128,7 @@ def newpage(batch, pagetype):
 
 @cli.command()
 def atom():
-    """ Open project folder with atom editor"""
+    """Open project folder with atom editor"""
     try:
         if misc.system == 'Windows':
             subprocess.check_call(["atom", instfolder], shell=True)
@@ -142,13 +142,13 @@ def atom():
 
 @cli.command()
 @click.option('--foldername', prompt='name of theme to be made',
-               default='ThemeName')
+              default='ThemeName')
 def newtheme(foldername):
-    """cli call to create a new theme"""
+    """Create a new theme"""
     misc.new_theme(foldername)
 
 
-# @cli.command(name='setup')
-# def make_instance():
-#     """Create your Project folder and copy over default config file"""
-#     misc.make_home()
+@cli.command(name='setup')
+def make_instance():
+    """Copy over default config file"""
+    misc.copy_config()
