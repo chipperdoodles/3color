@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}
+    <h2 id="page_title">Gallery</h2>
+{% endblock title %}
+{% block content %}
+{% for p in gallery_items %}
+<div id="gallery_div">
+    <img src="{{ url_for('.images', subdir='gallery', name=p.book.image) }}">
+</div>
+{% block content_footer %}
+{% endblock content_footer %}
+{% endblock content %}

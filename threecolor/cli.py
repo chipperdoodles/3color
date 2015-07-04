@@ -1,9 +1,11 @@
 import click
 import subprocess
+import os
 
 from .application import create_site, instfolder
 from .tools import publish, misc, pagecreator
 from .site import coolviews
+from .configs import config
 
 up = click.UNPROCESSED
 
@@ -90,7 +92,8 @@ def compress():
 
 
 @cli.command(name='publish')
-@click.option('--pubmethod', type=click.Choice(['sftp', 'rsync', 'local', 'git' ]))
+@click.option('--pubmethod',
+              type=click.Choice(['sftp', 'rsync', 'local', 'git']))
 def push_site(pubmethod):
     """Publish site to remote server"""
     click.echo('publishing')
@@ -100,7 +103,7 @@ def push_site(pubmethod):
         publish.publish()
 
 
-# FIXME launches browser windows
+# FIXME launches multiple browser windows/tabs if flask is reloaded from debug
 @cli.command()
 def run():
     """Run website locally in debug mode"""
@@ -118,8 +121,9 @@ def open_file():
 
 @cli.command(name='newpage')
 @click.option('--batch', is_flag=True, help='For making more than one new page')
-@click.option('--pagetype', prompt='Page type to be created',
-              type=click.Choice(['book', 'news', 'single']), default='book')
+@click.option('--pagetype', prompt='Type of page to be created ',
+              type=click.Choice(['book', 'news', 'single', 'gallery']),
+              default='book')
 def newpage(batch, pagetype):
     """Create a new page"""
     path = misc.page_dir(pagetype)
@@ -150,5 +154,10 @@ def newtheme(foldername):
 
 @cli.command(name='setup')
 def make_instance():
-    """Copy over default config file"""
-    misc.copy_config()
+    """Copy over default config file, open in editor"""
+    cf = os.path.join(instfolder, 'settings.cfg')
+    if config.cfg_check(cf) is True:
+        click.edit(filename=cf)
+    else:
+        misc.copy_config
+        click.edit(filename=cf)

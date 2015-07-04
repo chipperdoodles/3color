@@ -32,6 +32,7 @@ def page_types():
     main_menu = (p for p in pages if 'main-menu' in p['menu']['menuname'])
     book_pages = (p for p in pages if 'book' == p['page_type'])
     news_pages = (p for p in pages if 'news' == p['page_type'])
+    gallery_items = (p for p in pages if 'gallery' == p['page_type'])
     thumb_nail = latest_comic(book_pages, current_app.config['THUMB_STORY'], 1)
     # FIXME: uses same name as book_list function below
     # book_list = (p['page_type'] for p in pages)
@@ -73,15 +74,15 @@ def book_list():
     return book_titles
 
 
-@site.route('/images/<name>')
-def images(name):
+@site.route('/images/<subdir>/<name>')
+def images(subdir, name):
 
     """
     static image file delivery.
-    This serves image files from the project fodler
+    This serves image files from the project
     """
 
-    path = current_app.config['IMAGE_DIR']
+    path = os.path.join(current_app.config['IMAGE_DIR'], subdir)
 
     if '..' in name or name.startswith('/'):
         abort(404)
@@ -89,6 +90,7 @@ def images(name):
         return send_from_directory(path, name)
 
 
+# FIXME: this probably breaks with the new image subdirectories, fix this!
 @freezer.register_generator
 def images_url_generator():
 
@@ -134,6 +136,14 @@ def news():
 
     return render_template('news.html')
 
+
+@site.route('/gallery/')
+def gallery():
+    """
+    Renders gallery page
+    """
+
+    return render_template('gallery.html')
 
 @site.route('/atom.xml')
 def atom_feed():

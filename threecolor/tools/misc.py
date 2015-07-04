@@ -68,6 +68,7 @@ def new_theme(foldername='CHANGE_MY_NAME'):
     shutil.copytree(os.path.join(root_path, 'site', 'static'),
                     os.path.join(instfolder, 'themes', foldername, 'static'))
 
+
 def copy_config():
-    shutil.copyfile(os.path.join(root_path, 'configs', 'default_template_settings.py'),
-                    os.path.join(instfolder, 'themes', foldername, 'theme_settings.cfg'))
+    shutil.copyfile(os.path.join(root_path, 'configs', 'example.settings.cfg'),
+                    os.path.join(instfolder, 'settings.cfg'))

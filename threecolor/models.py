@@ -14,16 +14,12 @@ class PageHeader(object):
 
     def __init__(self, **kwargs):
 
-        # self.longname = kwargs['longname']
-        # self.pagetype = kwargs['pagetype']
-        # self.pageamount = kwargs['pageamount']
-        # self.pagetitle = kwargs['pagetitle']
-        # self.pagenumber = kwargs['pagenumber']
-        # self.published = kwargs['pub']
-        # self.modified = kwargs['mod']
-        # self.image = kwargs['image']
-        # self.menu = kwargs['menu']
         self.__dict__.update(kwargs)
+
+        if self.pagenumber:
+            self.name = os.path.join(self.path, self.shortname+'_'+str(self.pagenumber)+'.md')
+        else:
+            self.name = os.path.join(self.path, self.shortname+'_'+str(datetime.now().isoformat())+'.md')
 
     @property
     def header(self):
@@ -43,7 +39,7 @@ class PageHeader(object):
                 'image': self.image
             },
             "menu": {
-                    'menuname': [self.menuname, ],
+                    'menuname': [self.menuname],
                     'index': self.menuindex
             },
             "version": __version__
@@ -56,19 +52,13 @@ class PageHeader(object):
         This is our page metadata information.
         """
 
-        if self.pagenumber:
-            name = os.path.join(self.path, self.shortname+'_'+str(self.pagenumber)+'.md')
-        else:
-            name = os.path.join(self.path, self.shortname+'_'+str(datetime.now().isoformat())+'.md')
-
-        with open(name, "ab") as f:
+        with open(self.name, "ab") as f:
             yaml.dump(self.header, f)
 
     def dump(self):
         """test function"""
-        name = os.path.join(self.path, self.shortname+'_'+str(self.pagenumber)+'.md')
         info = yaml.safe_dump(self.header)
-        return name+'\n'+info
+        return self.name+'\n'+info
 
 
 class PagesCreator(PageHeader):
@@ -103,7 +93,7 @@ class PagesCreator(PageHeader):
                     'image': ''
             },
             "menu": {
-                    'name': [self.menuname, ],
+                    'menuname': [self.menuname],
                     'index': self.menuindex
             },
             "version": __version__

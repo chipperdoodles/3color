@@ -1,9 +1,22 @@
 <style type="text/css">
-body { background-color: {{ config.BODY_COLOR }};}
+/* This file is meant to provide easy access to color
+ or background images of a theme. The variables are taken from
+ the template_settings.cfg file */
 
-header { background-color: {{ config.HEADER_COLOR }};}
+body {
+  background-color: {{ config.BODY_COLOR }};
+  background-image: url({{ config.BODY_IMAGE }});
+  }
 
-footer { background-color: {{ config.FOOTER_COLOR }};}
+header {
+  background-color: {{ config.HEADER_COLOR }};
+  background-image: url({{ config.HEADER_IMAGE }});
+  }
+
+footer {
+  background-color: {{ config.FOOTER_COLOR }};
+  background-image: url({{ config.FOOTER_IMAGE }});
+  }
 
 /* header flexboxy styles. Includes logo and thumbnail */
 #header {}
@@ -15,20 +28,29 @@ footer { background-color: {{ config.FOOTER_COLOR }};}
 .thumbnail_img { border: 5px groove #fff; border-radius: 10px;}
 
 /*main container. maybe more useful when using @media queries*/
-#container { background-color: rgba(100,100,100,,0.1);}
+#container {background-color: rgba(100,100,100,,0.1);}
 
 /*main menu wrapper and boxes*/
-#main_menu { background-color: {{ config.MAIN_MENU_COLOR }};}
+#main_menu {
+  background-color: {{ config.MAIN_MENU_COLOR }};
+  background-image: url({{ config.MAIN_MENU_IMAGE }});
+  }
 
 .main-menu-container{}
 
 .main-menu-item {}
 
 /* content wrapper, includes everything till the footer*/
-#content { background-color: {{ config.CONTENT_COLOR }};}
+#content {
+  background-color: {{ config.CONTENT_COLOR }};
+  background-image: url({{ config.CONTENT_IMAGE }});
+  }
 
 /* wrapper and img defs for comic pages*/
-#comic { background-color: {{ config.COMIC_COLOR }};}
+#comic {
+  background-color: {{ config.COMIC_COLOR }};
+  background-image: url({{ config.COMIC_IMAGE }});
+  }
 
 /* wrapper and boxes for comic pagination*/
 #book_nav {}
@@ -38,17 +60,29 @@ footer { background-color: {{ config.FOOTER_COLOR }};}
 .book-nav-item {}
 
 /* style for indiviual and special pages*/
-#single_page { background-color: SINGLE_CONTENT_COLOR;}
+#single_page {
+  background-color: {{ SINGLE_CONTENT_COLOR }};
+  background-image: url({{ config.SINGLE_CONTENT_IMAGE }});
+  }
 
-#book_page { background-color: BOOK_PAGE_COLOR;}
+#book_page {
+  background-color: {{ config.BOOK_PAGE_COLOR }};
+  background-image: url({{ config.BOOK_PAGE_IMAGE }});
+  }
 
 /* styles for the news feed, NOT for the individual news page
-those are sytled by #single_page*/
+those are sytled by #single_page */
 #news_blurb {}
 
 .news_blurb{ border: 5px dashed #757575; border-radius: 10px;}
 
-.news_blurb.odd { background-color: {{ config.NEWSBLURB_ODD_COLOR }};}
+.news_blurb.odd {
+  background-color: {{ config.NEWSBLURB_ODD_COLOR }};
+  background-image: url({{ config.NEWSBLURB_ODD_IMAGE }});
+  }
 
-.news_blurb.even { background-color: {{ config.NEWSBLURB_EVEN_COLOR }} ;}
+.news_blurb.even {
+  background-color: {{ config.NEWSBLURB_EVEN_COLOR }};
+  background-image: url({{ config.NEWSBLURB_EVEN_IMAGE }});
+  }
 </style>

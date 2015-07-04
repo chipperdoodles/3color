@@ -11,7 +11,6 @@ def new_page(batch, pagetype, path):
 
     if batch:
         pamount = click.prompt('Amount of new pages to make', type=int)
-
         lname = click.prompt('The title of the Book', default='', type=up)
         sname = click.prompt('The shortname of your book (used for filenames)',
                              default='', type=up)
@@ -40,7 +39,7 @@ def new_page(batch, pagetype, path):
         img = click.prompt('The name of the image file of your comic page',
                            default=sname+'_'+str(pnumber)+'.png', type=up)
         menu = click.prompt('Name of the menu this page belongs to',
-                            type=up, default='main-menu')
+                            type=up, default='sname')
 
         data = {
             "longname": lname,
@@ -58,10 +57,38 @@ def new_page(batch, pagetype, path):
         thing = PageCreator(**data)
         thing.write_page()
 
+    elif pagetype == 'gallery':
+
+        ptype = pagetype
+        pnumber = click.prompt('Number for item order in gallery', type=int)
+        ptitle = click.prompt('The title of the item',
+                              default=sname+' '+'item: '+str(pnumber))
+        chptr = click.prompt('Group Number ', type=int)
+        img = click.prompt('The name of the image file of gallery item',
+                           default=sname+'_'+str(pnumber)+'.png', type=up)
+        menu = click.prompt('Name of the menu this page belongs to',
+                            type=up, default='gallery')
+
+        data = {
+            "longname": None,
+            "shortname": 'gallery',
+            "pagetype": ptype,
+            "pagetitle": ptitle,
+            "pagenumber": pnumber,
+            "chapter": chptr,
+            "image": img,
+            "menuname": menu,
+            "menuindex": pnumber,
+            "path": path
+        }
+
+        thing = PageCreator(**data)
+        thing.write_page()
+
     else:
         ptype = pagetype
         sname = click.prompt('The shortname used for filenames, example: news',
-                             default='news', type=up)
+                             default=pagetype, type=up)
         ptitle = click.prompt('The title of the page',
                               type=up,
                               default=sname+" "+str(date.today()))
@@ -84,10 +111,11 @@ def new_page(batch, pagetype, path):
         }
 
         edit = click.prompt('would you like to edit the page now? (yes|no)',
-                            type=bool, default='yes')
-
-        if edit:
-            print("opening file to edit")
+                            type=bool, default='no')
 
         thing = PageCreator(**data)
         thing.write_page()
+
+        if edit:
+            click.echo("opening file to edit")
+            click.edit(filename=thing.name)

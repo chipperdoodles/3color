@@ -19,7 +19,8 @@ if platform.system() == 'Windows':
 # foldercreation
 instfolder = os.path.join(os.path.expanduser("~"), '3color-Press')
 folders = ['content', 'images', 'themes']
-contfolders = ['book', 'news', 'single']
+imgfolders = [ 'comics', 'gallery', 'misc']
+contfolders = ['book', 'news', 'single', 'gallery']
 
 # TODO: add checks for themes, content,
 # check to see the project folder ~/3color-Press exists
