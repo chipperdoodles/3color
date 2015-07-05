@@ -16,7 +16,7 @@ COMIC_TITLE = True
 # the book navigation, choices are lower or uppper, currently cannot have both
 COMIC_NAV = 'lower'
 
-# background colors
+# background colors: accepts valid css color properties
 BODY_COLOR = 'pink'
 HEADER_COLOR = 'rgba(100,100,100, 0.1)'
 FOOTER_COLOR = 'rgba(0,0,0, 0.1)'
@@ -28,7 +28,7 @@ BOOK_PAGE_COLOR = 'rgba(100,100,100, 0.5)'
 NEWSBLURB_EVEN_COLOR = ''
 NEWSBLURB_ODD_COLOR = 'rgba(117, 117, 117, 0.5)'
 
-# background images
+# background images: accepts valid urls and filepaths
 BODY_IMAGE = ''
 HEADER_IMAGE = ''
 FOOTER_IMAGE = ''

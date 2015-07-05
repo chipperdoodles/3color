@@ -16,7 +16,7 @@ class PageHeader(object):
 
         self.__dict__.update(kwargs)
 
-        if self.pagenumber:
+        if self.pagenumber is int:
             self.name = os.path.join(self.path, self.shortname+'_'+str(self.pagenumber)+'.md')
         else:
             self.name = os.path.join(self.path, self.shortname+'_'+str(datetime.now().isoformat())+'.md')
@@ -39,8 +39,8 @@ class PageHeader(object):
                 'image': self.image
             },
             "menu": {
-                    'menuname': [self.menuname],
-                    'index': self.menuindex
+                'menuname': [self.menuname],
+                'index': self.menuindex
             },
             "version": __version__
         }
@@ -72,8 +72,8 @@ class PagesCreator(PageHeader):
         self.index = 0
         self.pub = datetime.now()
         self.mod = datetime.now()
-        self.pubdate = self.pub.date().isoformat(' ')
-        self.pubtime = self.pub.time().isoformat(' ')
+        # self.pubdate = self.pub.date().isoformat()
+        # self.pubtime = self.pub.time().isoformat()
 
     def header(self, n):
 
@@ -87,14 +87,14 @@ class PagesCreator(PageHeader):
             "modified": self.mod,
             "page_type": self.pagetype,
             "book": {
-                    'title': self.longname,
-                    'chapter': '',
-                    'page_number': n,
-                    'image': ''
+                'title': self.longname,
+                'chapter': '',
+                'page_number': n,
+                'image': ''
             },
             "menu": {
-                    'menuname': [self.menuname],
-                    'index': self.menuindex
+                'menuname': [self.menuname],
+                'index': n
             },
             "version": __version__
         }

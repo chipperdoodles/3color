@@ -14,6 +14,8 @@ def new_page(batch, pagetype, path):
         lname = click.prompt('The title of the Book', default='', type=up)
         sname = click.prompt('The shortname of your book (used for filenames)',
                              default='', type=up)
+        menu = click.prompt('Name of the menu this page belongs to',
+                            type=up, default=sname)
         ptype = pagetype
 
         data = dict(
@@ -21,7 +23,9 @@ def new_page(batch, pagetype, path):
                 shortname=sname,
                 pagetype=ptype,
                 path=path,
-                page_amount=pamount
+                page_amount=pamount,
+                pagenumber=None,
+                menuname=menu
         )
 
         thing = PagesCreator(**data)
@@ -39,7 +43,7 @@ def new_page(batch, pagetype, path):
         img = click.prompt('The name of the image file of your comic page',
                            default=sname+'_'+str(pnumber)+'.png', type=up)
         menu = click.prompt('Name of the menu this page belongs to',
-                            type=up, default='sname')
+                            type=up, default=sname)
 
         data = {
             "longname": lname,

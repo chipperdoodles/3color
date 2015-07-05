@@ -42,7 +42,8 @@ def page_types():
         "news_page": news_pages,
         "thumb_nail": thumb_nail,
         "book_list": book_list,
-        "pages": pages
+        "pages": pages,
+        "gallery_items": gallery_items
     }
 
 
