@@ -5,7 +5,7 @@
 {% block content %}
 <div id="gallery_div">
 {% for p in gallery_items |sort(attribute='book.page_number') %}
-  <div id"gallery_item">
+  <div class="gallery_item">
     <img src="{{ url_for('.images', subdir='gallery', name=p.book.image) }}">
   </div>
 {% endfor %}

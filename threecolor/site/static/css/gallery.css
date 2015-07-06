@@ -1,0 +1,15 @@
+#gallery_div {
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.gallery_item {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  /*flex-direction: row;
+  flex-wrap: wrap;*/
+}

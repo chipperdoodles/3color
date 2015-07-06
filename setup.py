@@ -19,7 +19,7 @@ if platform.system() == 'Windows':
 # foldercreation
 instfolder = os.path.join(os.path.expanduser("~"), '3color-Press')
 folders = ['content', 'images', 'themes']
-imgfolders = [ 'comics', 'gallery', 'misc']
+imgfolders = ['comics', 'gallery', 'misc']
 contfolders = ['book', 'news', 'single', 'gallery']
 
 # TODO: add checks for themes, content,
@@ -31,12 +31,16 @@ if os.path.exists(instfolder) is False:
         os.mkdir(os.path.join(instfolder, folder))
     for folder in contfolders:
         os.mkdir(os.path.join(instfolder, 'content', folder))
+    for folder in imgfolders:
+        os.mkdir(os.path.join(instfolder, 'images', folder))
 # check to see if subfolders exist,if not then create them
 elif os.path.exists(os.path.join(instfolder, 'content')) and os.path.exists(os.path.join(instfolder, 'images')) and os.path.exists(os.path.join(instfolder, 'themes')) is False:
     for folder in folders:
         os.mkdir(os.path.join(instfolder, folder))
     for folder in contfolders:
         os.mkdir(os.path.join(instfolder, 'content', folder))
+    for folder in imgfolders:
+        os.mkdir(os.path.join(instfolder, 'images', folder))
 
 with open('README.txt') as file:
     long_description = file.read()
@@ -44,7 +48,7 @@ with open('README.txt') as file:
 # FIXME: the example file folder isn't copied over on install
 setup(
     name='3color-Press',
-    version='0.2.2',
+    version='0.2.3',
     author='Martin Knobel',
     author_email='mknobel@noties.org',
     license='BSD',

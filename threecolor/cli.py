@@ -153,11 +153,12 @@ def newtheme(foldername):
 
 
 @cli.command(name='setup')
-def make_instance():
+def upconfig():
     """Copy over default config file, open in editor"""
     cf = os.path.join(instfolder, 'settings.cfg')
-    if config.cfg_check(cf) is True:
+
+    if config.cfg_check(cf):
         click.edit(filename=cf)
     else:
-        misc.copy_config
+        misc.copy_config()
         click.edit(filename=cf)

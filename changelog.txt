@@ -1,3 +1,15 @@
+version 0.2.3
+
+Added
+=====
+* gallery page type and html template
+
+Changed
+=======
+* various changes and derp fixes
+* changed images folder to contain subfolders
+
+
 version 0.2.2
 
 Added
