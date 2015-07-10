@@ -15,6 +15,7 @@ options = {
     'workers': number_of_workers(),
     }
 
+
 def test_app(environ, start_response):
     response_body = b'Works fine'
     status = '200 OK'
