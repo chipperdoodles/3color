@@ -16,7 +16,7 @@ class PageHeader(object):
 
         self.__dict__.update(kwargs)
 
-        if self.pagenumber is int:
+        if self.pagenumber is not None:
             self.name = os.path.join(self.path, self.shortname+'_'+str(self.pagenumber)+'.md')
         else:
             self.name = os.path.join(self.path, self.shortname+'_'+str(datetime.now().isoformat())+'.md')
@@ -39,7 +39,7 @@ class PageHeader(object):
                 'image': self.image
             },
             "menu": {
-                'menuname': [self.menuname],
+                'menuname': self.menuname,
                 'index': self.menuindex
             },
             "version": __version__
@@ -93,7 +93,7 @@ class PagesCreator(PageHeader):
                 'image': ''
             },
             "menu": {
-                'menuname': [self.menuname],
+                'menuname': self.menuname,
                 'index': n
             },
             "version": __version__

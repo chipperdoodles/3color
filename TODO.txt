@@ -5,7 +5,8 @@ List of ideas to implement and code to work on
 * figure out packaging entire app (cx_freeze type things)
 * make a good informative project site and images
 * look into migration from database to flat files (i.e. wordpress to 3color-press)
-* alt text metadata field for comic images
+* alt-text field for comic images
+* make optional per page comment (page.body to show up in template)
 
 in progress:
 
@@ -25,3 +26,4 @@ always:
 
 * Ongoing cleaning up of code, and fixing grammatical and spelling issues
 * test, test, test!
+* question why i'm not using a database

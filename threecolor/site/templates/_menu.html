@@ -2,6 +2,7 @@
   <a class="main-menu-item" href="{{ url_for('.index') }}">Home</a>
   <a class="main-menu-item" href="{{ url_for('.books') }}">Books</a>
   <a class="main-menu-item" href="{{ url_for('.news') }}">News</a>
+  <a class="main-menu-item" href="{{ url_for('.gallery') }}">Gallery</a>
   {% for p in main_menu %}
   {% if p.page_type == 'book' %}
     <a class="main-menu-item" href="{{ url_for('.comic_page', _anchor='content', book=p.book.title, chapter=p.book.chapter, number=p.book.page_number, name=p.path.replace(config.BOOK_DIR+'/', '')) }}">{{ p.title }}</a>

@@ -1,5 +1,5 @@
 {% for p in thumb_nail %}
 <p class="thumbnail">Latest {{p.book.title}}</p>
-<a class="thumbnail"href="{{ url_for('.comic_page', _anchor='content', book=p.book.title, chapter=p.book.chapter, number=p.book.page_number, name=p.path.replace(config.BOOK_DIR+'/', '')) }}"><img class="thumbnail_img" src="{{ url_for('.images', name=p.book.image) }}"></a>
+<a class="thumbnail"href="{{ url_for('.comic_page', _anchor='content', book=p.book.title, chapter=p.book.chapter, number=p.book.page_number, name=p.path.replace(config.BOOK_DIR+'/', '')) }}"><img class="thumbnail_img" src="{{ url_for('.images', subdir='comics', name=p.book.image) }}"></a>
 <p class="thumbnail">{{p.title}}</p>
 {% endfor %}

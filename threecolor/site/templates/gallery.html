@@ -3,10 +3,10 @@
     <h2 id="page_title">Gallery</h2>
 {% endblock title %}
 {% block content %}
-<div id="gallery_div">
+<div id="gallery_container">
 {% for p in gallery_items |sort(attribute='book.page_number') %}
-  <div class="gallery_item">
-    <img src="{{ url_for('.images', subdir='gallery', name=p.book.image) }}">
+  <div class="gallery_div">
+    <img class="gallery_image"src="{{ url_for('.images', subdir='gallery', name=p.book.image) }}">
   </div>
 {% endfor %}
 </div>

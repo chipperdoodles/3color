@@ -25,7 +25,7 @@ def new_page(batch, pagetype, path):
                 path=path,
                 page_amount=pamount,
                 pagenumber=None,
-                menuname=menu
+                menuname=[menu]
         )
 
         thing = PagesCreator(**data)
@@ -37,7 +37,7 @@ def new_page(batch, pagetype, path):
                              default='', type=up)
         ptype = pagetype
         pnumber = click.prompt('The number of the page', type=int)
-        ptitle = click.prompt('The title of the page',
+        ptitle = click.prompt('The title of the page', type=up,
                               default=lname+' '+'Page: '+str(pnumber))
         chptr = click.prompt('The chapter number', type=int)
         img = click.prompt('The name of the image file of your comic page',
@@ -53,7 +53,7 @@ def new_page(batch, pagetype, path):
             "pagenumber": pnumber,
             "chapter": chptr,
             "image": img,
-            "menuname": menu,
+            "menuname": [menu],
             "menuindex": pnumber,
             "path": path
         }
@@ -64,8 +64,9 @@ def new_page(batch, pagetype, path):
     elif pagetype == 'gallery':
 
         ptype = pagetype
+        sname='gallery'
         pnumber = click.prompt('Number for item order in gallery', type=int)
-        ptitle = click.prompt('The title of the item',
+        ptitle = click.prompt('The title of the item', type=up,
                               default=sname+' '+'item: '+str(pnumber))
         chptr = click.prompt('Group Number ', type=int)
         img = click.prompt('The name of the image file of gallery item',
@@ -75,13 +76,13 @@ def new_page(batch, pagetype, path):
 
         data = {
             "longname": None,
-            "shortname": 'gallery',
+            "shortname": sname,
             "pagetype": ptype,
             "pagetitle": ptitle,
             "pagenumber": pnumber,
             "chapter": chptr,
             "image": img,
-            "menuname": menu,
+            "menuname": [menu],
             "menuindex": pnumber,
             "path": path
         }
@@ -93,11 +94,10 @@ def new_page(batch, pagetype, path):
         ptype = pagetype
         sname = click.prompt('The shortname used for filenames, example: news',
                              default=pagetype, type=up)
-        ptitle = click.prompt('The title of the page',
-                              type=up,
+        ptitle = click.prompt('The title of the page', type=up,
                               default=sname+" "+str(date.today()))
-        menu = click.prompt('Name of the menu this page belongs to',
-                            type=up, default='main-menu')
+        menu = click.prompt('Name of the menu this page belongs to example: main-menu',
+                            type=up, default=pagetype)
         index = click.prompt('Weight of item, used for the order of the menu',
                              type=int, default='')
 
@@ -109,7 +109,7 @@ def new_page(batch, pagetype, path):
             "pagenumber": None,
             "chapter": None,
             "image": None,
-            "menuname": menu,
+            "menuname": [menu],
             "menuindex": index,
             "path": path
         }
