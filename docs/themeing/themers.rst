@@ -40,6 +40,7 @@ example ::
   * books.html
   * comic.html
   * news.html
+  * gallery.html
 
 
 Theming todo

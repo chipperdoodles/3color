@@ -16,3 +16,4 @@ USER_NAME = ''
 REMOTE_SERVER = ''
 PUB_METHOD = 'local'
 ACTIVE_THEME = 'default'
+FEED_COUNT = 10

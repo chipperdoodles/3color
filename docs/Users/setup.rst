@@ -17,14 +17,18 @@ On fresh install it should look like this: ::
       ├── content
       │   ├── book
       │   ├── news
+      │   ├── gallery
       │   └── single
       ├── example.settings.cfg
       ├── images
+      │    ├── comics
+      │    ├── gallery
+      │    └── misc
       ├── settings.cfg
       └── themes
 
-You may have both an :file:`example.settings.cfg` and :file:`settings.cfg`. Or you
-maybe just have :file:`settings.cfg`.
+if you do not have a :file:`example.settings.cfg` and :file:`settings.cfg` run the
+command ``3color setup``
 
 
 Post Install Set up

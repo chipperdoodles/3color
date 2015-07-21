@@ -37,15 +37,18 @@ def make_usr_cfg():
         if cfgcheck is True:
             usr_cfg.from_pyfile(cfgfile)
 
-        # configure some path based values
+        # set some path based values
         usr_cfg['TEMPLATES'] = os.path.join(THEME_DIR, usr_cfg['ACTIVE_THEME'], 'templates')
         usr_cfg['STATIC'] = os.path.join(THEME_DIR, usr_cfg['ACTIVE_THEME'], 'static')
         usr_cfg['FLATPAGES_ROOT'] = os.path.join(instfolder, 'content')
         usr_cfg['FREEZER_DESTINATION'] = os.path.join(instfolder, usr_cfg['BUILD_DIR'])
+        usr_cfg['IMAGE_DIR'] = os.path.join(instfolder, 'images')
 
         # check to see if there is a theme folder with same name as active theme config
         if os.path.exists(os.path.join(THEME_DIR, usr_cfg['ACTIVE_THEME'])):
-            usr_cfg['IMAGE_DIR'] = os.path.join(instfolder, 'images')
+            themefolder=os.path.join(THEME_DIR, usr_cfg['ACTIVE_THEME'])
+            usr_cfg['TEMPLATES'] = os.path.join(themefolder, 'templates')
+            usr_cfg['STATIC'] = os.path.join(themefolder, 'static')
         else:
             usr_cfg['TEMPLATES'] = 'templates'
             usr_cfg['STATIC'] = 'static'

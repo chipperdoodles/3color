@@ -14,10 +14,10 @@ If you have python and pip installed on your computer::
 
   $ pip install 3color-Press
 
-this will install to your site packages folder and create the 3color-Press project
-folders in your home directory, and will also make the 3color command line tool
-available in your path. (current exceptions if you install with --user flag, the
-3color tool will be in in userbase/bin )
+this will install to your python site packages folder and create the 3color-Press
+project folders in your home directory, and will also make the 3color command line
+tool available in your path. (current exceptions if you install with --user flag,
+the 3color tool will be in userbase/bin )
 
 If you have problems with system permissions (i.e. you use osx's native python)
 Look into using virtualenv or installing with --user and adding appropriate path
@@ -33,8 +33,8 @@ managing, building, pushing, testing your site, as well as bootstrapping new pag
 
 ``3color run``
 
-This command will run the site live and locally on port 5000 as well as open your
-default browser to it. (if it doesn't load just refresh and currently the browser)
+This command will run the site live and locally on port 5001 as well as open your
+default browser to it. (if it doesn't load just refresh the browser)
 
 Configure
 ---------

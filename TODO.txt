@@ -7,6 +7,8 @@ List of ideas to implement and code to work on
 * look into migration from database to flat files (i.e. wordpress to 3color-press)
 * alt-text field for comic images
 * make optional per page comment (page.body to show up in template)
+* settle on metadata
+* settle on url naming scheme
 
 in progress:
 

@@ -107,8 +107,8 @@ def push_site(pubmethod):
 @cli.command()
 def run():
     """Run website locally in debug mode"""
-    click.echo('press control+c to stop server')
-    click.launch('http://localhost:5001/')
+    # click.echo('press control+c to stop server')
+    # click.launch('http://localhost:5001/')
     app = create_site()
     app.run(debug=True, port=5001)
 

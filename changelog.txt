@@ -3,6 +3,7 @@ version 0.2.3
 Added
 =====
 * gallery page type and html template
+* feed_count variable for atom feed
 
 Changed
 =======

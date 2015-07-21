@@ -4,7 +4,7 @@ from ..configs import config
 
 from flask import abort, current_app, Blueprint, render_template, send_from_directory, url_for
 from flask_flatpages import FlatPages
-from flask_frozen import Freezer
+from flask_frozen import Freezer, walk_directory
 
 from werkzeug.contrib.atom import AtomFeed
 
@@ -49,8 +49,11 @@ def page_types():
 
 def total_pages(pages, book):
     # takes a count of pages in the book and returns sum of pages, used for page navigation
-    t_pages = (1 for p in pages if p.meta['book'] == book)
+    t_pages = (1 for p in pages if p.meta['book']['title'] == book)
     t_pages = sum(t_pages)
+    # b_pages = (p for p in pages if p.meta['book']['title'] is book)
+    # p_list = [p.meta['book']['page_number'] for p in b_pages]
+    # t_pages = max(p_list)
     return t_pages
 
 
@@ -75,6 +78,23 @@ def book_list():
     return book_titles
 
 
+def feed_helper(p):
+    if p.meta['page_type'] is 'book':
+
+        if p.meta['title'] is '':
+            ptitle = p.meta['book']['title']+' '+str(p.meta['book']['page_number'])
+        else:
+            ptitle = p.meta['title']
+
+    else:
+
+        if p.meta['title'] is '':
+            ptitle = p.meta['page_type']+' '+str(p.meta['published'])
+        else:
+            ptitle = p.meta['title']
+
+    return ptitle
+
 @site.route('/images/<subdir>/<name>')
 def images(subdir, name):
 
@@ -85,25 +105,23 @@ def images(subdir, name):
 
     path = os.path.join(current_app.config['IMAGE_DIR'], subdir)
 
-    if '..' in name or name.startswith('/'):
-        abort(404)
-    else:
-        return send_from_directory(path, name)
+    return send_from_directory(path, name)
 
 
 # FIXME: this probably breaks with the new image subdirectories, fix this!
-@freezer.register_generator
-def images_url_generator():
+# @freezer.register_generator
+# def images_url_generator():
+#
+#     """
+#     For flask_frozen to make sure images in the instance/images folder
+#     get built into the static html output.
+#     """
+#
+#     path = os.listdir(current_app.config['IMAGE_DIR'])
+#
+#     for f in path:
+#         yield
 
-    """
-    For flask_frozen to make sure images in the instance/images folder
-    get built into the static html output.
-    """
-
-    path = os.listdir(current_app.config['IMAGE_DIR'])
-
-    for f in path:
-        yield '/images/'+f
 
 
 @site.route('/')
@@ -146,6 +164,7 @@ def gallery():
 
     return render_template('gallery.html')
 
+
 @site.route('/atom.xml')
 def atom_feed():
 
@@ -157,11 +176,15 @@ def atom_feed():
                     feed_url=current_app.config['DOMAIN']+url_for('.atom_feed'),
                     url=current_app.config['DOMAIN'])
     # comic_feed = (p for p in pages if p.meta['page_type'] != 'single_page')
-    comic_feed = page_feed(pages, 10)
+    comic_feed = page_feed(pages, current_app.config['FEED_COUNT'])
     for p in comic_feed:
-        feed.add(p.meta['title'],
+        feed.add(feed_helper(p),
                  content_type='html',
-                 url=current_app.config['DOMAIN']+p.path+'.html',
+                 url=url_for('.comic_page',
+                             book=p.meta['book']['title'],
+                             chapter=p.meta['book']['chapter'],
+                             number=p.meta['book']['page_number'],
+                             name=p.path.replace(current_app.config['BOOK_DIR']+'/', '')),
                  published=p.meta['published'],
                  updated=p.meta['modified'],
                  summary=p.body)
@@ -198,15 +221,15 @@ def comic_page(book, chapter, number, name):
     """
     path = '{}/{}'.format(current_app.config['BOOK_DIR'], name)
     p = pages.get_or_404(path)
-    t_pages = total_pages(pages, p['book']['title'])
-    minus = p['book']['page_number'] - 1
-    plus = p['book']['page_number'] + 1
-    current_book = p['book']['title']
+    t_pages = total_pages(pages, p.meta['book']['title'])
+    minus = p.meta['book']['page_number'] - 1
+    plus = p.meta['book']['page_number'] + 1
+    current_book = p.meta['book']['title']
     current_chapter = p.meta['book']['chapter']
-    first_page = (p for p in pages if p['book']['page_number'] == 1 and p['book']['title'] == current_book)
-    last_page = (p for p in pages if p['book']['page_number'] == t_pages)
-    previous_page = (p for p in pages if p['book']['page_number'] == minus)
-    next_page = (p for p in pages if p['book']['page_number'] == plus)
+    first_page = (p for p in pages if p.meta['book']['page_number'] == 1 and p.meta['book']['title'] == current_book)
+    last_page = (p for p in pages if p.meta['book']['page_number'] == t_pages)
+    previous_page = (p for p in pages if p.meta['book']['page_number'] == minus)
+    next_page = (p for p in pages if p.meta['book']['page_number'] == plus)
     return render_template(
         'comic.html',
         current_book=current_book,
@@ -222,4 +245,5 @@ def comic_page(book, chapter, number, name):
 
 def chill():
     # function to build the site into static files
+    walk_directory(cfg['IMAGE_DIR'])
     freezer.freeze()
