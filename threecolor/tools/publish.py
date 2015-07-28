@@ -16,6 +16,7 @@ instfolder = config.instfolder
 cfg = config.make_usr_cfg()
 
 # configure user and hostname for remote server
+env.use_ssh_config = True
 env.user = cfg['USER_NAME']
 env.hosts = cfg['REMOTE_SERVER']
 pub_method = cfg['PUB_METHOD']

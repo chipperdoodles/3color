@@ -3,14 +3,15 @@ import multiprocessing as mp
 
 from Tkinter import Frame, Tk, Button, LEFT, TOP, RIGHT
 from threecolor.application import create_site
-from threecolor.gui.gunni import StandaloneApplication, options
+from threecolor.gunni import StandaloneApplication, options
 
 
 def startapp():
     StandaloneApplication(create_site(), options).run()
     return
 
-p = mp.Process(target=startapp)
+p = mp.Process(target=startapp,name='webserv')
+p.daemon = True
 
 
 class Gooey:
@@ -56,17 +57,19 @@ class Gooey:
         # app = create_site()
         # app.run(debug=False, port=5001)
         if p.is_alive():
-            print("app already running")
+            print( p.name" is already running")
         else:
             try:
                 p.start()
-            except:
-                print("oops")
 
+            except OSError as e:
+                print(os.strerror(e))
+                
     def stopapp(self):
 
         if p.is_alive():
-            p.terminate()
+            p.terminte()
+            print(p.exitcode)
         else:
             print("app not running")
         return p

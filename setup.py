@@ -64,10 +64,10 @@ setup(
         'Frozen-Flask',
         'Fabric'
     ],
-    entry_points='''
-        [console_scripts]
-        3color=threecolor.cli:cli
-        ''',
+    entry_points={
+        'console_scripts': ['3color=threecolor.cli:cli'],
+        'gui_scripts': ['3color-gui=threecolor.gui.gui']
+        },
 
     classifiers=[
         'Environment :: Console',
