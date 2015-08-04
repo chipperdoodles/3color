@@ -1,38 +1,26 @@
 <div id="book_nav">
     <div class="book-nav-container">
-      {% for p in first_page %}
+      {% for first in first_page %}
       <div class="first book-nav-item">
-        <a href="{{ url_for('.comic_page', _anchor='content', book=p.book.title, chapter=p.book.chapter, number=p.book.page_number, name=p.path.replace(config.BOOK_DIR+'/', '')) }}"> first</a>
+        <a href="{{ url_for('.comic_page', _anchor='content', book=first.book.title, chapter=first.book.chapter, number=first.book.page_number, name=first.path.replace(config.BOOK_DIR+'/', '')) }}"> first</a>
       </div>
       {% else %}
       {% endfor %}
-      {% for p in previous_page if current_book==p.book.title %}
+      {% for back in previous_page %}
       <div class="back book-nav-item">
-        <a id="back" href="{{ url_for('.comic_page', _anchor='content', book=p.book.title, chapter=p.book.chapter, number=p.book.page_number, name=p.path.replace(config.BOOK_DIR+'/', '')) }}"> back</a>
+        <a id="back" href="{{ url_for('.comic_page', _anchor='content', book=back.book.title, chapter=back.book.chapter, number=back.book.page_number, name=back.path.replace(config.BOOK_DIR+'/', '')) }}"> back</a>
       </div>
       {% else %}
-      {% for p in front_page %}
-      <div class="back book-nav-item">
-        <a id="back" href="{{ url_for('.comic_page', _anchor='content', book=p.book.title, chapter=p.book.chapter, number=p.book.page_number, name=p.path.replace(config.BOOK_DIR+'/', '')) }}"> back</a>
-      </div>
       {% endfor %}
-      {% endfor %}
-
-      {% for p in next_page if current_book==p.book.title %}
+      {% for next in next_page %}
       <div class="next book-nav-item">
-        <a id="next" href="{{ url_for('.comic_page', _anchor='content', book=p.book.title, chapter=p.book.chapter, number=p.book.page_number, name=p.path.replace(config.BOOK_DIR+'/', '')) }}"> next</a>
+        <a id="next" href="{{ url_for('.comic_page', _anchor='content', book=next.book.title, chapter=next.book.chapter, number=next.book.page_number, name=next.path.replace(config.BOOK_DIR+'/', '')) }}"> next</a>
       </div>
       {% else %}
-      {% for p in front_page %}
-      <div class="next first book-nav-item">
-        <a id="next" href="{{ url_for('.comic_page', _anchor='content', book=p.book.title, chapter=p.book.chapter, number=p.book.page_number, name=p.path.replace(config.BOOK_DIR+'/', '')) }}"> next</a>
-      </div>
       {% endfor %}
-      {% endfor %}
-
-      {% for p in last_page if current_book==p.book.title %}
+      {% for last in last_page %}
       <div class="latest book-nav-item">
-        <a href="{{ url_for('.comic_page', _anchor='content', book=p.book.title, chapter=p.book.chapter, number=p.book.page_number, name=p.path.replace(config.BOOK_DIR+'/', '')) }}"> latest</a>
+        <a href="{{ url_for('.comic_page', _anchor='content', book=last.book.title, chapter=last.book.chapter, number=last.book.page_number, name=last.path.replace(config.BOOK_DIR+'/', '')) }}"> latest</a>
       </div>
       {% else %}
       {% endfor %}

@@ -10,7 +10,7 @@ List of ideas to implement and code to work on
 * settle on metadata
 * settle on url naming scheme
 * add port configuration option for sftp publish
-* python 3 compatability
+* python 3 compatibility
 
 in progress:
 

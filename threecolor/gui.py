@@ -1,7 +1,8 @@
 import click
+import sys
 import multiprocessing as mp
 
-from Tkinter import Frame, Tk, Button, LEFT, TOP, RIGHT
+from Tkinter import *
 from threecolor.application import create_site
 from threecolor.gunni import StandaloneApplication, options
 
@@ -11,7 +12,6 @@ def startapp():
     return
 
 p = mp.Process(target=startapp,name='webserv')
-p.daemon = True
 
 
 class Gooey:
@@ -24,7 +24,7 @@ class Gooey:
         self.quitb = Button(mainframe,
                             text="QUIT",
                             fg="red",
-                            command=self.daquit)
+                            command=mainframe.quit())
         self.quitb.pack(side=RIGHT)
 
         self.runb = Button(mainframe,
@@ -42,6 +42,9 @@ class Gooey:
                             command=self.stopapp)
         self.stopb.pack(side=TOP)
 
+        self.term = Text(mainframe)
+        self.term.pack()
+
     def daquit(self):
         if p.is_alive():
             p.terminate()
@@ -57,18 +60,18 @@ class Gooey:
         # app = create_site()
         # app.run(debug=False, port=5001)
         if p.is_alive():
-            print( p.name" is already running")
+            print('is already running')
         else:
             try:
                 p.start()
 
             except OSError as e:
                 print(os.strerror(e))
-                
+
     def stopapp(self):
 
         if p.is_alive():
-            p.terminte()
+            p.terminate()
             print(p.exitcode)
         else:
             print("app not running")

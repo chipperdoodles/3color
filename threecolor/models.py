@@ -13,6 +13,7 @@ class PageHeader(object):
     """
 
     def __init__(self, **kwargs):
+        self.altt = ''
 
         self.__dict__.update(kwargs)
 
@@ -36,7 +37,8 @@ class PageHeader(object):
                 'title': self.longname,
                 'chapter': self.chapter,
                 'page_number': self.pagenumber,
-                'image': self.image
+                'image': self.image,
+                'alt_text': self.altt
             },
             "menu": {
                 'menuname': self.menuname,
@@ -90,7 +92,8 @@ class PagesCreator(PageHeader):
                 'title': self.longname,
                 'chapter': '',
                 'page_number': n,
-                'image': ''
+                'image': '',
+                'alt_text': ''
             },
             "menu": {
                 'menuname': self.menuname,

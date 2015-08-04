@@ -25,22 +25,25 @@ The theme folder is simply a flask styled folder which must include the followin
 example ::
 
     -static
-        -css
+        -css // any and all css files
           main.css
-        -js
+        -js // any js scripts or libraries
           script.js
-        -images
+        -images // static images for site backgrounds and logos
           logo.png
 
 
 *templates* - this is where you make your jinja html templates.
   This must contain the following files as for now these pages are rendered:
-  * home.html
-  * page.html
-  * books.html
-  * comic.html
-  * news.html
-  * gallery.html
+
+  -templates
+
+      * home.html
+      * page.html
+      * books.html
+      * comic.html
+      * news.html
+      * gallery.html
 
 
 Theming todo

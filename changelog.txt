@@ -9,7 +9,8 @@ Changed
 =======
 * various changes and derp fixes
 * changed images folder to contain subfolders
-
+* pagination based on min() max()
+* 3color run command now has optional --debug flag (may remove)
 
 version 0.2.2
 

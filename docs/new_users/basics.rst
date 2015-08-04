@@ -31,9 +31,9 @@ Another word used for folder is :term:`directory`, these are words are used inte
 
 Command Line
 ^^^^^^^^^^^^
-To install 3color-Press you'll have to be not scared of doing a little command line,
-it doesn't get more complicated than running a few commands to get things done.
-Of course you could always do more but we'll to the basics.
+To install 3color-Press you'll have to not be scared of doing a little work in the
+command line, it doesn't get more complicated than running a few commands to get
+things done. Of course you could always do more but we'll to the basics.
 
 In OsX the default :term:`terminal` is an application in the utilities folder named
 Terminal. In windows you can use Command Prompt or Powershell.
@@ -62,5 +62,8 @@ List of file editors to look at:
 * text wrangler http://www.barebones.com/products/textwrangler/download.html
 * textmate http://macromates.com/
 * Notepad++ http://notepad-plus-plus.org/
+* Vim
+* emacs
+* nano
 
 To save you some time I recomend atom as it is free and easy to install and manage.

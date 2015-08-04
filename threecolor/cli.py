@@ -7,6 +7,11 @@ from .tools import publish, misc, pagecreator
 from .site import coolviews
 from .configs import config
 
+try:
+    from flask_debugtoolbar import DebugToolbarExtension
+except:
+    pass
+
 up = click.UNPROCESSED
 
 
@@ -56,11 +61,13 @@ def cli():
     \b
     newtheme   Creates a theme of your name choice in the project folder/themes folder
                and copies over the default theme files and to help quick start themeing.
+               Prompts user for name of folder for the new theme.
     \b
     run        Runs your website locally on port 5000 and opens http://localhost:5000
                in your default web browser. Use this command in order to see
                what your website will look like before you build it. Useful for
                Theme building. Press contrl+c to halt the live server.
+               Use with --debug to run server in debug mode.
 
     """
     pass
@@ -105,12 +112,18 @@ def push_site(pubmethod):
 
 # FIXME launches multiple browser windows/tabs if flask is reloaded from debug
 @cli.command()
-def run():
+@click.option('--debug', is_flag=True)
+def run(debug):
     """Run website locally in debug mode"""
     # click.echo('press control+c to stop server')
     # click.launch('http://localhost:5001/')
     app = create_site()
-    app.run(debug=True, port=5001)
+    if debug:
+        app.config['SECRET_KEY']= 'nope'
+        toolbar = DebugToolbarExtension(app)
+        app.run(debug=True, port=5001)
+    else:
+        app.run(debug=False, port=5001)
 
 
 @cli.command(name='open')
