@@ -88,8 +88,8 @@ def page_feed(pages, limit=None):
     Used to sort comics specifically for atom feed
     """
 
-    l_comic = (p for p in pages if p['page_type'] == 'book')
-    l_comic = sorted(l_comic, reverse=True, key=lambda p: p.meta['published'])
+    l_comic = (latest for latest in pages if latest['page_type'] == 'book')
+    l_comic = sorted(l_comic, reverse=True, key=lambda latest: latest.meta['published'])
     return l_comic[:limit]
 
 
@@ -182,6 +182,7 @@ def gallery():
 
     return render_template('gallery.html')
 
+# FIXME: currently page links only generate for first entry
 
 @site.route('/atom.xml')
 def atom_feed():
@@ -192,19 +193,20 @@ def atom_feed():
 
     feed = AtomFeed('Feed for '+current_app.config['SITE_NAME'],
                     feed_url=url_for('.atom_feed'),
-                    url=current_app.config['DOMAIN'])
-    comic_feed = page_feed(pages, current_app.config['FEED_COUNT'])
-    for cf in comic_feed:
-        feed.add(feed_helper(cf),
+                    url=url_for('.index'),
+                    logo=url_for('.static', filename='images/logo.png'))
+    comic_feed = page_feed(pages, 25)
+    for i in comic_feed:
+        feed.add(feed_helper(i),
                  content_type='html',
                  url=url_for('.comic_page',
-                             book=cf.meta['book']['title'],
-                             chapter=cf.meta['book']['chapter'],
-                             number=cf.meta['book']['page_number'],
-                             name=cf.path.replace(current_app.config['BOOK_DIR']+'/', '')),
-                 published=cf.meta['published'],
-                 updated=cf.meta['modified'],
-                 summary=cf.body)
+                             book=i.meta['book']['title'],
+                             chapter=i.meta['book']['chapter'],
+                             number=i.meta['book']['page_number'],
+                             name=i.path.replace(current_app.config['BOOK_DIR']+'/', '')),
+                 published=i.meta['published'],
+                 updated=i.meta['modified'],
+                 summary=i.body)
     return feed.get_response()
 
 
