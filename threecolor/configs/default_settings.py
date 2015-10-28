@@ -4,6 +4,7 @@ FLATPAGES_EXTENSION = '.md'
 FLATPAGES_ROOT = 'content'
 FREEZER_DESTINATION_IGNORE = ['.git*', '.gitignore', 'CNAME']
 FEEZER_RELATIVE_URLS = True
+ACTIVE_SITE = 'default'
 SITE_NAME = '3color Press Site'
 BUILD_DIR = 'build'
 BOOK_DIR = 'book'

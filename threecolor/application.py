@@ -7,6 +7,8 @@ from .configs import config
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 instfolder = config.instfolder
+sitefolder = config.sitefolder
+active_sitefolder = config.active_sitefolder
 THEME_DIR = config.THEME_DIR
 
 
@@ -16,7 +18,7 @@ def create_site():
     if os.path.exists(instfolder):
 
         app = Flask('threecolor',
-                    instance_path=instfolder,
+                    instance_path=active_sitefolder,
                     instance_relative_config=True
                     )
 
@@ -24,7 +26,7 @@ def create_site():
         app.config.from_object('threecolor.configs.default_settings')
         app.config.from_object('threecolor.configs.default_template_settings')
 
-        if os.path.exists(os.path.join(instfolder, 'settings.cfg')):
+        if os.path.exists(os.path.join(active_sitefolder, 'settings.cfg')):
             # overide default settings with user settings
             app.config.from_pyfile('settings.cfg')
 

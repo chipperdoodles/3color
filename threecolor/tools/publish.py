@@ -3,6 +3,8 @@ import subprocess
 
 from ..configs import config
 
+# from ftplib import FTP
+
 # TODO: make fabric optional
 from fabric.api import *
 from fabric.api import execute
@@ -81,6 +83,13 @@ def sftp():
             run('rm -rf 3colorSite.tar.gz')
 
     os.remove(tarfile)
+
+# def ftp(pword):
+#     """
+#     """
+#     FTP.connect(cfg['REMOTE_SERVER'])
+#     FTP.login(user=cfg['USER_NAME'], password=pword)
+
 
 
 def publish(pubmethod=pub_method):

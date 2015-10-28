@@ -18,6 +18,8 @@ if platform.system() == 'Windows':
 
 # foldercreation
 instfolder = os.path.join(os.path.expanduser("~"), '3color-Press')
+sitefolder = os.path.join(instfolder, 'sites')
+defaultfolder = os.path.join(sitefolder, 'default')
 folders = ['content', 'images', 'themes']
 imgfolders = ['comics', 'gallery', 'misc']
 contfolders = ['book', 'news', 'single', 'gallery']
@@ -27,20 +29,14 @@ contfolders = ['book', 'news', 'single', 'gallery']
 # if it doesn't, create project folder and subfolders
 if os.path.exists(instfolder) is False:
     os.mkdir(instfolder)
+    os.mkdir(sitefolder)
+    os.mkdir(defaultfolder)
     for folder in folders:
-        os.mkdir(os.path.join(instfolder, folder))
+        os.mkdir(os.path.join(defaultfolder, folder))
     for folder in contfolders:
-        os.mkdir(os.path.join(instfolder, 'content', folder))
+        os.mkdir(os.path.join(defaultfolder, 'content', folder))
     for folder in imgfolders:
-        os.mkdir(os.path.join(instfolder, 'images', folder))
-# check to see if subfolders exist,if not then create them
-elif os.path.exists(os.path.join(instfolder, 'content')) and os.path.exists(os.path.join(instfolder, 'images')) and os.path.exists(os.path.join(instfolder, 'themes')) is False:
-    for folder in folders:
-        os.mkdir(os.path.join(instfolder, folder))
-    for folder in contfolders:
-        os.mkdir(os.path.join(instfolder, 'content', folder))
-    for folder in imgfolders:
-        os.mkdir(os.path.join(instfolder, 'images', folder))
+        os.mkdir(os.path.join(defaultfolder, 'images', folder))
 
 with open('README.txt') as file:
     long_description = file.read()

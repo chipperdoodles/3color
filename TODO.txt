@@ -1,6 +1,5 @@
 List of ideas to implement and code to work on
 
-* multiple site management
 * add uploading via plain ftp support
 * figure out packaging entire app (cx_freeze type things)
 * make a good informative project site and images
@@ -12,10 +11,12 @@ List of ideas to implement and code to work on
 * add port configuration option for sftp publish
 * python 3 compatibility
 * fix menu index (currently one index for every menu)
+* decide if themes folder should be global or site specific (currently site specific)
 
 in progress:
 
-* add working atom feed (to do this we must add full datetime instead of date)
+* multiple site management
+* add working atom feed (need to investigate point of url breakage)
 * Theming variables and configuration, add custom variables for themes
   such as toggle-able html elements and ability to customize colors
 * Improve command line tools newpage creation on a per page type basis

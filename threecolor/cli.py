@@ -2,7 +2,7 @@ import click
 import subprocess
 import os
 
-from .application import create_site, instfolder
+from .application import create_site, instfolder, active_sitefolder
 from .tools import publish, misc, pagecreator
 from .site import coolviews
 from .configs import config
@@ -59,9 +59,13 @@ def cli():
                 \b
                   example: 3color newpage --batch
     \b
-    newtheme   Creates a theme of your name choice in the project folder/themes folder
+    newtheme   Creates a theme of your name choice in the themes folder
                and copies over the default theme files and to help quick start themeing.
                Prompts user for name of folder for the new theme.
+    \b
+    newsite    Creates a folder for a new site. If you want to work on this site
+               remember to edit sites.cfg in your project folder
+
     \b
     run        Runs your website locally on port 5000 and opens http://localhost:5000
                in your default web browser. Use this command in order to see
@@ -123,7 +127,7 @@ def run(debug):
         toolbar = DebugToolbarExtension(app)
         app.run(debug=True, port=5001)
     else:
-        app.run(debug=False, port=5001)
+        app.run(debug=True, port=5001)
 
 
 @cli.command(name='open')
@@ -165,13 +169,21 @@ def newtheme(foldername):
     misc.new_theme(foldername)
 
 
+@cli.command()
+@click.option('--foldername', prompt='name of theme to be made',
+              default='Site Name')
+def newsite(foldername):
+    """Create a new site"""
+    misc.new_theme(foldername)
+
+#to do, make more in depth set up process
 @cli.command(name='setup')
 def upconfig():
     """Copy over default config file, open in editor"""
-    cf = os.path.join(instfolder, 'settings.cfg')
+
+    cf = os.path.join(active_sitefolder, 'settings.cfg')
 
     if config.cfg_check(cf):
         click.edit(filename=cf)
     else:
         misc.copy_config()
-        click.edit(filename=cf)

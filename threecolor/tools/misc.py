@@ -6,13 +6,17 @@ import platform
 from ..configs import config
 
 instfolder = config.instfolder
+active_sitefolder = config.active_sitefolder
+default_site_folder = os.path.join(instfolder, 'sites', 'default')
 root_path = os.path.dirname(config.APP_ROOT)
 system = platform.system()
 
 
 def page_dir(dirname):
-    """used in command line tools to determine path for content type"""
-    ptype_dir = os.path.join(instfolder, 'content', dirname)
+    """
+    used in command line tools to determine path for content type
+    """
+    ptype_dir = os.path.join(active_sitefolder, 'content', dirname)
     return ptype_dir
 
 
@@ -47,28 +51,48 @@ def make_home(root_path):
 
     else:
         os.mkdir(instfolder)
+        os.mkdir(instfolder, 'sites')
+        os.mkdir(default_site_folder)
         shutil.copyfile(os.path.join(root_path, 'configs', 'example.settings.cfg'),
-                        os.path.join(instfolder, 'settings.cfg'))
+                        os.path.join(default_site_folder, 'settings.cfg'))
 
         for folder in inst_dir_list:
-            os.mkdir(os.path.join(instfolder, folder))
+            os.mkdir(os.path.join(default_site_folder, folder))
 
         for folder in content_dir_list:
-            os.mkdir(os.path.join(instfolder, 'content', folder))
+            os.mkdir(os.path.join(default_site_folder, 'content', folder))
 
 
 def new_theme(foldername='CHANGE_MY_NAME'):
     """
     This function copies the default theme files to the theme's folder of a user's
     project folder.
-     """
-    os.mkdir(os.path.join(instfolder, 'themes', foldername))
+    """
+    os.mkdir(os.path.join(default_site_folder, 'themes', foldername))
+    shutil.copyfile(os.path.join(rooth_path, 'configs', 'default_template_settings.py'),
+                    os.path.join(default_site_folder, 'themes', foldername, 'theme_settings.cfg'))
     shutil.copytree(os.path.join(root_path, 'site', 'templates'),
-                    os.path.join(instfolder, 'themes', foldername, 'templates'))
+                    os.path.join(default_site_folder, 'themes', foldername, 'templates'))
     shutil.copytree(os.path.join(root_path, 'site', 'static'),
-                    os.path.join(instfolder, 'themes', foldername, 'static'))
+                    os.path.join(default_site_folder, 'themes', foldername, 'static'))
 
 
 def copy_config():
     shutil.copyfile(os.path.join(root_path, 'configs', 'example.settings.cfg'),
-                    os.path.join(instfolder, 'settings.cfg'))
+                    os.path.join(active_sitefolder, 'settings.cfg'))
+    shutil.copyfile(os.path.join(root_path, 'configs', 'default_sites.py'),
+                    os.path.join(instfolder, 'sites.cfg'))
+
+def new_site(foldername='CHANGE_MY_NAME'):
+
+    inst_dir_list = ['content', 'images', 'themes']
+    content_dir_list = ['book', 'news', 'single']
+    newfold = os.path.join(instfolder, 'sites', foldername)
+
+    os.mkdir(newfold)
+
+    for folder in inst_dir_list:
+        os.mkdir(os.path.join(newfold, folder))
+
+    for folder in content_dir_list:
+        os.mkdir(os.path.join(newfold, 'content', folder))

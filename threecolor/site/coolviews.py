@@ -2,7 +2,7 @@ import os
 
 from ..configs import config
 
-from flask import abort, current_app, Blueprint, render_template, send_from_directory, url_for
+from flask import abort, current_app, Blueprint, render_template, send_from_directory, url_for, request
 from flask_flatpages import FlatPages
 from flask_frozen import Freezer, walk_directory
 
@@ -110,19 +110,16 @@ def feed_helper(cf):
     Helper function for the atom feed to name entries
     """
 
-    if cf.meta['page_type'] is 'book':
+    if cf.meta['title'] is '':
 
-        if cf.meta['title'] is '':
+        if cf.meta['page_type'] == 'book':
             ptitle = cf.meta['book']['title']+' '+str(cf.meta['book']['page_number'])
         else:
-            ptitle = cf.meta['title']
+            ptitle = cf.meta['page_type']+' '+str(cf.meta['published'])
 
     else:
 
-        if cf.meta['title'] is '':
-            ptitle = cf.meta['page_type']+' '+str(cf.meta['published'])
-        else:
-            ptitle = cf.meta['title']
+        ptitle = cf.meta['title']
 
     return ptitle
 
@@ -192,21 +189,29 @@ def atom_feed():
     """
 
     feed = AtomFeed('Feed for '+current_app.config['SITE_NAME'],
-                    feed_url=url_for('.atom_feed'),
-                    url=url_for('.index'),
+                    feed_url=request.url,
+                    url=request.url_root,
                     logo=url_for('.static', filename='images/logo.png'))
     comic_feed = page_feed(pages, 25)
-    for i in comic_feed:
-        feed.add(feed_helper(i),
+    for e in comic_feed:
+        feed.add(title=feed_helper(e),
                  content_type='html',
+                 id=url_for('.comic_page',
+                             book=e.meta['book']['title'],
+                             chapter=e.meta['book']['chapter'],
+                             number=e.meta['book']['page_number'],
+                             name=e.path.replace(current_app.config['BOOK_DIR']+'/', '')),
                  url=url_for('.comic_page',
-                             book=i.meta['book']['title'],
-                             chapter=i.meta['book']['chapter'],
-                             number=i.meta['book']['page_number'],
-                             name=i.path.replace(current_app.config['BOOK_DIR']+'/', '')),
-                 published=i.meta['published'],
-                 updated=i.meta['modified'],
-                 summary=i.body)
+                             book=e.meta['book']['title'],
+                             chapter=e.meta['book']['chapter'],
+                             number=e.meta['book']['page_number'],
+                             name=e.path.replace(current_app.config['BOOK_DIR']+'/', '')),
+                 published=e.meta['published'],
+                 updated=e.meta['modified'],
+                 summary=e.body,
+                 xml_base=url_for('.atom_feed'),
+                 generator=('3color Press', None, None)
+                 )
     return feed.get_response()
 
 
@@ -234,7 +239,7 @@ def news_page(name):
     return render_template('page.html', page=page)
 
 
-@site.route('/<book>/c<int:chapter>/p<int:number>/<name>.html')
+@site.route('/comics/<book>/chapter_<int:chapter>/page_<int:number>/<name>.html')
 def comic_page(book, chapter, number, name):
 
     """

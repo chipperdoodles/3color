@@ -4,6 +4,7 @@ Added
 =====
 * gallery page type and html template
 * feed_count variable for atom feed
+* initial multi-site support
 
 Changed
 =======
