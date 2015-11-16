@@ -41,11 +41,8 @@ class PageHeader(object):
                 'alt_text': self.altt
             },
             "menu": [
-            (
-                'menuname': self.menuname,
-                'index': self.menuindex
-            )
-            ]
+            (self.menuname, self.menuindex ),
+            ],
             "version": __version__
         }
 
@@ -98,11 +95,8 @@ class PagesCreator(PageHeader):
                 'alt_text': ''
             },
             "menu": [
-            (
-                'menuname': self.menuname,
-                'index': n
-            )
-            ]
+            ( self.menuname, n )
+            ],
             "version": __version__
         }
 

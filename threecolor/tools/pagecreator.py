@@ -57,7 +57,7 @@ def new_page(batch, pagetype, path):
             "image": img,
             "menuname": menu,
             "menuindex": pnumber,
-            "path": path
+            "path": path, 
             "alt_text":altt
         }
 
