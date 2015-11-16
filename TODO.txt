@@ -1,32 +1,32 @@
 List of ideas to implement and code to work on
 
-* add uploading via plain ftp support
+* fix the gosh darn atom feed
+* add uploading via plain ftp support (Is this needed?
+* make sftp/fabric optional package
 * figure out packaging entire app (cx_freeze type things)
 * make a good informative project site and images
 * look into migration from database to flat files (i.e. wordpress to 3color-press)
-* alt-text field for comic images
-* make optional per page comment (page.body to show up in template)
 * settle on metadata
 * settle on url naming scheme
 * add port configuration option for sftp publish
 * python 3 compatibility
-* fix menu index (currently one index for every menu)
 * decide if themes folder should be global or site specific (currently site specific)
 
 in progress:
 
-* multiple site management
+* multiple site management (needs more testing)
 * add working atom feed (need to investigate point of url breakage)
 * Theming variables and configuration, add custom variables for themes
   such as toggle-able html elements and ability to customize colors
-* Improve command line tools newpage creation on a per page type basis
+  (mostly there, needs testing)
+* Improve command line tools new-page creation on a per page type basis
 
 done:
 
+* alt text field for comic images
 * gallery pagetype/imagetype
-* make menuname key into a list
-* change menu key in header to dict with name and index key
-  (allowing for custom menus and ordering by index)
+* make menuname key into a list of tuples
+* make optional per page comment (page.body to show up in template)
 
 always:
 

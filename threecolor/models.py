@@ -40,10 +40,12 @@ class PageHeader(object):
                 'image': self.image,
                 'alt_text': self.altt
             },
-            "menu": {
+            "menu": [
+            (
                 'menuname': self.menuname,
                 'index': self.menuindex
-            },
+            )
+            ]
             "version": __version__
         }
 
@@ -95,10 +97,12 @@ class PagesCreator(PageHeader):
                 'image': '',
                 'alt_text': ''
             },
-            "menu": {
+            "menu": [
+            (
                 'menuname': self.menuname,
                 'index': n
-            },
+            )
+            ]
             "version": __version__
         }
 

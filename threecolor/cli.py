@@ -53,17 +53,17 @@ def cli():
                this will call on atom to open your project folder
 
     \b
-    newpage    Creates a new page (.md file) based on your inputs.
+    new-page    Creates a new page (.md file) based on your inputs.
                You can pass the option --batch in order to created a batch of pages
                with auto page numbering and file naming.
                 \b
                   example: 3color newpage --batch
     \b
-    newtheme   Creates a theme of your name choice in the themes folder
+    new-theme   Creates a theme of your name choice in the themes folder
                and copies over the default theme files and to help quick start themeing.
                Prompts user for name of folder for the new theme.
     \b
-    newsite    Creates a folder for a new site. If you want to work on this site
+    new-site    Creates a folder for a new site. If you want to work on this site
                remember to edit sites.cfg in your project folder
 
     \b
@@ -115,9 +115,9 @@ def push_site(pubmethod):
 
 
 # FIXME launches multiple browser windows/tabs if flask is reloaded from debug
-@cli.command()
+@cli.command(name='run')
 @click.option('--debug', is_flag=True)
-def run(debug):
+def run_server(debug):
     """Run website locally in debug mode"""
     # click.echo('press control+c to stop server')
     # click.launch('http://localhost:5001/')
@@ -136,7 +136,7 @@ def open_file():
     click.launch(instfolder)
 
 
-@cli.command(name='newpage')
+@cli.command(name='new-page')
 @click.option('--batch', is_flag=True, help='For making more than one new page')
 @click.option('--pagetype', prompt='Type of page to be created ',
               type=click.Choice(['book', 'news', 'single', 'gallery']),
@@ -161,7 +161,7 @@ def atom():
         print("The atom editor command line tool not installed")
 
 
-@cli.command()
+@cli.command(name='new-theme')
 @click.option('--foldername', prompt='name of theme to be made',
               default='ThemeName')
 def newtheme(foldername):
@@ -169,7 +169,7 @@ def newtheme(foldername):
     misc.new_theme(foldername)
 
 
-@cli.command()
+@cli.command(name='new-site')
 @click.option('--foldername', prompt='name of theme to be made',
               default='Site Name')
 def newsite(foldername):

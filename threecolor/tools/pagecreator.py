@@ -25,7 +25,7 @@ def new_page(batch, pagetype, path):
                 path=path,
                 page_amount=pamount,
                 pagenumber=None,
-                menuname=[menu]
+                menuname=menu
         )
 
         thing = PagesCreator(**data)
@@ -42,6 +42,8 @@ def new_page(batch, pagetype, path):
         chptr = click.prompt('The chapter number', type=int)
         img = click.prompt('The name of the image file of your comic page',
                            default=sname+'_'+str(pnumber)+'.png', type=up)
+        altt = click.prompt('Alt text to show up under the comic image',
+                            default='', type=up)
         menu = click.prompt('Name of the menu this page belongs to',
                             type=up, default=sname)
 
@@ -53,9 +55,10 @@ def new_page(batch, pagetype, path):
             "pagenumber": pnumber,
             "chapter": chptr,
             "image": img,
-            "menuname": [menu],
+            "menuname": menu,
             "menuindex": pnumber,
             "path": path
+            "alt_text":altt
         }
 
         thing = PageCreator(**data)
@@ -82,7 +85,7 @@ def new_page(batch, pagetype, path):
             "pagenumber": pnumber,
             "chapter": chptr,
             "image": img,
-            "menuname": [menu],
+            "menuname": menu,
             "menuindex": pnumber,
             "path": path
         }
@@ -109,7 +112,7 @@ def new_page(batch, pagetype, path):
             "pagenumber": None,
             "chapter": None,
             "image": None,
-            "menuname": [menu],
+            "menuname": menu,
             "menuindex": index,
             "path": path
         }
