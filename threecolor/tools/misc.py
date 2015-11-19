@@ -3,12 +3,12 @@ import subprocess
 import shutil
 import platform
 
-from ..configs import config
+from ..configs import conf
 
-instfolder = config.instfolder
-active_sitefolder = config.active_sitefolder
+instfolder = conf.instfolder
+active_sitefolder = conf.active_sitefolder
 default_site_folder = os.path.join(instfolder, 'sites', 'default')
-root_path = os.path.dirname(config.APP_ROOT)
+root_path = os.path.dirname(conf.APP_ROOT)
 system = platform.system()
 
 
@@ -86,13 +86,16 @@ def copy_config():
 def new_site(foldername='CHANGE_MY_NAME'):
 
     inst_dir_list = ['content', 'images', 'themes']
-    content_dir_list = ['book', 'news', 'single']
+    content_dir_list = ['book', 'news', 'single', 'gallery']
     newfold = os.path.join(instfolder, 'sites', foldername)
 
-    os.mkdir(newfold)
+    if os.path.exists(newfold):
+        print('Folder with that name already exists')
+    else:
+        os.mkdir(newfold)
 
-    for folder in inst_dir_list:
-        os.mkdir(os.path.join(newfold, folder))
+        for folder in inst_dir_list:
+            os.mkdir(os.path.join(newfold, folder))
 
-    for folder in content_dir_list:
-        os.mkdir(os.path.join(newfold, 'content', folder))
+        for folder in content_dir_list:
+            os.mkdir(os.path.join(newfold, 'content', folder))

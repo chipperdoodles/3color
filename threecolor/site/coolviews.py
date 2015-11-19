@@ -29,7 +29,8 @@ def page_types():
 
     """
 
-    main_menu = (mp for mp in pages if 'main-menu' in mp['menu']['menuname'])
+    #main_menu = (mp for mp in pages if 'main-menu' in mp['menu']['menuname'])
+    main_menu = (mp for mp in pages if 'main-menu' in mp['menu'])
     book_pages = (bp for bp in pages if 'book' == bp['page_type'])
     news_pages = (np for np in pages if 'news' == np['page_type'])
     gallery_items = (gp for gp in pages if 'gallery' == gp['page_type'])
@@ -156,7 +157,7 @@ def books():
     Finds and lists pages that are chapter: 1 and page_number: 1 in yaml header
     """
 
-    first_page = (p for p in pages if p['book']['chapter'] == 1 and p['book']['page_number'] == 1)
+    first_page = (p for p in pages if p['book']['page_number'] == 1)
     return render_template('books.html', first_page=first_page)
 
 
@@ -239,8 +240,8 @@ def news_page(name):
     return render_template('page.html', page=page)
 
 
-@site.route('/comics/<book>/chapter_<int:chapter>/page_<int:number>/<name>.html')
-def comic_page(book, chapter, number, name):
+@site.route('/comics/<book>/<name>.html')
+def comic_page(book, name):
 
     """
     variables after 'p' are used to create pagination links within book stories.

@@ -1,7 +1,7 @@
 import os
 import subprocess
 
-from ..configs import config
+from ..configs import conf
 
 # from ftplib import FTP
 
@@ -13,9 +13,9 @@ from fabric.contrib.files import exists
 
 from shutil import make_archive
 
-instfolder = config.instfolder
+instfolder = conf.instfolder
 
-cfg = config.make_usr_cfg()
+cfg = conf.make_usr_cfg()
 
 # configure user and hostname for remote server
 env.use_ssh_config = True

@@ -11,7 +11,7 @@
     {% endblock upper %}
   {% endif %}
 <div id="comic">
-    <img src="{{ url_for('.images', subdir='comics', name=p.book.image) ALT=p.book.alt_text }}">
+    <img src="{{ url_for('.images', subdir='comics', name=p.book.image) }}" ALT="{{p.book.alt_text}}">
 </div>
   {% if config.COMIC_NAV is sameas 'lower' %}
     {% block lower %}

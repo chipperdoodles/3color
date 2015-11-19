@@ -5,7 +5,7 @@ import os
 from .application import create_site, instfolder, active_sitefolder
 from .tools import publish, misc, pagecreator
 from .site import coolviews
-from .configs import config
+from .configs import conf
 
 try:
     from flask_debugtoolbar import DebugToolbarExtension
@@ -174,7 +174,7 @@ def newtheme(foldername):
               default='Site Name')
 def newsite(foldername):
     """Create a new site"""
-    misc.new_theme(foldername)
+    misc.new_site(foldername)
 
 #to do, make more in depth set up process
 @cli.command(name='setup')
@@ -183,7 +183,7 @@ def upconfig():
 
     cf = os.path.join(active_sitefolder, 'settings.cfg')
 
-    if config.cfg_check(cf):
+    if conf.cfg_check(cf):
         click.edit(filename=cf)
     else:
         misc.copy_config()

@@ -1,15 +1,15 @@
 import os
 
 from flask import Flask
-from .configs import config
+from .configs import conf
 
 # set application root path
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-instfolder = config.instfolder
-sitefolder = config.sitefolder
-active_sitefolder = config.active_sitefolder
-THEME_DIR = config.THEME_DIR
+instfolder = conf.instfolder
+sitefolder = conf.sitefolder
+active_sitefolder = conf.active_sitefolder
+THEME_DIR = conf.THEME_DIR
 
 
 def create_site():

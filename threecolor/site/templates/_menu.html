@@ -5,7 +5,7 @@
   <a class="main-menu-item" href="{{ url_for('.gallery') }}">Gallery</a>
   {% for p in main_menu %}
   {% if p.page_type == 'book' %}
-    <a class="main-menu-item" href="{{ url_for('.comic_page', _anchor='content', book=p.book.title, chapter=p.book.chapter, number=p.book.page_number, name=p.path.replace(config.BOOK_DIR+'/', '')) }}">{{ p.title }}</a>
+    <a class="main-menu-item" href="{{ url_for('.comic_page', _anchor='content', book=p.book.title, name=p.path.replace(config.BOOK_DIR+'/', '')) }}">{{ p.title }}</a>
   {% elif p.page_type == 'news' %}
     <a class="main-menu-item" href="{{ url_for('.news_page', name=p.path.replace('news/', '')) }}">{{ p.title }}</a>
   {% elif p.page_type == 'single' %}
